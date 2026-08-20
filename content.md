@@ -106,10 +106,10 @@ announcement_link: ANNOUNCEMENT_URL      ← ประกาศรายชื�
 ## SECTION 2 — การจัดทำเอกสารแนบท้ายสัญญา / Preparing Contract Appendix Documents
 
 **TH** — intro
-ตรวจสอบในส่วนของงบประมาณว่ามีข้อแก้ไขเพิ่มเติมอีกหรือไม่ หากมี ท่านจะได้รับแจ้งมาพร้อมในอีเมลฉบับนี้
+ท่านสามารถตรวจสอบสถานะการแก้ไขเอกสารได้ที่หน้า **เอกสารของฉัน**
 
 **EN** — intro
-Please check the budget section for any additional corrections. If there are any, you will be notified in this email.
+You can check your document correction status on the **My Documents** page.
 
 > ⚠️ **WARNING TH:** กรุณาแก้ไขตามข้อเสนอแนะที่ได้รับ**เท่านั้น** — ห้ามมีการเปลี่ยนแปลงงบประมาณอื่นใดเพิ่มเติม  
 > ⚠️ **WARNING EN:** Please make corrections **only as advised** — do not make any other budget modifications.
