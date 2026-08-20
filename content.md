@@ -57,8 +57,10 @@ announcement_link: ANNOUNCEMENT_URL      ← ประกาศรายชื�
 - The authorized signatory is the **Research Project Leader**
 - This account is used **exclusively for this research project's income and expenses**
 
-> 📝 **NOTE TH:** หากมีบัญชีเดิมที่ไม่ได้มีการใช้งาน สามารถใช้ได้ โดยต้องเคลียร์บัญชีให้เรียบร้อยก่อน  
-> 📝 **NOTE EN:** If you have an existing unused account, it can be used — please clear/settle the account first before use.
+> 📝 **NOTE TH:** หากมีบัญชีเดิมที่ไม่ได้มีการใช้งาน สามารถใช้บัญชีเดิมได้ แต่ต้องใช้เฉพาะรับ-จ่ายเงินโครงการวิจัยนี้เท่านั้น  
+> **ข้อปฏิบัติ:** เคลียร์เงินคงเหลือเดิมให้หมด ก่อนรับเงินงวดที่ 1 ภายในเดือนตุลาคม  
+> 📝 **NOTE EN:** If you have an existing unused account, it can be used — but it must be used exclusively for this research project's income and expenses only.  
+> **Requirement:** Clear all remaining balances before receiving the 1st installment by October.
 
 ---
 
