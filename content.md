@@ -105,14 +105,17 @@ announcement_link: ANNOUNCEMENT_URL      ← ประกาศรายชื�
 
 ## SECTION 2 — การจัดทำเอกสารแนบท้ายสัญญา / Preparing Contract Appendix Documents
 
-**TH** — intro
-ท่านสามารถตรวจสอบสถานะการแก้ไขเอกสารได้ที่หน้า **เอกสารของฉัน**
+**TH** — warning box (prominent)
+⚠️ **ตรวจสอบและแก้ไขเอกสารให้เรียบร้อยก่อนดำเนินการในขั้นตอนถัดไป**  
+ตรวจสอบสถานะและความคิดเห็นได้ที่หน้า **เอกสารของฉัน**
 
-**EN** — intro
-You can check your document correction status on the **My Documents** page.
+**EN** — warning box (prominent)
+⚠️ **Please review and complete all document corrections before proceeding to the next step.**  
+Check your status and comments on the **My Documents** page.
 
-> ⚠️ **WARNING TH:** กรุณาแก้ไขตามข้อเสนอแนะที่ได้รับ**เท่านั้น** — ห้ามมีการเปลี่ยนแปลงงบประมาณอื่นใดเพิ่มเติม  
-> ⚠️ **WARNING EN:** Please make corrections **only as advised** — do not make any other budget modifications.
+> 📌 **TODO — PORTAL:** เมื่อสร้างส่วน "เอกสารของฉัน" ให้เพิ่มคำเตือนถัดจากลิงก์คอมเม้นเอกสาร:  
+> "กรุณาแก้ไขตามข้อเสนอแนะที่ได้รับ**เท่านั้น** — ห้ามมีการเปลี่ยนแปลงงบประมาณอื่นใดเพิ่มเติม"  
+> EN: "Please make corrections **only as advised** — do not make any other budget modifications."
 
 **TH** — checklist
 - [ ] พิมพ์ข้อเสนอโครงการฯ จำนวน **2 ฉบับ** (พิมพ์หน้าเดียว)
