@@ -128,39 +128,67 @@
     padding: 1.75rem 1.25rem 3rem;
   }
 
+  /* ── Timeline wrapper label ── */
+  .tl-wrap {
+    margin-bottom: 1.5rem;
+  }
+  .tl-heading {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: .6rem;
+  }
+  .tl-heading-text {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #7B1C2C;
+  }
+  .tl-heading::before,
+  .tl-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #d9d1c7;
+  }
+
   /* ── Timeline ── */
   .timeline {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     background: white;
-    border: 1px solid #e8e3dc;
+    border: 1.5px solid #c9bfb5;
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
   }
   .tl-step {
-    padding: .875rem .625rem;
+    padding: 1rem .75rem;
     text-align: center;
     border-right: 1px solid #e8e3dc;
+    background: #fdfcfb;
   }
   .tl-step:last-child { border-right: none; }
   .tl-n {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     background: #7B1C2C;
     color: white;
-    font-size: .72rem;
+    font-size: .75rem;
     font-weight: 700;
-    margin-bottom: .35rem;
+    margin-bottom: .4rem;
+    box-shadow: 0 2px 6px rgba(123,28,44,.3);
   }
-  .tl-step.hl .tl-n { background: #b8912a; }
-  .tl-lbl { font-size: .76rem; font-weight: 600; color: #333; line-height: 1.3; }
+  .tl-step.hl { background: #fffbf0; }
+  .tl-step.hl .tl-n { background: #b8912a; box-shadow: 0 2px 6px rgba(184,145,42,.3); }
+  .tl-lbl { font-size: .78rem; font-weight: 700; color: #2c2c2c; line-height: 1.3; }
   .tl-step.hl .tl-lbl { color: #7a5c00; }
-  .tl-dt { font-size: .7rem; color: #aaa; margin-top: .2rem; }
+  .tl-dt { font-size: .7rem; color: #999; margin-top: .25rem; }
 
   /* ── Scroll offset for sticky nav ── */
   .card, #portal { scroll-margin-top: 52px; }
@@ -419,6 +447,11 @@
 <div class="wrap">
 
   <!-- ── Timeline ── -->
+  <div class="tl-wrap">
+  <div class="tl-heading">
+    <span class="tl-heading-text th">สิ่งที่ต้องดำเนินการ</span>
+    <span class="tl-heading-text en">Steps to Complete</span>
+  </div>
   <div class="timeline">
     <div class="tl-step">
       <div class="tl-n">1</div>
@@ -450,6 +483,7 @@
       <div class="tl-dt th">[ช่วงวันที่]</div>
       <div class="tl-dt en">[Date Range]</div>
     </div>
+  </div>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -520,7 +554,7 @@
 
     <ul class="bl th">
       <li>เปิดบัญชีโครงการวิจัยในรูปแบบ <strong>บัญชีบุคคลธรรมดา ประเภทบัญชีออมทรัพย์</strong></li>
-      <li>ชื่อบัญชีโครงการวิจัย คือ <strong>ชื่อหัวหน้าโครงการวิจัย</strong></li>
+      <li>ชื่อบัญชี คือ <strong>ชื่อหัวหน้าโครงการวิจัย</strong></li>
       <li>ผู้มีอำนาจสั่งจ่าย คือ <strong>หัวหน้าโครงการวิจัย</strong></li>
       <li>ใช้รับ–จ่ายเงิน <strong>เฉพาะโครงการวิจัยนี้เท่านั้น</strong></li>
     </ul>
