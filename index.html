@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="th" data-lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คู่มือจัดทำสัญญาทุนวิจัย — มฟล. ปีงบประมาณ 2570</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Sarabun', 'Leelawadee UI', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    background: #f8f7f5;
+    color: #2c2c2c;
+  }
+
+  /* ── Language switching ── */
+  [data-lang="th"] .en { display: none; }
+  [data-lang="en"] .th { display: none; }
+  [data-lang="en"] { font-family: 'Sarabun', system-ui, sans-serif; }
+
+  /* ── Header ── */
+  .site-header {
+    background: linear-gradient(155deg, #7B1C2C 0%, #4e111c 100%);
+    color: white;
+    padding: 2.75rem 1.5rem 2.25rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 40px,
+      rgba(255,255,255,.02) 40px, rgba(255,255,255,.02) 41px
+    );
+  }
+  .site-header .inner { position: relative; }
+  .site-header .org {
+    font-size: .78rem;
+    opacity: .72;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+  }
+  .site-header h1 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-wrap: balance;
+    margin-bottom: .5rem;
+  }
+  .site-header .year {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: .22rem .9rem;
+    font-size: .8rem;
+  }
+
+  /* ── Nav ── */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    border-bottom: 1px solid #e8e3dc;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 .5rem;
+    gap: 0;
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav a {
+    display: block;
+    padding: .82rem .875rem;
+    color: #666;
+    text-decoration: none;
+    font-size: .8rem;
+    white-space: nowrap;
+    border-bottom: 2.5px solid transparent;
+    margin-bottom: -1px;
+    transition: color .15s, border-color .15s;
+    flex-shrink: 0;
+  }
+  .site-nav a:hover { color: #7B1C2C; border-bottom-color: #7B1C2C; }
+  .site-nav a.on { color: #7B1C2C; border-bottom-color: #7B1C2C; font-weight: 600; }
+
+  /* Language toggle */
+  .lang-toggle {
+    margin-left: auto;
+    display: flex;
+    border: 1px solid #e8e3dc;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-right: .5rem;
+  }
+  .lang-toggle button {
+    background: none;
+    border: none;
+    padding: .3rem .75rem;
+    font-size: .76rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #888;
+    transition: background .15s, color .15s;
+    font-family: inherit;
+  }
+  .lang-toggle button.on {
+    background: #7B1C2C;
+    color: white;
+  }
+
+  /* ── Layout ── */
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.75rem 1.25rem 3rem;
+  }
+
+  /* ── Timeline ── */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: white;
+    border: 1px solid #e8e3dc;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .tl-step {
+    padding: .875rem .625rem;
+    text-align: center;
+    border-right: 1px solid #e8e3dc;
+  }
+  .tl-step:last-child { border-right: none; }
+  .tl-n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: #7B1C2C;
+    color: white;
+    font-size: .72rem;
+    font-weight: 700;
+    margin-bottom: .35rem;
+  }
+  .tl-step.hl .tl-n { background: #b8912a; }
+  .tl-lbl { font-size: .76rem; font-weight: 600; color: #333; line-height: 1.3; }
+  .tl-step.hl .tl-lbl { color: #7a5c00; }
+  .tl-dt { font-size: .7rem; color: #aaa; margin-top: .2rem; }
+
+  /* ── Card ── */
+  .card {
+    background: white;
+    border: 1px solid #e8e3dc;
+    border-radius: 12px;
+    padding: 1.625rem;
+    margin-bottom: 1.25rem;
+  }
+  .card-hd {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding-bottom: .875rem;
+    border-bottom: 1px solid #f0ece6;
+    margin-bottom: 1.25rem;
+  }
+  .card-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 50%;
+    background: #7B1C2C;
+    color: white;
+    font-size: .82rem;
+    font-weight: 700;
+  }
+  .card-hd h2 { color: #7B1C2C; font-size: 1.05rem; font-weight: 700; }
+
+  /* Sub-heading */
+  .sub-h {
+    font-size: .875rem;
+    font-weight: 700;
+    color: #555;
+    margin: 1.25rem 0 .75rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .sub-h::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: .9rem;
+    background: #b8912a;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Bullet list */
+  .bl { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+  .bl li { display: flex; gap: .55rem; align-items: flex-start; font-size: .925rem; }
+  .bl li::before { content: '▸'; color: #b8912a; flex-shrink: 0; margin-top: .15rem; }
+
+  /* Checklist */
+  .cl { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+  .cl li {
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    padding: .575rem .875rem;
+    background: #faf9f7;
+    border: 1px solid #e8e3dc;
+    border-radius: 7px;
+    font-size: .9rem;
+  }
+  .ci { color: #7B1C2C; font-size: 1rem; flex-shrink: 0; margin-top: .05rem; }
+  .cn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background: #7B1C2C;
+    color: white;
+    font-size: .67rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+
+  /* Alert */
+  .al {
+    display: flex;
+    gap: .65rem;
+    align-items: flex-start;
+    border-radius: 7px;
+    padding: .8rem .95rem;
+    font-size: .88rem;
+    margin-top: .875rem;
+  }
+  .al-i { flex-shrink: 0; margin-top: .05rem; }
+  .al.pend  { background: #fff8e8; border: 1px solid #f0d680; color: #7a5c00; }
+  .al.info  { background: #f0f6ff; border: 1px solid #b8d4f5; color: #1a4d8f; }
+  .al.warn  { background: #fff3f3; border: 1px solid #f5b8b8; color: #8f1a1a; }
+  .al.ok    { background: #f0faf3; border: 1px solid #a8dab5; color: #1a6b2c; }
+
+  /* Deadline badge */
+  .dbadge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: #7B1C2C;
+    color: white;
+    border-radius: 20px;
+    padding: .28rem .875rem;
+    font-size: .78rem;
+    font-weight: 700;
+    margin-bottom: .875rem;
+  }
+
+  /* Location */
+  .loc {
+    display: flex;
+    gap: .7rem;
+    align-items: flex-start;
+    background: #faf9f7;
+    border: 1px solid #e8e3dc;
+    border-radius: 7px;
+    padding: .75rem .9rem;
+    font-size: .9rem;
+    margin-bottom: 1rem;
+  }
+  .loc-i { font-size: 1.1rem; flex-shrink: 0; }
+
+  /* Form button */
+  .fbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background: #1a73e8;
+    color: white;
+    padding: .7rem 1.5rem;
+    border-radius: 8px;
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 1.125rem;
+    transition: background .15s;
+  }
+  .fbtn:hover { background: #1558b0; }
+
+  /* Doc link */
+  .dlink {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: #7B1C2C;
+    color: white;
+    padding: .28rem .8rem;
+    border-radius: 20px;
+    font-size: .77rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: .35rem;
+    transition: background .15s;
+  }
+  .dlink:hover { background: #4e111c; }
+
+  /* Portal */
+  .portal {
+    background: linear-gradient(135deg, #4e111c, #7B1C2C);
+    border-radius: 12px;
+    padding: 1.875rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+  }
+  .portal h3 { font-size: 1.05rem; margin-bottom: .4rem; }
+  .portal p  { font-size: .86rem; opacity: .84; margin-bottom: 1.125rem; }
+  .portal-btn {
+    display: inline-block;
+    background: white;
+    color: #7B1C2C;
+    padding: .6rem 1.875rem;
+    border-radius: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: .9rem;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .portal-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: .76rem;
+    color: #aaa;
+    border-top: 1px solid #e8e3dc;
+  }
+
+  /* Responsive */
+  @media (max-width: 580px) {
+    .site-header h1 { font-size: 1.15rem; }
+    .timeline { grid-template-columns: repeat(2, 1fr); }
+    .tl-step:nth-child(2) { border-right: none; }
+    .tl-step:nth-child(1),
+    .tl-step:nth-child(2) { border-bottom: 1px solid #e8e3dc; }
+    .card { padding: 1.125rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header class="site-header">
+  <div class="inner">
+    <div class="org">
+      <span class="th">มหาวิทยาลัยแม่ฟ้าหลวง · ส่วนบริหารงานวิจัย</span>
+      <span class="en">Mae Fah Luang University · Research Administration Division</span>
+    </div>
+    <h1>
+      <span class="th">ดำเนินการเปิดบัญชีและนัดหมายเข้ามาลงนาม<br>ในสัญญารับทุนสนับสนุนการวิจัย</span>
+      <span class="en">Open a Research Bank Account and Schedule<br>an Appointment to Sign the Research Grant Agreement</span>
+    </h1>
+    <span class="year">
+      <span class="th">ประจำปีงบประมาณ 2570 · สำหรับหัวหน้าโครงการวิจัย</span>
+      <span class="en">Fiscal Year B.E. 2570 · For Research Project Leaders</span>
+    </span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav class="site-nav">
+  <a href="#account" class="th">1. เปิดบัญชี</a>
+  <a href="#account" class="en">1. Open Account</a>
+  <a href="#docs" class="th">2. เอกสารแนบท้าย</a>
+  <a href="#docs" class="en">2. Contract Appendix</a>
+  <a href="#submit" class="th">3. จัดส่งเอกสาร</a>
+  <a href="#submit" class="en">3. Submit Documents</a>
+  <a href="#sign" class="th">4. ลงนามสัญญา</a>
+  <a href="#sign" class="en">4. Sign Contract</a>
+  <a href="#portal" class="th">เอกสารของฉัน</a>
+  <a href="#portal" class="en">My Documents</a>
+  <div class="lang-toggle">
+    <button id="btn-th" class="on" onclick="setLang('th')">TH</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     CONTENT
+══════════════════════════════════════ -->
+<div class="wrap">
+
+  <!-- ── Timeline ── -->
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-n">1</div>
+      <div class="tl-lbl th">เปิดบัญชี</div>
+      <div class="tl-lbl en">Open Account</div>
+      <div class="tl-dt th">ดำเนินการก่อน</div>
+      <div class="tl-dt en">Complete first</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-n">2</div>
+      <div class="tl-lbl th">เตรียมเอกสาร<br>แนบท้าย</div>
+      <div class="tl-lbl en">Prepare Contract<br>Appendix</div>
+      <div class="tl-dt th">ก่อนส่งเอกสาร</div>
+      <div class="tl-dt en">Before submission</div>
+    </div>
+    <div class="tl-step hl">
+      <div class="tl-n">3</div>
+      <div class="tl-lbl th">ส่งเอกสาร PDF</div>
+      <div class="tl-lbl en">Submit PDF Files</div>
+      <!-- DATE: วันที่ส่งเอกสาร PDF -->
+      <div class="tl-dt th">ภายใน [วันที่]</div>
+      <div class="tl-dt en">By [Date]</div>
+    </div>
+    <div class="tl-step hl">
+      <div class="tl-n">4</div>
+      <div class="tl-lbl th">ลงนามสัญญา</div>
+      <div class="tl-lbl en">Sign Contract</div>
+      <!-- DATE: ช่วงวันลงนาม -->
+      <div class="tl-dt th">[ช่วงวันที่]</div>
+      <div class="tl-dt en">[Date Range]</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       Section 1: การเปิดบัญชี
+  ══════════════════════════════════════ -->
+  <section class="card" id="account">
+    <div class="card-hd">
+      <span class="card-num">1</span>
+      <h2>
+        <span class="th">การเปิดบัญชี</span>
+        <span class="en">Opening a Bank Account</span>
+      </h2>
+    </div>
+
+    <ul class="bl th">
+      <li>เปิดบัญชีโครงการวิจัยในรูปแบบ <strong>บัญชีบุคคลธรรมดา ประเภทบัญชีออมทรัพย์</strong></li>
+      <li>ชื่อบัญชีโครงการวิจัย คือ <strong>ชื่อหัวหน้าโครงการวิจัย</strong></li>
+      <li>ผู้มีอำนาจสั่งจ่าย คือ <strong>หัวหน้าโครงการวิจัย</strong></li>
+      <li>ใช้รับ–จ่ายเงิน <strong>เฉพาะโครงการวิจัยนี้เท่านั้น</strong></li>
+    </ul>
+    <ul class="bl en">
+      <li>Open a research project bank account as an <strong>individual savings account</strong></li>
+      <li>The account name must be the <strong>Research Project Leader's name</strong></li>
+      <li>The authorized signatory is the <strong>Research Project Leader</strong></li>
+      <li>This account is used <strong>exclusively for this research project's income and expenses</strong></li>
+    </ul>
+
+    <div class="al pend th">
+      <span class="al-i">⏳</span>
+      <span>รอยืนยันรายการเอกสารที่ต้องใช้สำหรับการเปิดบัญชี — จะแจ้งเพิ่มเติมพร้อมลิงก์เอกสาร</span>
+    </div>
+    <div class="al pend en">
+      <span class="al-i">⏳</span>
+      <span>Pending confirmation of required documents for account opening — links will be provided upon confirmation</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       Section 2: เอกสารแนบท้ายสัญญา
+  ══════════════════════════════════════ -->
+  <section class="card" id="docs">
+    <div class="card-hd">
+      <span class="card-num">2</span>
+      <h2>
+        <span class="th">การจัดทำเอกสารแนบท้ายสัญญา (ข้อเสนอโครงการวิจัย)</span>
+        <span class="en">Preparing Contract Appendix Documents (Research Proposal)</span>
+      </h2>
+    </div>
+
+    <p class="th" style="font-size:.9rem; margin-bottom:.875rem">
+      ตรวจสอบในส่วนของงบประมาณว่ามีข้อแก้ไขเพิ่มเติมอีกหรือไม่
+      หากมี ท่านจะได้รับแจ้งมาพร้อมในอีเมลฉบับนี้
+    </p>
+    <p class="en" style="font-size:.9rem; margin-bottom:.875rem">
+      Please check the budget section for any additional corrections.
+      If there are any, you will be notified in this email.
+    </p>
+
+    <div class="al warn th" style="margin-top:0; margin-bottom:1.125rem">
+      <span class="al-i">⚠️</span>
+      <span>กรุณาแก้ไขตามข้อเสนอแนะที่ได้รับ<strong>เท่านั้น</strong>
+        — ห้ามมีการเปลี่ยนแปลงงบประมาณอื่นใดเพิ่มเติม</span>
+    </div>
+    <div class="al warn en" style="margin-top:0; margin-bottom:1.125rem">
+      <span class="al-i">⚠️</span>
+      <span>Please make corrections <strong>only as advised</strong>
+        — do not make any other budget modifications.</span>
+    </div>
+
+    <ul class="cl th">
+      <li><span class="ci">☐</span><span>พิมพ์ข้อเสนอโครงการฯ จำนวน <strong>2 ฉบับ</strong> (พิมพ์หน้าเดียว)</span></li>
+      <li><span class="ci">☐</span><span>ลงนามมุมขวาล่างของข้อเสนอโครงการฯ <strong>ทุกหน้า</strong> จำนวน 2 ฉบับ</span></li>
+      <li><span class="ci">☐</span><span>หัวหน้าโครงการลงนามในตำแหน่ง <strong>หัวหน้าโครงการวิจัย</strong> จำนวน 2 ฉบับ</span></li>
+      <li><span class="ci">☐</span><span>ที่ปรึกษาและผู้ร่วมโครงการ (ถ้ามี) ลงนามครบถ้วน จำนวน 2 ฉบับ</span></li>
+    </ul>
+    <ul class="cl en">
+      <li><span class="ci">☐</span><span>Print the research proposal: <strong>2 copies</strong> (single-sided printing)</span></li>
+      <li><span class="ci">☐</span><span>Sign at the <strong>bottom-right corner</strong> of every page of the proposal, 2 copies</span></li>
+      <li><span class="ci">☐</span><span>The project leader signs in the <strong>Research Project Leader</strong> position, 2 copies</span></li>
+      <li><span class="ci">☐</span><span>Advisors and co-investigators (if any) must all sign, 2 copies</span></li>
+    </ul>
+
+    <div class="al info th">
+      <span class="al-i">💡</span>
+      <span>แนะนำให้ใช้ <strong>ปากกาสีน้ำเงิน</strong> ในการลงนามทุกฉบับ</span>
+    </div>
+    <div class="al info en">
+      <span class="al-i">💡</span>
+      <span>Recommend using a <strong>blue pen</strong> for all signatures</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       Section 3: การจัดส่งเอกสาร
+  ══════════════════════════════════════ -->
+  <section class="card" id="submit">
+    <div class="card-hd">
+      <span class="card-num">3</span>
+      <h2>
+        <span class="th">การจัดส่งเอกสาร</span>
+        <span class="en">Submitting Documents</span>
+      </h2>
+    </div>
+
+    <div class="sub-h">
+      <span class="th">เอกสารที่ต้องจัดส่งในรูปแบบไฟล์ PDF (ก่อนเข้ามาลงนาม)</span>
+      <span class="en">Documents to Submit as PDF Files (Before Coming to Sign)</span>
+    </div>
+
+    <!-- DATE: วันที่ส่งเอกสาร PDF -->
+    <div class="dbadge th">📅 ส่งภายในวันที่ <strong>[วันที่]</strong></div>
+    <div class="dbadge en">📅 Submit by <strong>[Date]</strong></div>
+
+    <p class="th" style="font-size:.9rem; margin-bottom:.875rem">
+      หัวหน้าโครงการวิจัยจะต้องส่งเอกสารในรูปแบบไฟล์ PDF
+      มายังส่วนบริหารงานวิจัย ดังนี้
+    </p>
+    <p class="en" style="font-size:.9rem; margin-bottom:.875rem">
+      The Research Project Leader must submit the following documents as PDF files
+      to the Research Administration Division:
+    </p>
+
+    <ul class="cl th">
+      <li><span class="ci">☐</span><span>Scan ข้อเสนอโครงการฯ ที่<strong>ลงนามเรียบร้อยแล้ว</strong> จำนวน 1 ไฟล์</span></li>
+      <li><span class="ci">☐</span><span>Scan หน้าสมุดบัญชีธนาคาร พร้อม<strong>รับรองสำเนาถูกต้อง</strong> จำนวน 1 ไฟล์</span></li>
+    </ul>
+    <ul class="cl en">
+      <li><span class="ci">☐</span><span>Scan of the Research Proposal that has been <strong>fully signed</strong> — 1 file</span></li>
+      <li><span class="ci">☐</span><span>Scan of the bank account booklet page with <strong>certified true copy</strong> signature — 1 file</span></li>
+    </ul>
+
+    <a href="GOOGLE_FORM_URL" class="fbtn th">📤 ส่งไฟล์และกรอกข้อมูลผ่าน Google Form</a>
+    <a href="GOOGLE_FORM_URL" class="fbtn en">📤 Submit Files and Fill in Information via Google Form</a>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       Section 4: การลงนามสัญญา
+  ══════════════════════════════════════ -->
+  <section class="card" id="sign">
+    <div class="card-hd">
+      <span class="card-num">4</span>
+      <h2>
+        <span class="th">การลงนามสัญญา</span>
+        <span class="en">Contract Signing</span>
+      </h2>
+    </div>
+
+    <!-- 4.1 Date -->
+    <div class="sub-h" style="margin-top:0">
+      <span class="th">วันและเวลา</span>
+      <span class="en">Date and Time</span>
+    </div>
+
+    <!-- DATE: ช่วงวันลงนาม -->
+    <div class="al ok th" style="margin-top:0; margin-bottom:.875rem">
+      <span class="al-i">📅</span>
+      <span>หัวหน้าโครงการวิจัยจะต้องเดินทางมาลงนาม<strong>ด้วยตัวเอง</strong>
+        ในระหว่างวันที่ <strong>[ช่วงวันที่] เท่านั้น</strong></span>
+    </div>
+    <div class="al ok en" style="margin-top:0; margin-bottom:.875rem">
+      <span class="al-i">📅</span>
+      <span>The Research Project Leader must come to sign <strong>in person</strong>
+        during <strong>[Date Range] only</strong></span>
+    </div>
+
+    <div class="loc th">
+      <span class="loc-i">📍</span>
+      <span><strong>ส่วนบริหารงานวิจัย</strong><br>อาคารบริการวิชาการ (AS) ชั้น 2</span>
+    </div>
+    <div class="loc en">
+      <span class="loc-i">📍</span>
+      <span><strong>Research Administration Division</strong><br>Academic Services Building (AS), 2nd Floor</span>
+    </div>
+
+    <!-- 4.2 Documents -->
+    <div class="sub-h">
+      <span class="th">เอกสารที่ต้องนำมาในวันลงนาม</span>
+      <span class="en">Documents to Bring on Signing Day</span>
+    </div>
+
+    <ul class="cl th">
+      <li><span class="cn">1</span><span>เอกสารข้อเสนอโครงการฯ (Proposal) ที่<strong>ลงนามเรียบร้อยแล้ว</strong> จำนวน <strong>2 ฉบับ</strong></span></li>
+      <li><span class="cn">2</span><span>สำเนาบัญชีธนาคาร พร้อม<strong>ลงนามสำเนาถูกต้อง</strong> จำนวน <strong>3 ฉบับ</strong></span></li>
+      <li><span class="cn">3</span><span>สำเนาบัตรประชาชน พร้อม<strong>ลงนามสำเนาถูกต้อง</strong> จำนวน <strong>1 ฉบับ</strong></span></li>
+      <li style="flex-wrap:wrap">
+        <span class="cn">4</span>
+        <span>หนังสือแจ้งยืนยันการขอรับเงินโดยวิธีโอนเงินเข้าบัญชีเงินฝากธนาคาร จำนวน <strong>1 ฉบับ</strong><br>
+          <a href="FORM_LINK_HERE" class="dlink" target="_blank">📄 คลิกเพื่อเข้าถึงแบบฟอร์ม</a></span>
+      </li>
+    </ul>
+    <ul class="cl en">
+      <li><span class="cn">1</span><span>Signed Research Proposal (Proposal) — <strong>2 copies</strong></span></li>
+      <li><span class="cn">2</span><span>Copy of bank account booklet with <strong>certified true copy</strong> signature — <strong>3 copies</strong></span></li>
+      <li><span class="cn">3</span><span>Copy of national ID card with <strong>certified true copy</strong> signature — <strong>1 copy</strong></span></li>
+      <li style="flex-wrap:wrap">
+        <span class="cn">4</span>
+        <span>Bank Transfer Authorization Letter — <strong>1 copy</strong><br>
+          <a href="FORM_LINK_HERE" class="dlink" target="_blank">📄 Click to access the form</a></span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       Personal Portal
+  ══════════════════════════════════════ -->
+  <div class="portal" id="portal">
+    <h3 class="th">🔐 เอกสารของฉัน</h3>
+    <h3 class="en">🔐 My Documents</h3>
+    <p class="th">ตรวจสอบสถานะเอกสาร ลิงก์ความคิดเห็น และวันนัดหมายของท่าน</p>
+    <p class="en">Check your document status, comment link, and appointment date.</p>
+    <a href="PORTAL_URL_HERE" class="portal-btn th">เข้าสู่ระบบเพื่อดูเอกสาร →</a>
+    <a href="PORTAL_URL_HERE" class="portal-btn en">Log In to View My Documents →</a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="th">คู่มือจัดทำสัญญาทุนวิจัย · มหาวิทยาลัยแม่ฟ้าหลวง · ปีงบประมาณ 2570</span>
+  <span class="en">Research Grant Agreement Handbook · Mae Fah Luang University · Fiscal Year B.E. 2570</span>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('btn-th').classList.toggle('on', lang === 'th');
+    document.getElementById('btn-en').classList.toggle('on', lang === 'en');
+    document.documentElement.lang = lang === 'th' ? 'th' : 'en';
+  }
+
+  // Active nav highlight
+  const secs = document.querySelectorAll('section[id], div[id="portal"]');
+  const links = () => document.querySelectorAll('.site-nav a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links().forEach(a => a.classList.remove('on'));
+        document.querySelectorAll(`.site-nav a[href="#${e.target.id}"]`).forEach(a => a.classList.add('on'));
+      }
+    });
+  }, { rootMargin: '-30% 0px -55% 0px' });
+  secs.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
