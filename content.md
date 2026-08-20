@@ -35,30 +35,69 @@ date_sign_en:     [Date Range]
 ## LINKS  ← ใส่ลิงก์จริงเมื่อพร้อม
 
 ```
-google_form:    GOOGLE_FORM_URL        ← Google Form ส่งเอกสาร PDF (ข้อ 3)
-transfer_form:  FORM_LINK_HERE        ← แบบฟอร์มหนังสือโอนเงิน (ข้อ 4.4)
-portal_url:     PORTAL_URL_HERE       ← Google Apps Script portal (ทำทีหลัง)
+google_form:       GOOGLE_FORM_URL        ← Google Form ส่งเอกสาร PDF (ข้อ 3)
+transfer_form:     FORM_LINK_HERE        ← แบบฟอร์มหนังสือโอนเงิน (ข้อ 4.4)
+portal_url:        PORTAL_URL_HERE       ← Google Apps Script portal (ทำทีหลัง)
+announcement_link: ANNOUNCEMENT_URL      ← ประกาศรายชื่อผู้ได้รับทุน (ข้อ 1.1 และ 1.2)
 ```
 
 ---
 
 ## SECTION 1 — การเปิดบัญชี / Opening a Bank Account
 
-**TH**
+**TH** — ข้อมูลทั่วไป
 - เปิดบัญชีโครงการวิจัยในรูปแบบ **บัญชีบุคคลธรรมดา ประเภทบัญชีออมทรัพย์**
 - ชื่อบัญชีโครงการวิจัย คือ **ชื่อหัวหน้าโครงการวิจัย**
 - ผู้มีอำนาจสั่งจ่าย คือ **หัวหน้าโครงการวิจัย**
 - ใช้รับ–จ่ายเงิน **เฉพาะโครงการวิจัยนี้เท่านั้น**
 
-> ⏳ **PENDING** รอยืนยันรายการเอกสารที่ต้องใช้สำหรับการเปิดบัญชี — จะแจ้งเพิ่มเติมพร้อมลิงก์เอกสาร
-
-**EN**
+**EN** — general info
 - Open a research project bank account as an **individual savings account**
 - The account name must be the **Research Project Leader's name**
 - The authorized signatory is the **Research Project Leader**
 - This account is used **exclusively for this research project's income and expenses**
 
-> ⏳ **PENDING** Pending confirmation of required documents for account opening — links will be provided upon confirmation
+> 📝 **NOTE TH:** หากมีบัญชีเดิมที่ไม่ได้มีการใช้งาน สามารถใช้ได้ โดยต้องเคลียร์บัญชีให้เรียบร้อยก่อน  
+> 📝 **NOTE EN:** If you have an existing unused account, it can be used — please clear/settle the account first before use.
+
+---
+
+### 1.1 เอกสารประกอบการเปิดบัญชี — สำหรับบุคลากรสัญชาติไทย
+### 1.1 Required Documents — Thai Nationals
+
+**TH**
+1. ประกาศรายชื่อผู้ได้รับทุน (จะส่งลิงก์ให้ทีหลัง) → `announcement_link`
+2. บัตรประชาชน
+3. บัตรพนักงาน (บัตรขาว)
+4. เงินสดสำหรับเปิดบัญชี **500 บาท**
+
+**EN**
+1. Grant Recipients Announcement (link will be provided later) → `announcement_link`
+2. National ID Card
+3. MFU Staff Card (white card)
+4. Cash for account opening: **500 THB**
+
+---
+
+### 1.2 เอกสารประกอบการเปิดบัญชี — สำหรับบุคลากรชาวต่างชาติ
+### 1.2 Required Documents — Foreign Nationals
+
+> อ้างอิงตามหนังสือธนาคารกรุงเทพ สาขามหาวิทยาลัยแม่ฟ้าหลวง ที่ ภน.1/ธร.มฟล 181/2569 ลงวันที่ 15 กรกฎาคม 2569  
+> Reference: Bangkok Bank MFU Branch letter No. ภน.1/ธร.มฟล 181/2569 dated 15 July B.E. 2569
+
+**TH**
+1. ประกาศรายชื่อผู้ได้รับทุน (จะส่งลิงก์ให้ทีหลัง) → `announcement_link`
+2. หนังสือเดินทาง (Passport) **อายุไม่น้อยกว่า 30 วัน** หรือ Travel Document for Aliens (T.D.) / Certificated of Identity (CI)
+3. ตราอนุญาตเข้าประเทศไทย ประเภทอยู่ชั่วคราว (Non-Immigrant Visa) รหัส **B** (Business), **EX** (Expert/Specialist), **F** (Official Duties), **IB** (Board of Investment), **RS** (Scientific Research), **Smart Visa**, **LTR Visa**
+4. เอกสารแสดงตนที่ส่วนราชการไทย หรือรัฐเจ้าของสัญชาติออกให้ (ข้อมูลเป็นภาษาอังกฤษ) เช่น ID Card / Driving license
+5. Work Permit และ Job Offer
+
+**EN**
+1. Grant Recipients Announcement (link will be provided later) → `announcement_link`
+2. Passport with **at least 30 days validity**, or Travel Document for Aliens (T.D.) / Certificate of Identity (CI)
+3. Thai entry visa (Non-Immigrant Visa) of type: **B** (Business), **EX** (Expert/Specialist), **F** (Official Duties), **IB** (Board of Investment), **RS** (Scientific Research), **Smart Visa**, or **LTR Visa**
+4. Identity document issued by a Thai government authority or the applicant's home country government (in English), such as an ID Card or Driving License
+5. Work Permit and Job Offer
 
 ---
 
@@ -161,3 +200,4 @@ The Research Project Leader must submit the following documents as PDF files to 
 | วันที่ | การเปลี่ยนแปลง |
 |--------|----------------|
 | 2026-08-20 | สร้างไฟล์ครั้งแรก — 4 sections + bilingual TH/EN |
+| 2026-08-20 | Section 1: เพิ่มรายการเอกสารเปิดบัญชีแยกไทย/ต่างชาติ + หมายเหตุบัญชีเก่า |
