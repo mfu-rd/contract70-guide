@@ -91,6 +91,7 @@ announcement_link: ANNOUNCEMENT_URL      ← ประกาศรายชื�
 3. ตราอนุญาตเข้าประเทศไทย ประเภทอยู่ชั่วคราว (Non-Immigrant Visa) รหัส **B** (Business), **EX** (Expert/Specialist), **F** (Official Duties), **IB** (Board of Investment), **RS** (Scientific Research), **Smart Visa**, **LTR Visa**
 4. เอกสารแสดงตนที่ส่วนราชการไทย หรือรัฐเจ้าของสัญชาติออกให้ (ข้อมูลเป็นภาษาอังกฤษ) เช่น ID Card / Driving license
 5. Work Permit และ Job Offer
+6. เงินสดสำหรับเปิดบัญชี **500 บาท**
 
 **EN**
 1. Grant Recipients Announcement (link will be provided later) → `announcement_link`
@@ -98,6 +99,7 @@ announcement_link: ANNOUNCEMENT_URL      ← ประกาศรายชื�
 3. Thai entry visa (Non-Immigrant Visa) of type: **B** (Business), **EX** (Expert/Specialist), **F** (Official Duties), **IB** (Board of Investment), **RS** (Scientific Research), **Smart Visa**, or **LTR Visa**
 4. Identity document issued by a Thai government authority or the applicant's home country government (in English), such as an ID Card or Driving License
 5. Work Permit and Job Offer
+6. Cash for account opening: **500 THB**
 
 ---
 
