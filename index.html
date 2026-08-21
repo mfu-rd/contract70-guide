@@ -6,63 +6,93 @@
 <title>คู่มือจัดทำสัญญาทุนวิจัย — มฟล. ปีงบประมาณ 2570</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:wght@400;500;600&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+
   body {
-    font-family: 'Sarabun', 'Leelawadee UI', system-ui, sans-serif;
+    font-family: 'Spectral', 'Sarabun', 'Leelawadee UI', serif;
     font-size: 16px;
-    line-height: 1.8;
-    background: #f8f7f5;
-    color: #2c2c2c;
+    line-height: 1.7;
+    background: #1A0F0A;
+    color: #F5E6D3;
   }
 
   /* ── Language switching ── */
   [data-lang="th"] .en { display: none; }
   [data-lang="en"] .th { display: none; }
-  [data-lang="en"] { font-family: 'Sarabun', system-ui, sans-serif; }
 
   /* ── Header ── */
   .site-header {
-    background: linear-gradient(155deg, #7B1C2C 0%, #4e111c 100%);
-    color: white;
+    background: linear-gradient(160deg, #2C1A10 0%, #1A0F0A 60%);
+    color: #F5E6D3;
     padding: 2.75rem 1.5rem 2.25rem;
     text-align: center;
+    border-bottom: 1px solid #5C3D2E;
     position: relative;
     overflow: hidden;
   }
   .site-header::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      45deg, transparent, transparent 40px,
-      rgba(255,255,255,.02) 40px, rgba(255,255,255,.02) 41px
-    );
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #CA8A04 30%, #DAA520 50%, #CA8A04 70%, transparent 100%);
   }
-  .site-header .inner { position: relative; }
+  .site-header .inner { position: relative; z-index: 1; }
   .site-header .org {
-    font-size: .78rem;
-    opacity: .72;
-    letter-spacing: .1em;
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .68rem;
+    color: #BFA98A;
+    letter-spacing: .15em;
     text-transform: uppercase;
-    margin-bottom: .6rem;
+    margin-bottom: .75rem;
   }
   .site-header h1 {
+    font-family: 'Cinzel', 'Sarabun', serif;
     font-size: 1.45rem;
     font-weight: 700;
-    line-height: 1.5;
+    line-height: 1.45;
     text-wrap: balance;
+    color: #F5E6D3;
     margin-bottom: .5rem;
+  }
+  .header-rule {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin: .5rem auto .75rem;
+    max-width: 440px;
+  }
+  .header-rule::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #CA8A04);
+  }
+  .header-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #CA8A04, transparent);
+  }
+  .header-diamond {
+    width: 6px; height: 6px;
+    background: #CA8A04;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    box-shadow: 0 0 6px #CA8A04;
   }
   .site-header .year {
     display: inline-block;
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 20px;
-    padding: .22rem .9rem;
-    font-size: .8rem;
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .7rem;
+    letter-spacing: .08em;
+    color: #CA8A04;
+    border: 1px solid rgba(202,138,4,.5);
+    border-radius: 2px;
+    padding: .22rem 1rem;
   }
 
   /* ── Nav ── */
@@ -70,8 +100,8 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: white;
-    border-bottom: 1px solid #e8e3dc;
+    background: #2C1A10;
+    border-bottom: 1px solid #5C3D2E;
     display: flex;
     align-items: center;
     overflow-x: auto;
@@ -82,25 +112,28 @@
   .site-nav::-webkit-scrollbar { display: none; }
   .site-nav a {
     display: block;
-    padding: .82rem .875rem;
-    color: #666;
+    padding: .78rem .875rem;
+    color: #BFA98A;
     text-decoration: none;
-    font-size: .8rem;
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
     white-space: nowrap;
-    border-bottom: 2.5px solid transparent;
+    border-bottom: 2px solid transparent;
     margin-bottom: -1px;
     transition: color .15s, border-color .15s;
     flex-shrink: 0;
   }
-  .site-nav a:hover { color: #7B1C2C; border-bottom-color: #7B1C2C; }
-  .site-nav a.on { color: #7B1C2C; border-bottom-color: #7B1C2C; font-weight: 600; }
+  .site-nav a:hover { color: #CA8A04; border-bottom-color: rgba(202,138,4,.5); }
+  .site-nav a.on  { color: #CA8A04; border-bottom-color: #CA8A04; font-weight: 600; }
 
   /* Language toggle */
   .lang-toggle {
     margin-left: auto;
     display: flex;
-    border: 1px solid #e8e3dc;
-    border-radius: 20px;
+    border: 1px solid #5C3D2E;
+    border-radius: 2px;
     overflow: hidden;
     flex-shrink: 0;
     margin-right: .5rem;
@@ -108,17 +141,18 @@
   .lang-toggle button {
     background: none;
     border: none;
-    padding: .3rem .75rem;
-    font-size: .76rem;
-    font-weight: 600;
+    padding: .28rem .72rem;
+    font-family: 'Cinzel', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .08em;
     cursor: pointer;
-    color: #888;
+    color: #BFA98A;
     transition: background .15s, color .15s;
-    font-family: inherit;
   }
   .lang-toggle button.on {
-    background: #7B1C2C;
-    color: white;
+    background: #CA8A04;
+    color: #1A0F0A;
   }
 
   /* ── Layout ── */
@@ -128,10 +162,8 @@
     padding: 1.75rem 1.25rem 3rem;
   }
 
-  /* ── Timeline wrapper label ── */
-  .tl-wrap {
-    margin-bottom: 1.5rem;
-  }
+  /* ── Timeline wrapper ── */
+  .tl-wrap { margin-bottom: 1.5rem; }
   .tl-heading {
     display: flex;
     align-items: center;
@@ -139,35 +171,37 @@
     margin-bottom: .6rem;
   }
   .tl-heading-text {
-    font-size: .72rem;
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .66rem;
     font-weight: 700;
-    letter-spacing: .1em;
+    letter-spacing: .16em;
     text-transform: uppercase;
-    color: #7B1C2C;
+    color: #CA8A04;
+    white-space: nowrap;
   }
   .tl-heading::before,
   .tl-heading::after {
     content: '';
     flex: 1;
     height: 1px;
-    background: #d9d1c7;
+    background: #5C3D2E;
   }
 
   /* ── Timeline ── */
   .timeline {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background: white;
-    border: 1.5px solid #c9bfb5;
-    border-radius: 12px;
+    background: #2C1A10;
+    border: 1px solid #5C3D2E;
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    box-shadow: 0 2px 12px rgba(202,138,4,.1);
   }
   .tl-step {
     padding: 1rem .75rem;
     text-align: center;
-    border-right: 1px solid #e8e3dc;
-    background: #fdfcfb;
+    border-right: 1px solid #5C3D2E;
+    background: #2C1A10;
   }
   .tl-step:last-child { border-right: none; }
   .tl-n {
@@ -176,37 +210,57 @@
     justify-content: center;
     width: 2rem;
     height: 2rem;
-    border-radius: 50%;
-    background: #7B1C2C;
-    color: white;
+    border-radius: 9999px;
+    background: #CA8A04;
+    color: #1A0F0A;
+    font-family: 'Cinzel', serif;
     font-size: .75rem;
     font-weight: 700;
     margin-bottom: .4rem;
-    box-shadow: 0 2px 6px rgba(123,28,44,.3);
+    box-shadow: 0 2px 8px rgba(202,138,4,.45);
   }
-  .tl-step.hl { background: #fffbf0; }
-  .tl-step.hl .tl-n { background: #b8912a; box-shadow: 0 2px 6px rgba(184,145,42,.3); }
-  .tl-lbl { font-size: .78rem; font-weight: 700; color: #2c2c2c; line-height: 1.3; }
-  .tl-step.hl .tl-lbl { color: #7a5c00; }
-  .tl-dt { font-size: .7rem; color: #999; margin-top: .25rem; }
-
-  /* ── Scroll offset for sticky nav ── */
-  .card, #portal { scroll-margin-top: 52px; }
+  .tl-step.hl { background: #3D2517; }
+  .tl-step.hl .tl-n { background: #CA8A04; }
+  .tl-lbl {
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .73rem;
+    font-weight: 600;
+    color: #F5E6D3;
+    line-height: 1.3;
+  }
+  .tl-step.hl .tl-lbl { color: #CA8A04; }
+  .tl-dt {
+    font-size: .67rem;
+    color: #7A6552;
+    margin-top: .25rem;
+    font-family: 'Spectral', 'Sarabun', serif;
+  }
 
   /* ── Card ── */
+  .card, #portal { scroll-margin-top: 52px; }
   .card {
-    background: white;
-    border: 1px solid #e8e3dc;
-    border-radius: 12px;
-    padding: 1.625rem;
+    background: #2C1A10;
+    border: 1px solid #5C3D2E;
+    border-radius: 4px;
+    padding: 1.5rem;
     margin-bottom: 1.25rem;
+    box-shadow: 0 2px 8px rgba(202,138,4,.1);
+    position: relative;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: #CA8A04;
+    border-radius: 4px 4px 0 0;
   }
   .card-hd {
     display: flex;
     align-items: center;
     gap: .7rem;
     padding-bottom: .875rem;
-    border-bottom: 1px solid #f0ece6;
+    border-bottom: 1px solid #5C3D2E;
     margin-bottom: 1.25rem;
   }
   .card-num {
@@ -215,61 +269,87 @@
     justify-content: center;
     min-width: 1.875rem;
     height: 1.875rem;
-    border-radius: 50%;
-    background: #7B1C2C;
-    color: white;
+    border-radius: 9999px;
+    background: #CA8A04;
+    color: #1A0F0A;
+    font-family: 'Cinzel', serif;
     font-size: .82rem;
     font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(202,138,4,.4);
   }
-  .card-hd h2 { color: #7B1C2C; font-size: 1.05rem; font-weight: 700; }
+  .card-hd h2 {
+    font-family: 'Cinzel', 'Sarabun', serif;
+    color: #CA8A04;
+    font-size: 1rem;
+    font-weight: 700;
+  }
 
   /* Sub-heading */
   .sub-h {
-    font-size: .875rem;
-    font-weight: 700;
-    color: #555;
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .82rem;
+    font-weight: 600;
+    color: #BFA98A;
     margin: 1.25rem 0 .75rem;
     display: flex;
     align-items: center;
     gap: .5rem;
+    letter-spacing: .04em;
   }
   .sub-h::before {
     content: '';
     display: inline-block;
     width: 3px;
     height: .9rem;
-    background: #b8912a;
+    background: #CA8A04;
     border-radius: 2px;
     flex-shrink: 0;
   }
 
   /* Bullet list */
   .bl { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
-  .bl li { display: flex; gap: .55rem; align-items: flex-start; font-size: .925rem; }
-  .bl li::before { content: '▸'; color: #b8912a; flex-shrink: 0; margin-top: .15rem; }
+  .bl li {
+    display: flex;
+    gap: .55rem;
+    align-items: flex-start;
+    font-size: .925rem;
+    font-family: 'Spectral', 'Sarabun', serif;
+    color: #F5E6D3;
+  }
+  .bl li::before {
+    content: '◆';
+    color: #CA8A04;
+    flex-shrink: 0;
+    margin-top: .22rem;
+    font-size: .52rem;
+  }
 
   /* Checklist */
-  .cl { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+  .cl { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
   .cl li {
     display: flex;
     align-items: flex-start;
     gap: .7rem;
-    padding: .575rem .875rem;
-    background: #faf9f7;
-    border: 1px solid #e8e3dc;
-    border-radius: 7px;
+    padding: .55rem .875rem;
+    background: #3D2517;
+    border: 1px solid #5C3D2E;
+    border-radius: 4px;
     font-size: .9rem;
+    font-family: 'Spectral', 'Sarabun', serif;
+    color: #F5E6D3;
   }
-  .ci { color: #7B1C2C; font-size: 1rem; flex-shrink: 0; margin-top: .05rem; }
+  .ci { color: #CA8A04; font-size: 1rem; flex-shrink: 0; margin-top: .05rem; }
   .cn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-width: 1.35rem;
     height: 1.35rem;
-    border-radius: 50%;
-    background: #7B1C2C;
-    color: white;
+    border-radius: 9999px;
+    background: #CA8A04;
+    color: #1A0F0A;
+    font-family: 'Cinzel', serif;
     font-size: .67rem;
     font-weight: 700;
     flex-shrink: 0;
@@ -281,28 +361,33 @@
     display: flex;
     gap: .65rem;
     align-items: flex-start;
-    border-radius: 7px;
+    border-radius: 4px;
     padding: .8rem .95rem;
     font-size: .88rem;
     margin-top: .875rem;
+    font-family: 'Spectral', 'Sarabun', serif;
   }
   .al-i { flex-shrink: 0; margin-top: .05rem; }
-  .al.pend  { background: #fff8e8; border: 1px solid #f0d680; color: #7a5c00; }
-  .al.info  { background: #f0f6ff; border: 1px solid #b8d4f5; color: #1a4d8f; }
-  .al.warn  { background: #fff3f3; border: 1px solid #f5b8b8; color: #8f1a1a; }
-  .al.ok    { background: #f0faf3; border: 1px solid #a8dab5; color: #1a6b2c; }
+  .al.pend { background: rgba(202,138,4,.1);  border: 1px solid rgba(202,138,4,.35); color: #CA8A04; }
+  .al.info { background: rgba(88,28,135,.15); border: 1px solid rgba(88,28,135,.5);  color: #C4B5FD; }
+  .al.warn { background: rgba(153,27,27,.15); border: 1px solid rgba(153,27,27,.5);  color: #FCA5A5; }
+  .al.ok   { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.35); color: #4ADE80; }
 
   /* Deadline badge */
   .dbadge {
     display: inline-flex;
     align-items: center;
     gap: .4rem;
-    background: #7B1C2C;
-    color: white;
-    border-radius: 20px;
-    padding: .28rem .875rem;
-    font-size: .78rem;
+    background: rgba(202,138,4,.12);
+    color: #CA8A04;
+    border: 1px solid rgba(202,138,4,.4);
+    border-radius: 2px;
+    padding: .22rem .875rem;
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .72rem;
     font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
     margin-bottom: .875rem;
   }
 
@@ -311,12 +396,14 @@
     display: flex;
     gap: .7rem;
     align-items: flex-start;
-    background: #faf9f7;
-    border: 1px solid #e8e3dc;
-    border-radius: 7px;
+    background: #3D2517;
+    border: 1px solid #5C3D2E;
+    border-radius: 4px;
     padding: .75rem .9rem;
     font-size: .9rem;
     margin-bottom: 1rem;
+    font-family: 'Spectral', 'Sarabun', serif;
+    color: #F5E6D3;
   }
   .loc-i { font-size: 1.1rem; flex-shrink: 0; }
 
@@ -326,66 +413,102 @@
     align-items: center;
     justify-content: center;
     gap: .5rem;
-    background: #1a73e8;
-    color: white;
+    background: #CA8A04;
+    color: #1A0F0A;
     padding: .7rem 1.5rem;
-    border-radius: 8px;
-    font-size: .9rem;
+    border-radius: 4px;
+    border: 1px solid #DAA520;
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .85rem;
     font-weight: 700;
+    letter-spacing: .05em;
     text-decoration: none;
     margin-top: 1.125rem;
-    transition: background .15s;
+    box-shadow: 0 1px 3px rgba(202,138,4,.15);
+    transition: background .15s, box-shadow .15s;
   }
-  .fbtn:hover { background: #1558b0; }
+  .fbtn:hover { background: #B8780A; box-shadow: 0 4px 16px rgba(202,138,4,.3); }
 
-  /* Doc link */
+  /* Doc link chip */
   .dlink {
     display: inline-flex;
     align-items: center;
-    gap: .4rem;
-    background: #7B1C2C;
-    color: white;
-    padding: .28rem .8rem;
-    border-radius: 20px;
-    font-size: .77rem;
+    gap: .35rem;
+    background: rgba(202,138,4,.1);
+    color: #CA8A04;
+    padding: .18rem .65rem;
+    border-radius: 2px;
+    border: 1px solid rgba(202,138,4,.35);
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .65rem;
     font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
     text-decoration: none;
-    margin-top: .35rem;
+    margin-top: .3rem;
     transition: background .15s;
   }
-  .dlink:hover { background: #4e111c; }
+  .dlink:hover { background: rgba(202,138,4,.22); }
 
   /* Portal */
   .portal {
-    background: linear-gradient(135deg, #4e111c, #7B1C2C);
-    border-radius: 12px;
+    background: #3D2517;
+    border: 1px solid rgba(202,138,4,.4);
+    border-radius: 4px;
     padding: 1.875rem;
     text-align: center;
-    color: white;
+    color: #F5E6D3;
     margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(202,138,4,.18);
+    position: relative;
   }
-  .portal h3 { font-size: 1.05rem; margin-bottom: .4rem; }
-  .portal p  { font-size: .86rem; opacity: .84; margin-bottom: 1.125rem; }
+  .portal::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #CA8A04 30%, #DAA520 50%, #CA8A04 70%, transparent);
+    border-radius: 4px 4px 0 0;
+  }
+  .portal h3 {
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: 1.05rem;
+    color: #CA8A04;
+    margin-bottom: .4rem;
+  }
+  .portal p {
+    font-size: .86rem;
+    color: #BFA98A;
+    margin-bottom: 1.125rem;
+    font-family: 'Spectral', 'Sarabun', serif;
+  }
   .portal-btn {
     display: inline-block;
-    background: white;
-    color: #7B1C2C;
+    background: #CA8A04;
+    color: #1A0F0A;
     padding: .6rem 1.875rem;
-    border-radius: 24px;
+    border-radius: 4px;
+    border: 1px solid #DAA520;
+    font-family: 'Cinzel', 'Sarabun', serif;
     font-weight: 700;
+    font-size: .85rem;
+    letter-spacing: .06em;
     text-decoration: none;
-    font-size: .9rem;
-    transition: transform .15s, box-shadow .15s;
+    box-shadow: 0 1px 3px rgba(202,138,4,.15);
+    transition: background .15s, box-shadow .15s;
   }
-  .portal-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+  .portal-btn:hover { background: #B8780A; box-shadow: 0 4px 20px rgba(202,138,4,.35); }
 
   /* Footer */
   footer {
     text-align: center;
     padding: 1.5rem;
-    font-size: .76rem;
-    color: #aaa;
-    border-top: 1px solid #e8e3dc;
+    font-family: 'Cinzel', 'Sarabun', serif;
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #5C3D2E;
+    border-top: 1px solid #3D2517;
   }
 
   /* Responsive */
@@ -394,8 +517,9 @@
     .timeline { grid-template-columns: repeat(2, 1fr); }
     .tl-step:nth-child(2) { border-right: none; }
     .tl-step:nth-child(1),
-    .tl-step:nth-child(2) { border-bottom: 1px solid #e8e3dc; }
+    .tl-step:nth-child(2) { border-bottom: 1px solid #5C3D2E; }
     .card { padding: 1.125rem; }
+    .wrap { padding: 1.25rem .875rem 3rem; }
   }
 </style>
 </head>
@@ -414,6 +538,7 @@
       <span class="th">ดำเนินการเปิดบัญชีและนัดหมายเข้ามาลงนาม<br>ในสัญญารับทุนสนับสนุนการวิจัย</span>
       <span class="en">Open a Research Bank Account and Schedule<br>an Appointment to Sign the Research Grant Agreement</span>
     </h1>
+    <div class="header-rule"><div class="header-diamond"></div></div>
     <span class="year">
       <span class="th">ประจำปีงบประมาณ 2570 · สำหรับหัวหน้าโครงการวิจัย</span>
       <span class="en">Fiscal Year B.E. 2570 · For Research Project Leaders</span>
@@ -503,7 +628,7 @@
       <div>
         <strong>ตรวจสอบและแก้ไขเอกสารให้เรียบร้อยก่อนดำเนินการในขั้นตอนถัดไป</strong><br>
         <span style="font-size:.87rem">ตรวจสอบสถานะและความคิดเห็นได้ที่หน้า
-          <a href="#portal" style="color:#8f1a1a; font-weight:700">เอกสารของฉัน</a>
+          <a href="#portal" style="color:#FCA5A5; font-weight:700">เอกสารของฉัน</a>
         </span>
       </div>
     </div>
@@ -512,7 +637,7 @@
       <div>
         <strong>Please review and complete all document corrections before proceeding to the next step.</strong><br>
         <span style="font-size:.87rem">Check your status and comments on the
-          <a href="#portal" style="color:#8f1a1a; font-weight:700">My Documents</a> page.
+          <a href="#portal" style="color:#FCA5A5; font-weight:700">My Documents</a> page.
         </span>
       </div>
     </div>
@@ -570,7 +695,7 @@
       <div>
         หากมีบัญชีเดิมที่ไม่ได้มีการใช้งาน สามารถใช้บัญชีเดิมได้
         แต่ต้องใช้<strong>เฉพาะรับ-จ่ายเงินโครงการวิจัยนี้เท่านั้น</strong><br>
-        <span style="font-size:.85rem; color:#1a4d8f">
+        <span style="font-size:.85rem; color:#C4B5FD">
           <strong>ข้อปฏิบัติ:</strong> เคลียร์เงินคงเหลือเดิมให้หมด ก่อนรับเงินงวดที่ 1 ภายในเดือนตุลาคม
         </span>
       </div>
@@ -580,7 +705,7 @@
       <div>
         If you have an existing unused account, it can be used —
         but it must be used <strong>exclusively for this research project's income and expenses only</strong>.<br>
-        <span style="font-size:.85rem; color:#1a4d8f">
+        <span style="font-size:.85rem; color:#C4B5FD">
           <strong>Requirement:</strong> Clear all remaining balances before receiving the 1st installment by October.
         </span>
       </div>
@@ -656,11 +781,11 @@
     <div class="dbadge th">📅 ส่งภายในวันที่ <strong>[วันที่]</strong></div>
     <div class="dbadge en">📅 Submit by <strong>[Date]</strong></div>
 
-    <p class="th" style="font-size:.9rem; margin-bottom:.875rem">
+    <p class="th" style="font-size:.9rem; margin-bottom:.875rem; font-family:'Spectral','Sarabun',serif; color:#BFA98A">
       หัวหน้าโครงการวิจัยจะต้องส่งเอกสารในรูปแบบไฟล์ PDF
       มายังส่วนบริหารงานวิจัย ดังนี้
     </p>
-    <p class="en" style="font-size:.9rem; margin-bottom:.875rem">
+    <p class="en" style="font-size:.9rem; margin-bottom:.875rem; font-family:'Spectral','Sarabun',serif; color:#BFA98A">
       The Research Project Leader must submit the following documents as PDF files
       to the Research Administration Division:
     </p>
@@ -690,7 +815,6 @@
       </h2>
     </div>
 
-    <!-- 4.1 Date -->
     <div class="sub-h" style="margin-top:0">
       <span class="th">วันและเวลา</span>
       <span class="en">Date and Time</span>
@@ -717,7 +841,6 @@
       <span><strong>Research Administration Division</strong><br>Academic Services Building (AS), 2nd Floor</span>
     </div>
 
-    <!-- 4.2 Documents -->
     <div class="sub-h">
       <span class="th">เอกสารที่ต้องนำมาในวันลงนาม</span>
       <span class="en">Documents to Bring on Signing Day</span>
@@ -774,11 +897,10 @@
 
   // Active nav highlight
   const secs = document.querySelectorAll('section[id], div[id="portal"]');
-  const links = () => document.querySelectorAll('.site-nav a');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        links().forEach(a => a.classList.remove('on'));
+        document.querySelectorAll('.site-nav a').forEach(a => a.classList.remove('on'));
         document.querySelectorAll(`.site-nav a[href="#${e.target.id}"]`).forEach(a => a.classList.add('on'));
       }
     });
