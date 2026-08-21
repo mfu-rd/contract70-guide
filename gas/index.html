@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="th" data-lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เอกสารของฉัน · My Documents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens: Light ── */
+:root {
+  --bg:           #EDE0C5;
+  --surface:      #FFFFFF;
+  --surface-tint: #F9F4EC;
+  --border:       #D8C9AD;
+  --shadow:       0 2px 8px rgba(80,40,0,.08), 0 0 0 1px rgba(180,130,60,.06);
+  --shadow-sm:    0 1px 3px rgba(80,40,0,.06);
+  --primary:      #881337;
+  --primary-text: #881337;
+  --primary-hover:#6B1030;
+  --primary-fg:   #FFFFFF;
+  --primary-muted:rgba(136,19,55,.08);
+  --primary-muted-b:rgba(136,19,55,.2);
+  --secondary:    #B45309;
+  --text-1:       #1A0E08;
+  --text-2:       #6B4A38;
+  --text-3:       #A08870;
+  --al-warn-bg:rgba(239,68,68,.06);   --al-warn-b:rgba(239,68,68,.22);   --al-warn-c:#B91C1C;
+  --al-ok-bg:  rgba(5,150,105,.06);   --al-ok-b:  rgba(5,150,105,.22);   --al-ok-c:  #047857;
+  --al-pend-bg:rgba(180,83,9,.07);    --al-pend-b:rgba(180,83,9,.25);    --al-pend-c:#92400E;
+}
+
+/* ── Tokens: Dark (per DESIGN.md) ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:           #24242a;
+    --surface:      #313238;
+    --surface-tint: #35353d;
+    --border:       #44444f;
+    --shadow:       0 2px 12px rgba(0,0,0,.5), 0 0 0 1px rgba(255,200,100,.04);
+    --shadow-sm:    0 1px 4px rgba(0,0,0,.35);
+    --primary:      #863e3b;
+    --primary-text: #dba758;
+    --primary-hover:#9e4a47;
+    --primary-fg:   #FFFFFF;
+    --primary-muted:rgba(134,62,59,.12);
+    --primary-muted-b:rgba(134,62,59,.3);
+    --secondary:    #dba758;
+    --text-1:       #EEEEF2;
+    --text-2:       #9090A8;
+    --text-3:       #55556A;
+    --al-warn-bg:rgba(134,62,59,.15);    --al-warn-b:rgba(224,136,136,.25); --al-warn-c:#e08888;
+    --al-ok-bg:  rgba(40,160,100,.09);   --al-ok-b:  rgba(60,170,110,.28);  --al-ok-c:  #80D4A8;
+    --al-pend-bg:rgba(219,167,88,.1);    --al-pend-b:rgba(219,167,88,.28);  --al-pend-c:#dba758;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:           #24242a;
+  --surface:      #313238;
+  --surface-tint: #35353d;
+  --border:       #44444f;
+  --shadow:       0 2px 12px rgba(0,0,0,.5), 0 0 0 1px rgba(255,200,100,.04);
+  --shadow-sm:    0 1px 4px rgba(0,0,0,.35);
+  --primary:      #863e3b;
+  --primary-text: #dba758;
+  --primary-hover:#9e4a47;
+  --primary-fg:   #FFFFFF;
+  --primary-muted:rgba(134,62,59,.12);
+  --primary-muted-b:rgba(134,62,59,.3);
+  --secondary:    #dba758;
+  --text-1:       #EEEEF2;
+  --text-2:       #9090A8;
+  --text-3:       #55556A;
+  --al-warn-bg:rgba(134,62,59,.15);    --al-warn-b:rgba(224,136,136,.25); --al-warn-c:#e08888;
+  --al-ok-bg:  rgba(40,160,100,.09);   --al-ok-b:  rgba(60,170,110,.28);  --al-ok-c:  #80D4A8;
+  --al-pend-bg:rgba(219,167,88,.1);    --al-pend-b:rgba(219,167,88,.28);  --al-pend-c:#dba758;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  line-height: 1.65;
+  background: var(--bg);
+  color: var(--text-1);
+  transition: background .2s, color .2s;
+  min-height: 100vh;
+}
+.th { font-family: 'Prompt', sans-serif !important; }
+.th * { font-family: 'Prompt', sans-serif; }
+
+/* ── Loading / Error ── */
+#loading, #error-screen {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 100vh; gap: 1rem; text-align: center; padding: 2rem;
+}
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Header ── */
+.site-header {
+  background: #881337;
+  color: #FFFFFF;
+  padding: 2.25rem 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+.site-header::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #B45309, transparent);
+}
+.site-header .org {
+  font-family: 'Lora', serif;
+  font-size: .7rem; font-weight: 400;
+  color: rgba(255,255,255,.6);
+  letter-spacing: .14em; text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.site-header .org .th { font-size: .78rem; letter-spacing: .03em; text-transform: none; }
+.site-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem; font-weight: 700;
+  line-height: 1.3; color: #FFFFFF;
+  margin-bottom: .75rem; text-wrap: balance;
+}
+.site-header h1 .th { font-size: 1.3rem; font-weight: 600; }
+.email-pill {
+  display: inline-block;
+  font-family: 'Lora', serif; font-size: .7rem;
+  color: rgba(255,255,255,.65);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 9999px; padding: .2rem 1rem;
+  letter-spacing: .04em;
+}
+
+/* ── Page body ── */
+.page-body { max-width: 720px; margin: 0 auto; padding: 1.75rem 1.25rem 4rem; }
+
+/* ── Card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: background .2s, border-color .2s, box-shadow .2s;
+}
+.card.accent-top { border-top: 3px solid var(--secondary); }
+
+/* Card heading */
+.card-hd {
+  display: flex; align-items: center; gap: .875rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border);
+  margin-bottom: 1.5rem;
+}
+.card-hd h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-text); font-size: 1rem; font-weight: 700; line-height: 1.3;
+}
+.card-hd h2 .th { font-family: 'Prompt', sans-serif !important; font-weight: 600; font-size: .95rem; }
+.card-icon {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 2rem; height: 2rem; border-radius: 9999px;
+  background: var(--primary); color: var(--primary-fg);
+  font-size: .9rem; flex-shrink: 0;
+}
+
+/* Sub-heading */
+.sub-h {
+  font-family: 'Lora', serif; font-size: .68rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--text-2);
+  margin: 1.5rem 0 .875rem;
+  display: flex; align-items: center; gap: .625rem;
+}
+.sub-h .th { font-family: 'Prompt', sans-serif !important; font-weight: 500;
+  letter-spacing: .02em; text-transform: none; font-size: .78rem; }
+.sub-h::before {
+  content: ''; display: inline-block; width: 3px; height: .875rem;
+  background: var(--secondary); border-radius: 9999px; flex-shrink: 0;
+}
+
+/* ── Fields ── */
+.field-row { display: grid; gap: .75rem 2rem; margin-bottom: .75rem; }
+.field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+@media (max-width: 500px) { .field-row.cols-2 { grid-template-columns: 1fr; } }
+.field-row:last-child { margin-bottom: 0; }
+
+.field-label {
+  font-family: 'Lora', serif; font-size: .65rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--text-3);
+  margin-bottom: .2rem;
+}
+.field-label .th { font-family: 'Prompt', sans-serif !important; font-weight: 400;
+  letter-spacing: .02em; text-transform: none; font-size: .72rem; }
+.field-value {
+  font-family: 'Lora', serif; font-size: .9375rem; color: var(--text-1);
+}
+.field-value .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.field-value.highlight {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--primary-text);
+}
+
+/* ── Alerts ── */
+.al {
+  display: flex; gap: .75rem; align-items: flex-start;
+  border-radius: 8px; padding: .875rem 1rem;
+  font-family: 'Lora', serif; font-size: .9rem;
+}
+.al .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.al-i { flex-shrink: 0; margin-top: .05rem; }
+.al.warn { background:var(--al-warn-bg); border:1px solid var(--al-warn-b); color:var(--al-warn-c); }
+.al.ok   { background:var(--al-ok-bg);   border:1px solid var(--al-ok-b);   color:var(--al-ok-c);   }
+.al.pend { background:var(--al-pend-bg); border:1px solid var(--al-pend-b); color:var(--al-pend-c); }
+
+/* ── Comment box ── */
+.comment-box {
+  background: var(--surface-tint); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1rem 1.125rem;
+  font-family: 'Prompt', sans-serif; font-size: .88rem; font-weight: 300;
+  line-height: 1.9; white-space: pre-wrap; word-break: break-word;
+  color: var(--text-1); margin-top: 1rem;
+  transition: background .2s, border-color .2s;
+}
+
+/* ── Buttons ── */
+.fbtn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  background: var(--primary); color: var(--primary-fg);
+  padding: .65rem 1.5rem; border-radius: 8px;
+  font-family: 'Lora', serif; font-size: .8rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; margin-top: 1rem;
+  transition: background .15s;
+}
+.fbtn .th { font-family: 'Prompt', sans-serif !important; font-weight: 400;
+  letter-spacing: .02em; text-transform: none; font-size: .875rem; }
+.fbtn:hover { background: var(--primary-hover); }
+
+.dlink {
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: var(--primary-muted); color: var(--primary-text);
+  padding: .2rem .75rem; border-radius: 9999px;
+  border: 1px solid var(--primary-muted-b);
+  font-family: 'Lora', serif; font-size: .65rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; margin-top: .4rem; margin-right: .5rem;
+  transition: opacity .15s;
+}
+.dlink .th { font-family: 'Prompt', sans-serif !important; font-weight: 400;
+  letter-spacing: .01em; text-transform: none; font-size: .72rem; }
+.dlink:hover { opacity: .75; }
+
+/* ── Location / Appointment box ── */
+.loc {
+  display: flex; gap: .75rem; align-items: flex-start;
+  background: var(--surface-tint); border: 1px solid var(--border);
+  border-radius: 8px; padding: .875rem 1rem;
+  color: var(--text-1); margin-top: 1rem;
+  transition: background .2s, border-color .2s;
+}
+.loc .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.loc-i { flex-shrink: 0; margin-top: .05rem; font-size: 1rem; }
+.loc-date {
+  font-family: 'Playfair Display', serif; font-size: .95rem;
+  font-weight: 700; color: var(--primary-text); margin-bottom: .2rem;
+}
+.loc-date .th { font-family: 'Prompt', sans-serif !important; font-weight: 600; font-size: .9rem; }
+.loc-place {
+  font-family: 'Lora', serif; font-size: .82rem; color: var(--text-2); line-height: 1.5;
+}
+.loc-place .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; font-size: .85rem; }
+
+/* ── Footer ── */
+footer {
+  text-align: center; padding: 2rem 1.5rem;
+  font-family: 'Lora', serif; font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-3); border-top: 1px solid var(--border);
+}
+footer .th { font-family: 'Prompt', sans-serif !important; font-weight: 300;
+  letter-spacing: .02em; text-transform: none; font-size: .75rem; }
+
+/* ── Lang toggle / Dark toggle ── */
+.lang-btn, .theme-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: .15rem .7rem; border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,.3);
+  background: rgba(255,255,255,.1); color: rgba(255,255,255,.8);
+  font-family: 'Lora', serif; font-size: .63rem; font-weight: 500;
+  letter-spacing: .1em; cursor: pointer; transition: background .15s;
+  vertical-align: middle; margin-left: .5rem;
+}
+.lang-btn:hover, .theme-btn:hover { background: rgba(255,255,255,.22); }
+.theme-btn { font-size: .78rem; padding: .15rem .55rem; }
+
+/* Language visibility */
+[data-lang="th"] .en { display: none !important; }
+[data-lang="en"] .th:not(.field-value):not(.loc-date) { display: none !important; }
+
+/* loc-place spans stack on their own lines */
+.loc-place span { display: block; }
+</style>
+</head>
+<body>
+
+<!-- Loading -->
+<div id="loading">
+  <div class="spinner"></div>
+  <p style="font-family:'Prompt',sans-serif; color:var(--text-2); font-size:.875rem; margin-top:.5rem;">
+    กำลังโหลดข้อมูล · Loading…
+  </p>
+</div>
+
+<!-- Error -->
+<div id="error-screen" style="display:none;">
+  <div style="font-size:2rem; margin-bottom:.5rem;">⚠️</div>
+  <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--primary-text); margin-bottom:.5rem;" id="error-title"></p>
+  <p style="font-family:'Prompt',sans-serif; font-weight:300; font-size:.875rem; color:var(--text-2); max-width:380px; white-space:pre-line; text-align:center;" id="error-desc"></p>
+</div>
+
+<!-- Main content -->
+<div id="content" style="display:none;">
+
+  <!-- Header -->
+  <header class="site-header">
+    <p class="org">
+      <span class="th">มหาวิทยาลัยแม่ฟ้าหลวง · ส่วนบริหารงานวิจัย</span>
+      <span class="en">Mae Fah Luang University · Research Administration Division</span>
+    </p>
+    <h1>
+      <span class="th">เอกสารของฉัน</span>
+      <span class="en" style="display:block; font-size:1.2rem; opacity:.85;">My Documents</span>
+    </h1>
+    <span class="email-pill" id="user-email"></span><button class="lang-btn" id="btn-lang" onclick="toggleLang()">EN</button><button class="theme-btn" id="btn-theme" onclick="toggleTheme()">🌙</button>
+  </header>
+
+  <div class="page-body">
+
+    <!-- Project info -->
+    <div class="card accent-top">
+      <div class="card-hd">
+        <div class="card-icon">📋</div>
+        <h2><span class="th">ข้อมูลโครงการ</span><span class="en"> · Project Info</span></h2>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <p class="field-label"><span class="th">หัวหน้าโครงการ</span><span class="en"> · Project Leader</span></p>
+          <p class="field-value th" id="f-name"></p>
+        </div>
+      </div>
+      <div class="field-row">
+        <div>
+          <p class="field-label"><span class="th">ชื่อโครงการ</span><span class="en"> · Project Title</span></p>
+          <p class="field-value th" id="f-title"></p>
+        </div>
+      </div>
+      <div class="field-row cols-2">
+        <div>
+          <p class="field-label"><span class="th">ประเภททุน</span><span class="en"> · Grant Type</span></p>
+          <p class="field-value th" id="f-grant"></p>
+        </div>
+        <div>
+          <p class="field-label"><span class="th">สำนักวิชา</span><span class="en"> · School</span></p>
+          <p class="field-value th" id="f-school"></p>
+        </div>
+      </div>
+      <div class="field-row">
+        <div>
+          <p class="field-label"><span class="th">งบประมาณโครงการ</span><span class="en"> · Total Budget</span></p>
+          <p class="field-value highlight th" id="f-budget"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">📄</div>
+        <h2><span class="th">สถานะเอกสาร</span><span class="en"> · Document Status</span></h2>
+      </div>
+
+      <!-- reviewer -->
+      <div id="reviewer-wrap" style="display:none; margin-bottom:1.25rem;">
+        <p class="field-label"><span class="th">ผู้ตรวจเอกสาร</span><span class="en"> · Document Reviewer</span></p>
+        <p class="field-value th" id="f-reviewer"></p>
+      </div>
+
+      <!-- correction -->
+      <div id="s-correction" style="display:none;">
+        <div class="al warn">
+          <span class="al-i">⚠️</span>
+          <div>
+            <p style="font-weight:500; margin-bottom:.3rem;"><span class="th">ต้องแก้ไขเอกสาร</span><span class="en"> — Correction Required</span></p>
+            <p class="th">กรุณาแก้ไขตามข้อเสนอแนะที่ได้รับ<strong>เท่านั้น</strong> — ห้ามมีการเปลี่ยนแปลงงบประมาณอื่นใดเพิ่มเติม</p>
+            <p class="en" style="margin-top:.35rem; font-size:.85rem; font-style:italic;">Please make corrections <em>only as advised</em> — do not make any other budget modifications.</p>
+          </div>
+        </div>
+        <div id="comment-box" class="comment-box" style="display:none;"></div>
+        <div id="comment-link-wrap" style="display:none;"></div>
+      </div>
+
+      <!-- ok -->
+      <div id="s-ok" style="display:none;">
+        <div class="al ok">
+          <span class="al-i">✅</span>
+          <div>
+            <p style="font-weight:500; margin-bottom:.3rem;"><span class="th">ไม่มีการแก้ไข</span><span class="en"> — No Correction Required</span></p>
+            <p class="th">เอกสารของท่านได้รับการตรวจสอบเรียบร้อยแล้ว</p>
+            <p class="en" style="margin-top:.35rem; font-size:.85rem;">Your documents have been reviewed. No corrections needed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- pending -->
+      <div id="s-pending" style="display:none;">
+        <div class="al pend">
+          <span class="al-i">🕐</span>
+          <div>
+            <p style="font-weight:500; margin-bottom:.3rem;"><span class="th">รอการตรวจสอบ</span><span class="en"> — Pending Review</span></p>
+            <p class="th">เอกสารของท่านอยู่ระหว่างการตรวจสอบ กรุณารอการแจ้งผล</p>
+            <p class="en" style="margin-top:.35rem; font-size:.85rem;">Your documents are under review. Please wait for updates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appointment -->
+    <div class="card" id="appt-card" style="display:none;">
+      <div class="card-hd">
+        <div class="card-icon">📅</div>
+        <h2><span class="th">วันนัดหมายลงนาม</span><span class="en"> · Signing Appointment</span></h2>
+      </div>
+      <div class="loc">
+        <span class="loc-i">📅</span>
+        <div>
+          <p class="loc-date th" id="appt-date"></p>
+          <p class="loc-place">
+            <span class="th">ส่วนบริหารงานวิจัย · อาคารบริการวิชาการ (AS) ชั้น 2</span>
+            <span class="en">Research Administration Division · AS Building, 2nd Floor</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submitted documents -->
+    <div class="card" id="docs-card" style="display:none;">
+      <div class="card-hd">
+        <div class="card-icon">🗂</div>
+        <h2><span class="th">เอกสารที่ส่งแล้ว</span><span class="en"> · Submitted Documents</span></h2>
+      </div>
+      <div id="proposal-wrap" style="display:none;">
+        <p class="field-label"><span class="th">ข้อเสนอโครงการ</span><span class="en"> · Proposal</span></p>
+        <a class="dlink" id="proposal-link" href="#" target="_blank">
+          <span class="th">🔗 เปิดไฟล์</span><span class="en"> · Open File</span>
+        </a>
+      </div>
+      <div id="bookbank-wrap" style="display:none; margin-top:.75rem;">
+        <p class="field-label"><span class="th">สำเนาหน้า Bookbank</span></p>
+        <a class="dlink" id="bookbank-link" href="#" target="_blank">
+          <span class="th">🔗 เปิดไฟล์</span><span class="en"> · Open File</span>
+        </a>
+      </div>
+      <div id="otherdocs-wrap" style="display:none; margin-top:.75rem;">
+        <p class="field-label"><span class="th">เอกสารแนบอื่นๆ</span><span class="en"> · Other Documents</span></p>
+        <a class="dlink" id="otherdocs-link" href="#" target="_blank">
+          <span class="th">🔗 เปิดไฟล์</span><span class="en"> · Open File</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bank info -->
+    <div class="card" id="bank-card" style="display:none;">
+      <div class="card-hd">
+        <div class="card-icon">🏦</div>
+        <h2><span class="th">ข้อมูลบัญชีธนาคาร</span><span class="en"> · Bank Account Info</span></h2>
+      </div>
+      <div class="field-row cols-2">
+        <div>
+          <p class="field-label"><span class="th">ชื่อบัญชี</span><span class="en"> · Account Name</span></p>
+          <p class="field-value th" id="b-name"></p>
+        </div>
+        <div>
+          <p class="field-label"><span class="th">เลขที่บัญชี</span><span class="en"> · Account No.</span></p>
+          <p class="field-value" id="b-account" style="font-family:monospace; letter-spacing:.04em;"></p>
+        </div>
+        <div>
+          <p class="field-label"><span class="th">ธนาคาร</span><span class="en"> · Bank</span></p>
+          <p class="field-value th" id="b-bank"></p>
+        </div>
+        <div>
+          <p class="field-label"><span class="th">สาขา</span><span class="en"> · Branch</span></p>
+          <p class="field-value th" id="b-branch"></p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p class="th">คู่มือจัดทำสัญญาทุนวิจัย · มหาวิทยาลัยแม่ฟ้าหลวง · ปีงบประมาณ 2570</p>
+      <p class="en">Research Grant Agreement · Mae Fah Luang University · Fiscal Year B.E. 2570</p>
+    </footer>
+
+  </div><!-- /page-body -->
+</div><!-- /content -->
+
+<script>
+function show(id) { var el=document.getElementById(id); if(el) el.style.display=''; }
+function hide(id) { var el=document.getElementById(id); if(el) el.style.display='none'; }
+function setText(id, t) { var el=document.getElementById(id); if(el) el.textContent=t; }
+function setLink(id, u) { var el=document.getElementById(id); if(el) el.href=u; }
+
+function toggleTheme() {
+  var root = document.documentElement;
+  var btn = document.getElementById('btn-theme');
+  var isDark = root.getAttribute('data-theme') === 'dark' ||
+    (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  if (isDark) {
+    root.setAttribute('data-theme', 'light');
+    btn.textContent = '🌙';
+    localStorage.setItem('portal-theme', 'light');
+  } else {
+    root.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️';
+    localStorage.setItem('portal-theme', 'dark');
+  }
+}
+(function() {
+  var saved = localStorage.getItem('portal-theme');
+  var root = document.documentElement;
+  var btn = document.getElementById('btn-theme');
+  if (saved === 'dark') { root.setAttribute('data-theme','dark'); if(btn) btn.textContent='☀️'; }
+  else if (saved === 'light') { root.setAttribute('data-theme','light'); if(btn) btn.textContent='🌙'; }
+})();
+
+function toggleLang() {
+  var root = document.documentElement;
+  var btn = document.getElementById('btn-lang');
+  if (root.getAttribute('data-lang') === 'th') {
+    root.setAttribute('data-lang', 'en');
+    btn.textContent = 'TH';
+  } else {
+    root.setAttribute('data-lang', 'th');
+    btn.textContent = 'EN';
+  }
+}
+
+google.script.run
+  .withSuccessHandler(function(d) {
+    hide('loading');
+
+    if (d.error === 'not_mfu') {
+      show('error-screen');
+      setText('error-title', 'กรุณาใช้อีเมลมหาวิทยาลัย · Use MFU Email');
+      setText('error-desc', 'ระบบนี้เข้าถึงได้เฉพาะอีเมล @mfu.ac.th ของหัวหน้าโครงการเท่านั้น\nกรุณาเข้าสู่ระบบด้วยอีเมลมหาวิทยาลัยแม่ฟ้าหลวงของท่าน\n\nThis portal is accessible only to @mfu.ac.th emails of project leaders.');
+      return;
+    }
+    if (d.error === 'not_found') {
+      show('error-screen');
+      setText('error-title', 'ไม่พบข้อมูลของท่าน · Not Found');
+      setText('error-desc', 'ไม่พบข้อมูลโครงการสำหรับ ' + d.email + '\nระบบนี้ใช้ได้เฉพาะหัวหน้าโครงการที่อยู่ในระบบเท่านั้น\nหากเชื่อว่าเกิดข้อผิดพลาด กรุณาติดต่อส่วนบริหารงานวิจัย\n\nNo project found for this account.\nThis portal is for registered project leaders only.\nPlease contact Research Administration Division.');
+      return;
+    }
+
+    show('content');
+    setText('user-email', d.email);
+    setText('f-name',   d.name);
+    setText('f-title',  d.project_title);
+    setText('f-grant',  d.grant_type);
+    setText('f-school', d.school);
+    var rawNum = String(d.budget).replace(/,/g, '').replace(/[^\d.]/g, '');
+    var budget = rawNum ? Number(rawNum).toLocaleString('th-TH') + ' บาท' : (d.budget || '-');
+    setText('f-budget', budget);
+
+    // Reviewer
+    if (d.reviewer) { setText('f-reviewer', d.reviewer); show('reviewer-wrap'); }
+
+    // Status
+    if (d.doc_status === 'มีแก้ไข') {
+      show('s-correction');
+      if (d.comment) { setText('comment-box', d.comment); show('comment-box'); }
+      if (d.comment_link) {
+        var links = d.comment_link.split(/[\n,]+/).map(function(s){return s.trim();}).filter(Boolean);
+        var wrap = document.getElementById('comment-link-wrap');
+        wrap.innerHTML = '';
+        links.forEach(function(url, i) {
+          var a = document.createElement('a');
+          a.className = 'fbtn';
+          a.href = url;
+          a.target = '_blank';
+          a.style.marginRight = '.5rem';
+          var label = links.length > 1 ? ' ('+(i+1)+')' : '';
+          a.innerHTML = '<span class="th">📄 ดูเอกสารที่ต้องแก้ไข'+label+'</span><span class="en"> · View Document'+label+'</span>';
+          wrap.appendChild(a);
+        });
+        show('comment-link-wrap');
+      }
+    } else if (d.doc_status === 'ไม่มีแก้ไข') {
+      show('s-ok');
+    } else {
+      show('s-pending');
+    }
+
+    // Appointment
+    if (d.appointment_date) {
+      setText('appt-date', d.appointment_date);
+      show('appt-card');
+    }
+
+    // Documents
+    var hasDocs = false;
+    if (d.proposal_link)  { setLink('proposal-link', d.proposal_link);   show('proposal-wrap');  hasDocs=true; }
+    if (d.bookbank_link)  { setLink('bookbank-link', d.bookbank_link);   show('bookbank-wrap');  hasDocs=true; }
+    if (d.other_docs)     { setLink('otherdocs-link', d.other_docs);     show('otherdocs-wrap'); hasDocs=true; }
+    if (hasDocs) show('docs-card');
+
+    // Bank
+    if (d.bank_name || d.bank_account) {
+      setText('b-name',    d.bank_name    || '-');
+      setText('b-account', d.bank_account || '-');
+      setText('b-bank',    d.bank         || '-');
+      setText('b-branch',  d.bank_branch  || '-');
+      show('bank-card');
+    }
+  })
+  .withFailureHandler(function(err) {
+    hide('loading');
+    show('error-screen');
+    setText('error-title', 'เกิดข้อผิดพลาด · Error');
+    setText('error-desc', err.message || 'กรุณาลองใหม่อีกครั้ง · Please try again.');
+  })
+  .getUserData();
+</script>
+</body>
+</html>
