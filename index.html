@@ -8,716 +8,706 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ── Design tokens: Light (default) ── */
-  :root {
-    --bg:              #FFFBEB;
-    --surface:         #FFFFFF;
-    --surface-tint:    #FFFBEB;
-    --border:          #E7E5E4;
-    --primary:         #881337;
-    --primary-hover:   #6B1030;
-    --primary-fg:      #FFFFFF;
-    --primary-muted:   rgba(136,19,55,.07);
-    --primary-muted-b: rgba(136,19,55,.22);
-    --secondary:       #CA8A04;
-    --text-1:          #1C1917;
-    --text-2:          #57534E;
-    --text-3:          #A8A29E;
-    --nav-bg:          #FFFFFF;
-    --nav-border:      #E7E5E4;
-    --nav-text:        #78716C;
-    --footer-border:   #E7E5E4;
-    --tl-hl-text:      #92400E;
-    --al-warn-bg: rgba(239,68,68,.06);  --al-warn-b: rgba(239,68,68,.22);  --al-warn-c: #B91C1C;
-    --al-info-bg: rgba(124,58,237,.06); --al-info-b: rgba(124,58,237,.22); --al-info-c: #6D28D9;
-    --al-ok-bg:   rgba(5,150,105,.06);  --al-ok-b:   rgba(5,150,105,.22);  --al-ok-c:   #047857;
-    --al-pend-bg: rgba(202,138,4,.07);  --al-pend-b: rgba(202,138,4,.28);  --al-pend-c: #92400E;
-    --theme-btn-bg:    rgba(0,0,0,.04);
-    --theme-btn-hover: rgba(0,0,0,.09);
-  }
+/* ══════════════════════════════════════════════════════
+   TOKENS — Light (default)
+══════════════════════════════════════════════════════ */
+:root {
+  --bg:           #EDE0C5;
+  --surface:      #FFFFFF;
+  --surface-tint: #F9F4EC;
+  --border:       #D8C9AD;
+  --shadow:       0 2px 8px rgba(80,40,0,.08), 0 0 0 1px rgba(180,130,60,.06);
+  --shadow-sm:    0 1px 3px rgba(80,40,0,.06);
+  --primary:      #881337;
+  --primary-hover:#6B1030;
+  --primary-fg:   #FFFFFF;
+  --primary-muted:rgba(136,19,55,.08);
+  --primary-muted-b:rgba(136,19,55,.2);
+  --secondary:    #B45309;
+  --text-1:       #1A0E08;
+  --text-2:       #6B4A38;
+  --text-3:       #A08870;
+  --nav-bg:       #FFFFFF;
+  --nav-border:   #E5D5BB;
+  --nav-text:     #7A5A48;
+  --sidebar-bg:   #FFFFFF;
+  --tl-hl-text:   #92400E;
+  --al-warn-bg:rgba(239,68,68,.06);   --al-warn-b:rgba(239,68,68,.22);   --al-warn-c:#B91C1C;
+  --al-info-bg:rgba(124,58,237,.06);  --al-info-b:rgba(124,58,237,.22);  --al-info-c:#6D28D9;
+  --al-ok-bg:  rgba(5,150,105,.06);   --al-ok-b:  rgba(5,150,105,.22);   --al-ok-c:  #047857;
+  --al-pend-bg:rgba(180,83,9,.07);    --al-pend-b:rgba(180,83,9,.25);    --al-pend-c:#92400E;
+  --theme-btn-bg:    rgba(0,0,0,.05);
+  --theme-btn-hover: rgba(0,0,0,.1);
+  --nav-h: 92px;   /* mobile default (2-row nav) */
+}
 
-  /* ── OS dark preference ── */
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg:              #171210;
-      --surface:         #231916;
-      --surface-tint:    #1E1512;
-      --border:          #372B26;
-      --primary:         #881337;
-      --primary-hover:   #A31A44;
-      --primary-fg:      #FFFFFF;
-      --primary-muted:   rgba(253,164,175,.08);
-      --primary-muted-b: rgba(253,164,175,.28);
-      --secondary:       #F59E0B;
-      --text-1:          #F0E8E3;
-      --text-2:          #BFB0A8;
-      --text-3:          #7A665D;
-      --nav-bg:          #1E1512;
-      --nav-border:      #372B26;
-      --nav-text:        #BFB0A8;
-      --footer-border:   #2E221E;
-      --tl-hl-text:      #FCD34D;
-      --al-warn-bg: rgba(239,68,68,.14);  --al-warn-b: rgba(239,68,68,.38);  --al-warn-c: #FCA5A5;
-      --al-info-bg: rgba(167,139,250,.10); --al-info-b: rgba(167,139,250,.32); --al-info-c: #C4B5FD;
-      --al-ok-bg:   rgba(52,211,153,.09);  --al-ok-b:   rgba(52,211,153,.30);  --al-ok-c:   #6EE7B7;
-      --al-pend-bg: rgba(252,211,77,.09);  --al-pend-b: rgba(252,211,77,.30);  --al-pend-c: #FDE68A;
-      --theme-btn-bg:    rgba(255,255,255,.06);
-      --theme-btn-hover: rgba(255,255,255,.12);
-    }
+/* ══════════════════════════════════════════════════════
+   TOKENS — Dark (OS preference, no manual override)
+══════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:           #0C0907;
+    --surface:      #1C1210;
+    --surface-tint: #221510;
+    --border:       #332018;
+    --shadow:       0 2px 12px rgba(0,0,0,.5), 0 0 0 1px rgba(255,200,100,.04);
+    --shadow-sm:    0 1px 4px rgba(0,0,0,.35);
+    --primary:      #881337;
+    --primary-hover:#A31A44;
+    --primary-fg:   #FFFFFF;
+    --primary-muted:rgba(200,90,120,.1);
+    --primary-muted-b:rgba(200,90,120,.25);
+    --secondary:    #D97706;
+    --text-1:       #EDE0CC;
+    --text-2:       #B09078;
+    --text-3:       #6A5040;
+    --nav-bg:       #150E0B;
+    --nav-border:   #2A1C12;
+    --nav-text:     #B09078;
+    --sidebar-bg:   #1C1210;
+    --tl-hl-text:   #FCD34D;
+    --al-warn-bg:rgba(180,40,40,.12);   --al-warn-b:rgba(200,60,60,.3);    --al-warn-c:#E89090;
+    --al-info-bg:rgba(130,100,220,.1);  --al-info-b:rgba(140,100,220,.28); --al-info-c:#B8A8E8;
+    --al-ok-bg:  rgba(40,160,100,.09);  --al-ok-b:  rgba(60,170,110,.28);  --al-ok-c:  #80D4A8;
+    --al-pend-bg:rgba(185,130,30,.1);   --al-pend-b:rgba(200,150,40,.28);  --al-pend-c:#DEBA78;
+    --theme-btn-bg:    rgba(255,255,255,.07);
+    --theme-btn-hover: rgba(255,255,255,.13);
   }
+}
 
-  /* ── Manual: dark ── */
-  :root[data-theme="dark"] {
-    --bg:              #171210;
-    --surface:         #231916;
-    --surface-tint:    #1E1512;
-    --border:          #372B26;
-    --primary:         #881337;
-    --primary-hover:   #A31A44;
-    --primary-fg:      #FFFFFF;
-    --primary-muted:   rgba(253,164,175,.08);
-    --primary-muted-b: rgba(253,164,175,.28);
-    --secondary:       #F59E0B;
-    --text-1:          #F0E8E3;
-    --text-2:          #BFB0A8;
-    --text-3:          #7A665D;
-    --nav-bg:          #1E1512;
-    --nav-border:      #372B26;
-    --nav-text:        #BFB0A8;
-    --footer-border:   #2E221E;
-    --tl-hl-text:      #FCD34D;
-    --al-warn-bg: rgba(239,68,68,.14);  --al-warn-b: rgba(239,68,68,.38);  --al-warn-c: #FCA5A5;
-    --al-info-bg: rgba(167,139,250,.10); --al-info-b: rgba(167,139,250,.32); --al-info-c: #C4B5FD;
-    --al-ok-bg:   rgba(52,211,153,.09);  --al-ok-b:   rgba(52,211,153,.30);  --al-ok-c:   #6EE7B7;
-    --al-pend-bg: rgba(252,211,77,.09);  --al-pend-b: rgba(252,211,77,.30);  --al-pend-c: #FDE68A;
-    --theme-btn-bg:    rgba(255,255,255,.06);
-    --theme-btn-hover: rgba(255,255,255,.12);
-  }
+/* ── Manual dark ── */
+:root[data-theme="dark"] {
+  --bg:           #0C0907;
+  --surface:      #1C1210;
+  --surface-tint: #221510;
+  --border:       #332018;
+  --shadow:       0 2px 12px rgba(0,0,0,.5), 0 0 0 1px rgba(255,200,100,.04);
+  --shadow-sm:    0 1px 4px rgba(0,0,0,.35);
+  --primary:      #881337;
+  --primary-hover:#A31A44;
+  --primary-fg:   #FFFFFF;
+  --primary-muted:rgba(200,90,120,.1);
+  --primary-muted-b:rgba(200,90,120,.25);
+  --secondary:    #D97706;
+  --text-1:       #EDE0CC;
+  --text-2:       #B09078;
+  --text-3:       #6A5040;
+  --nav-bg:       #150E0B;
+  --nav-border:   #2A1C12;
+  --nav-text:     #B09078;
+  --sidebar-bg:   #1C1210;
+  --tl-hl-text:   #FCD34D;
+  --al-warn-bg:rgba(180,40,40,.12);   --al-warn-b:rgba(200,60,60,.3);    --al-warn-c:#E89090;
+  --al-info-bg:rgba(130,100,220,.1);  --al-info-b:rgba(140,100,220,.28); --al-info-c:#B8A8E8;
+  --al-ok-bg:  rgba(40,160,100,.09);  --al-ok-b:  rgba(60,170,110,.28);  --al-ok-c:  #80D4A8;
+  --al-pend-bg:rgba(185,130,30,.1);   --al-pend-b:rgba(200,150,40,.28);  --al-pend-c:#DEBA78;
+  --theme-btn-bg:    rgba(255,255,255,.07);
+  --theme-btn-hover: rgba(255,255,255,.13);
+}
 
-  /* ── Manual: light (overrides OS dark) ── */
-  :root[data-theme="light"] {
-    --bg:              #FFFBEB;
-    --surface:         #FFFFFF;
-    --surface-tint:    #FFFBEB;
-    --border:          #E7E5E4;
-    --primary:         #881337;
-    --primary-hover:   #6B1030;
-    --primary-fg:      #FFFFFF;
-    --primary-muted:   rgba(136,19,55,.07);
-    --primary-muted-b: rgba(136,19,55,.22);
-    --secondary:       #CA8A04;
-    --text-1:          #1C1917;
-    --text-2:          #57534E;
-    --text-3:          #A8A29E;
-    --nav-bg:          #FFFFFF;
-    --nav-border:      #E7E5E4;
-    --nav-text:        #78716C;
-    --footer-border:   #E7E5E4;
-    --tl-hl-text:      #92400E;
-    --al-warn-bg: rgba(239,68,68,.06);  --al-warn-b: rgba(239,68,68,.22);  --al-warn-c: #B91C1C;
-    --al-info-bg: rgba(124,58,237,.06); --al-info-b: rgba(124,58,237,.22); --al-info-c: #6D28D9;
-    --al-ok-bg:   rgba(5,150,105,.06);  --al-ok-b:   rgba(5,150,105,.22);  --al-ok-c:   #047857;
-    --al-pend-bg: rgba(202,138,4,.07);  --al-pend-b: rgba(202,138,4,.28);  --al-pend-c: #92400E;
-    --theme-btn-bg:    rgba(0,0,0,.04);
-    --theme-btn-hover: rgba(0,0,0,.09);
-  }
+/* ── Manual light (overrides OS dark) ── */
+:root[data-theme="light"] {
+  --bg:           #EDE0C5;
+  --surface:      #FFFFFF;
+  --surface-tint: #F9F4EC;
+  --border:       #D8C9AD;
+  --shadow:       0 2px 8px rgba(80,40,0,.08), 0 0 0 1px rgba(180,130,60,.06);
+  --shadow-sm:    0 1px 3px rgba(80,40,0,.06);
+  --primary:      #881337;
+  --primary-hover:#6B1030;
+  --primary-fg:   #FFFFFF;
+  --primary-muted:rgba(136,19,55,.08);
+  --primary-muted-b:rgba(136,19,55,.2);
+  --secondary:    #B45309;
+  --text-1:       #1A0E08;
+  --text-2:       #6B4A38;
+  --text-3:       #A08870;
+  --nav-bg:       #FFFFFF;
+  --nav-border:   #E5D5BB;
+  --nav-text:     #7A5A48;
+  --sidebar-bg:   #FFFFFF;
+  --tl-hl-text:   #92400E;
+  --al-warn-bg:rgba(239,68,68,.06);   --al-warn-b:rgba(239,68,68,.22);   --al-warn-c:#B91C1C;
+  --al-info-bg:rgba(124,58,237,.06);  --al-info-b:rgba(124,58,237,.22);  --al-info-c:#6D28D9;
+  --al-ok-bg:  rgba(5,150,105,.06);   --al-ok-b:  rgba(5,150,105,.22);   --al-ok-c:  #047857;
+  --al-pend-bg:rgba(180,83,9,.07);    --al-pend-b:rgba(180,83,9,.25);    --al-pend-c:#92400E;
+  --theme-btn-bg:    rgba(0,0,0,.05);
+  --theme-btn-hover: rgba(0,0,0,.1);
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+/* Desktop: single-row nav → adjust offset */
+@media (min-width: 720px) {
+  :root { --nav-h: 52px; }
+}
 
-  body {
-    font-family: 'Lora', serif;
-    font-size: 15px;
-    line-height: 1.65;
-    background: var(--bg);
-    color: var(--text-1);
-    transition: background .2s, color .2s;
-  }
+/* ══════════════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-  .th { font-family: 'Prompt', sans-serif; }
+body {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  line-height: 1.65;
+  background: var(--bg);
+  color: var(--text-1);
+  transition: background .2s, color .2s;
+}
 
-  [data-lang="th"] .en { display: none; }
-  [data-lang="en"] .th { display: none; }
+/* ── Thai text: Prompt always wins ── */
+.th { font-family: 'Prompt', sans-serif !important; }
+.th * { font-family: 'Prompt', sans-serif; }
 
-  /* ── Header ── */
-  .site-header {
-    background: #881337;
-    color: #FFFFFF;
-    padding: 3rem 1.5rem 2.5rem;
-    text-align: center;
-    position: relative;
-  }
-  .site-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--secondary);
-  }
-  .site-header .org {
-    font-family: 'Lora', serif;
-    font-size: .75rem;
-    font-weight: 400;
-    color: rgba(255,255,255,.65);
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .site-header .org .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 300;
-    letter-spacing: .04em;
-    text-transform: none;
-  }
-  .site-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.875rem;
-    font-weight: 700;
-    line-height: 1.3;
-    text-wrap: balance;
-    color: #FFFFFF;
-    margin-bottom: 1rem;
-  }
-  .site-header h1 .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
-  .site-header .year {
-    display: inline-block;
-    font-family: 'Lora', serif;
-    font-size: .73rem;
-    font-weight: 400;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #FDE68A;
-    border: 1px solid rgba(253,230,138,.4);
-    border-radius: 9999px;
-    padding: .28rem 1.125rem;
-  }
-  .site-header .year .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 300;
-    letter-spacing: .02em;
-    text-transform: none;
-    font-size: .8rem;
-  }
+/* ── Language switching ── */
+[data-lang="th"] .en { display: none; }
+[data-lang="en"] .th { display: none; }
 
-  /* ── Nav ── */
-  .site-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--nav-bg);
-    border-bottom: 1px solid var(--nav-border);
-    display: flex;
-    align-items: center;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 .75rem;
-    box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    transition: background .2s, border-color .2s;
-  }
-  .site-nav::-webkit-scrollbar { display: none; }
-  .site-nav a {
-    display: block;
-    padding: .875rem 1rem;
-    color: var(--nav-text);
-    text-decoration: none;
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .73rem;
-    font-weight: 500;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    transition: color .15s, border-color .15s;
-    flex-shrink: 0;
-  }
-  .site-nav a.th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 400;
-    letter-spacing: .02em;
-    text-transform: none;
-    font-size: .8rem;
-  }
-  .site-nav a:hover { color: var(--primary); }
-  .site-nav a.on  { color: var(--primary); border-bottom-color: var(--primary); }
+/* ══════════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════════ */
+.site-header {
+  background: #881337;
+  color: #FFFFFF;
+  padding: 2.5rem 1.5rem 2.25rem;
+  text-align: center;
+  position: relative;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+}
+.site-header .org {
+  font-family: 'Lora', serif;
+  font-size: .72rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.6);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: .875rem;
+}
+.site-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-wrap: balance;
+  color: #FFFFFF;
+  margin-bottom: .875rem;
+}
+.site-header h1 .th { font-size: 1.45rem; font-weight: 600; }
+.site-header .year {
+  display: inline-block;
+  font-family: 'Lora', serif;
+  font-size: .72rem;
+  font-weight: 400;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #FDE68A;
+  border: 1px solid rgba(253,230,138,.35);
+  border-radius: 9999px;
+  padding: .25rem 1rem;
+}
+.site-header .year .th { letter-spacing: .02em; text-transform: none; font-size: .8rem; }
 
-  .nav-controls {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    flex-shrink: 0;
-    padding-left: .5rem;
-  }
+/* ══════════════════════════════════════════════════════
+   NAV — 2-row on mobile, single row on desktop
+══════════════════════════════════════════════════════ */
+.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  display: flex; flex-wrap: wrap; align-items: center;
+  transition: background .2s, border-color .2s;
+}
 
-  .theme-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 9999px;
-    border: 1px solid var(--border);
-    background: var(--theme-btn-bg);
-    cursor: pointer;
-    font-size: .9rem;
-    line-height: 1;
-    transition: background .15s;
-    flex-shrink: 0;
-  }
-  .theme-btn:hover { background: var(--theme-btn-hover); }
+/* Brand — takes flex space, pushes controls right */
+.nav-brand {
+  flex: 1; min-width: 0;
+  padding: .625rem .875rem;
+  font-family: 'Playfair Display', serif;
+  font-size: .875rem; font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.nav-brand.th { font-family: 'Prompt', sans-serif !important; font-weight: 600; }
 
-  .lang-toggle {
-    display: flex;
-    border: 1px solid var(--border);
-    border-radius: 9999px;
-    overflow: hidden;
-    flex-shrink: 0;
-    transition: border-color .2s;
-  }
-  .lang-toggle button {
-    background: none;
-    border: none;
-    padding: .3rem .75rem;
-    font-family: 'Lora', sans-serif;
-    font-size: .68rem;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: var(--nav-text);
-    transition: background .15s, color .15s;
-  }
-  .lang-toggle button.on {
-    background: var(--primary);
-    color: var(--primary-fg);
-  }
+/* Controls — same row as brand on mobile */
+.nav-controls {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .5rem .75rem;
+  flex-shrink: 0;
+}
 
-  /* ── Layout ── */
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 2rem 1.25rem 4rem;
-  }
+/* Links row — full width below brand+controls on mobile */
+.nav-links {
+  width: 100%;
+  order: 1;
+  display: flex; overflow-x: auto; scrollbar-width: none;
+  border-top: 1px solid var(--border);
+  margin: 0; padding: 0 .5rem;
+  min-height: 44px;
+  transition: border-color .2s;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  display: flex; align-items: center;
+  padding: .625rem .875rem;
+  color: var(--nav-text);
+  text-decoration: none;
+  font-family: 'Prompt', sans-serif;
+  font-size: .8rem; font-weight: 400;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color .15s, border-color .15s;
+  flex-shrink: 0;
+}
+.nav-links a.en {
+  font-family: 'Lora', serif;
+  font-size: .72rem; font-weight: 500;
+  letter-spacing: .04em;
+}
+.nav-links a:hover { color: var(--primary); }
+.nav-links a.on   { color: var(--primary); border-bottom-color: var(--primary); }
 
-  /* ── Timeline ── */
-  .tl-wrap { margin-bottom: 2rem; }
-  .tl-heading {
-    display: flex;
-    align-items: center;
-    gap: .75rem;
-    margin-bottom: .875rem;
-  }
-  .tl-heading-text {
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .68rem;
-    font-weight: 500;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--secondary);
-    white-space: nowrap;
-  }
-  .tl-heading-text.th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 500;
-    letter-spacing: .04em;
-    text-transform: none;
-    font-size: .8rem;
-  }
-  .tl-heading::before,
-  .tl-heading::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+/* Theme button */
+.theme-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--theme-btn-bg);
+  cursor: pointer; font-size: .9rem;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.theme-btn:hover { background: var(--theme-btn-hover); }
 
-  .timeline {
+/* Lang toggle */
+.lang-toggle {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 9999px; overflow: hidden;
+  flex-shrink: 0;
+  transition: border-color .2s;
+}
+.lang-toggle button {
+  background: none; border: none;
+  padding: .28rem .7rem;
+  font-family: 'Lora', sans-serif;
+  font-size: .68rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  cursor: pointer; color: var(--nav-text);
+  transition: background .15s, color .15s;
+}
+.lang-toggle button.on { background: var(--primary); color: var(--primary-fg); }
+
+/* ── Desktop nav: single row ── */
+@media (min-width: 720px) {
+  .site-nav { flex-wrap: nowrap; padding: 0 1rem; }
+  .nav-brand { flex: none; padding: 0; margin-right: 1rem; }
+  .nav-links {
+    width: auto; order: 0; flex: 1;
+    border-top: none; padding: 0; min-height: 52px;
+  }
+  .nav-controls { margin-left: 0; padding: 0; }
+}
+
+/* ══════════════════════════════════════════════════════
+   PAGE BODY — sidebar + content
+══════════════════════════════════════════════════════ */
+.page-body {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 4rem;
+}
+
+@media (min-width: 960px) {
+  .page-body {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: background .2s, border-color .2s;
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+    gap: 2rem;
+    padding: 2rem 2rem 4rem;
   }
-  .tl-step {
-    padding: 1.25rem .875rem;
-    text-align: center;
-    border-right: 1px dashed var(--border);
-  }
-  .tl-step:last-child { border-right: none; }
-  .tl-n {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 9999px;
-    background: var(--primary);
-    color: var(--primary-fg);
-    font-family: 'Lora', serif;
-    font-size: .78rem;
-    font-weight: 500;
-    margin-bottom: .5rem;
-  }
-  .tl-step.hl .tl-n { background: var(--secondary); color: #1C1917; }
-  .tl-lbl {
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .73rem;
-    font-weight: 500;
-    color: var(--text-1);
-    line-height: 1.35;
-  }
-  .tl-lbl.th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 400;
-    font-size: .78rem;
-  }
-  .tl-step.hl .tl-lbl { color: var(--tl-hl-text); }
-  .tl-dt {
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .65rem;
-    color: var(--text-3);
-    margin-top: .25rem;
-  }
-  .tl-dt.th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 300;
-    font-size: .72rem;
-  }
+}
 
-  /* ── Card ── */
-  .card, #portal { scroll-margin-top: 52px; }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1.75rem;
-    margin-bottom: 1.5rem;
-    transition: background .2s, border-color .2s;
-  }
-  .card-hd {
-    display: flex;
-    align-items: center;
-    gap: .875rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px dashed var(--border);
-    margin-bottom: 1.5rem;
-  }
-  .card-num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 2rem;
-    height: 2rem;
-    border-radius: 9999px;
-    background: var(--primary);
-    color: var(--primary-fg);
-    font-family: 'Lora', serif;
-    font-size: .78rem;
-    font-weight: 500;
-    flex-shrink: 0;
-  }
-  .card-hd h2 {
-    font-family: 'Playfair Display', serif;
-    color: var(--primary);
-    font-size: 1.125rem;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-  .card-hd h2 .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-  }
+/* ══════════════════════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════════════════════ */
+.sidebar { display: none; }
 
-  .sub-h {
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .72rem;
-    font-weight: 500;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--text-2);
-    margin: 1.5rem 0 .875rem;
-    display: flex;
-    align-items: center;
-    gap: .625rem;
+@media (min-width: 960px) {
+  .sidebar {
+    display: block;
+    position: sticky;
+    top: calc(52px + 1.25rem);
   }
-  .sub-h .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 500;
-    letter-spacing: .02em;
-    text-transform: none;
-    font-size: .8rem;
-  }
-  .sub-h::before {
-    content: '';
-    display: inline-block;
-    width: 3px;
-    height: .875rem;
-    background: var(--secondary);
-    border-radius: 9999px;
-    flex-shrink: 0;
-  }
+}
 
-  /* Bullet list */
-  .bl { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
-  .bl li {
-    display: flex;
-    gap: .625rem;
-    align-items: flex-start;
-    font-family: 'Lora', serif;
-    font-size: .9375rem;
-    color: var(--text-1);
-  }
-  .bl li .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
-  .bl li::before {
-    content: '—';
-    color: var(--secondary);
-    flex-shrink: 0;
-    margin-top: .05rem;
-  }
+.sidebar-card {
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: background .2s, border-color .2s;
+}
 
-  /* Checklist */
-  .cl { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-  .cl li {
-    display: flex;
-    align-items: flex-start;
-    gap: .75rem;
-    padding: .625rem 1rem;
-    background: var(--surface-tint);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-family: 'Lora', serif;
-    font-size: .9rem;
-    color: var(--text-1);
-    transition: background .2s, border-color .2s;
-  }
-  .cl li .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
-  .ci { color: var(--secondary); font-size: .95rem; flex-shrink: 0; margin-top: .05rem; }
-  .cn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1.375rem;
-    height: 1.375rem;
-    border-radius: 9999px;
-    background: var(--primary);
-    color: var(--primary-fg);
-    font-family: 'Lora', serif;
-    font-size: .65rem;
-    font-weight: 500;
-    flex-shrink: 0;
-    margin-top: .1rem;
-  }
+.sidebar-label {
+  font-family: 'Lora', serif;
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+.sidebar-label .th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 500; letter-spacing: .04em;
+  text-transform: none; font-size: .75rem;
+}
 
-  /* Alert */
-  .al {
-    display: flex;
-    gap: .75rem;
-    align-items: flex-start;
-    border-radius: 4px;
-    padding: .875rem 1rem;
-    font-family: 'Lora', serif;
-    font-size: .9rem;
-    margin-top: 1rem;
-  }
-  .al .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
-  .al-i { flex-shrink: 0; margin-top: .05rem; }
-  .al.pend { background: var(--al-pend-bg); border: 1px solid var(--al-pend-b); color: var(--al-pend-c); }
-  .al.info { background: var(--al-info-bg); border: 1px solid var(--al-info-b); color: var(--al-info-c); }
-  .al.warn { background: var(--al-warn-bg); border: 1px solid var(--al-warn-b); color: var(--al-warn-c); }
-  .al.ok   { background: var(--al-ok-bg);   border: 1px solid var(--al-ok-b);   color: var(--al-ok-c);   }
+.step-nav { list-style: none; display: flex; flex-direction: column; gap: .25rem; }
 
-  /* Deadline badge */
-  .dbadge {
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-    background: var(--primary-muted);
-    color: var(--primary);
-    border: 1px solid var(--primary-muted-b);
-    border-radius: 9999px;
-    padding: .22rem 1rem;
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .73rem;
-    font-weight: 500;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .dbadge .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 400;
-    letter-spacing: .02em;
-    text-transform: none;
-    font-size: .8rem;
-  }
+.step-nav-link {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .625rem .75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-2);
+  font-family: 'Lora', serif;
+  font-size: .875rem;
+  transition: background .15s, color .15s;
+}
+.step-nav-link .th { font-family: 'Prompt', sans-serif !important; font-weight: 400; font-size: .875rem; }
+.step-nav-link:hover { background: var(--surface-tint); color: var(--primary); }
+.step-nav-link.on { background: var(--primary-muted); color: var(--primary); }
 
-  /* Location */
-  .loc {
-    display: flex;
-    gap: .75rem;
-    align-items: flex-start;
-    background: var(--surface-tint);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: .875rem 1rem;
-    font-family: 'Lora', serif;
-    font-size: .9rem;
-    margin-bottom: 1.25rem;
-    color: var(--text-1);
-    transition: background .2s, border-color .2s;
-  }
-  .loc .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
-  .loc-i { font-size: 1rem; flex-shrink: 0; margin-top: .05rem; }
+.step-n {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 1.75rem; height: 1.75rem;
+  border-radius: 9999px;
+  background: var(--primary);
+  color: var(--primary-fg);
+  font-family: 'Lora', serif;
+  font-size: .7rem; font-weight: 500;
+  flex-shrink: 0;
+}
+.step-nav-link.on .step-n, .step-nav-link:hover .step-n { background: var(--primary); }
 
-  /* Form button */
-  .fbtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
-    background: var(--primary);
-    color: var(--primary-fg);
-    padding: .75rem 1.75rem;
-    border-radius: 4px;
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .82rem;
-    font-weight: 500;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    margin-top: 1.25rem;
-    transition: background .15s;
-  }
-  .fbtn .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 400;
-    letter-spacing: .02em;
-    text-transform: none;
-    font-size: .875rem;
-  }
-  .fbtn:hover { background: var(--primary-hover); }
+.sidebar-divider {
+  height: 1px; background: var(--border);
+  margin: 1rem 0;
+}
 
-  /* Doc link chip */
-  .dlink {
-    display: inline-flex;
-    align-items: center;
-    gap: .35rem;
-    background: var(--primary-muted);
-    color: var(--primary);
-    padding: .2rem .7rem;
-    border-radius: 9999px;
-    border: 1px solid var(--primary-muted-b);
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .65rem;
-    font-weight: 500;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    margin-top: .3rem;
-    transition: background .15s;
-  }
-  .dlink .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 400;
-    letter-spacing: .01em;
-    text-transform: none;
-    font-size: .72rem;
-  }
-  .dlink:hover { opacity: .8; }
+.sidebar-portal-link {
+  display: flex; align-items: center; gap: .625rem;
+  padding: .625rem .75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--secondary);
+  font-family: 'Lora', serif;
+  font-size: .875rem; font-weight: 500;
+  transition: background .15s;
+}
+.sidebar-portal-link .th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 500; font-size: .875rem;
+}
+.sidebar-portal-link:hover { background: var(--surface-tint); }
 
-  /* Portal */
-  .portal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--secondary);
-    border-radius: 4px;
-    padding: 2.5rem;
-    text-align: center;
-    color: var(--text-1);
-    margin-bottom: 2rem;
-    transition: background .2s, border-color .2s;
-  }
-  .portal h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: .5rem;
-  }
-  .portal h3 .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
-  .portal p {
-    font-family: 'Lora', serif;
-    font-size: .9rem;
-    color: var(--text-2);
-    margin-bottom: 1.5rem;
-  }
-  .portal p .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
-  .portal-btn {
-    display: inline-block;
-    background: var(--primary);
-    color: var(--primary-fg);
-    padding: .75rem 2.25rem;
-    border-radius: 4px;
-    font-family: 'Lora', 'Prompt', serif;
-    font-weight: 500;
-    font-size: .82rem;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background .15s;
-  }
-  .portal-btn .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 400;
-    letter-spacing: .02em;
-    text-transform: none;
-    font-size: .875rem;
-  }
-  .portal-btn:hover { background: var(--primary-hover); }
+/* ══════════════════════════════════════════════════════
+   MOBILE TIMELINE (hidden on desktop)
+══════════════════════════════════════════════════════ */
+.tl-wrap { margin-bottom: 1.5rem; }
 
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 2rem 1.5rem;
-    font-family: 'Lora', 'Prompt', serif;
-    font-size: .68rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    border-top: 1px solid var(--footer-border);
-  }
-  footer .th {
-    font-family: 'Prompt', sans-serif;
-    font-weight: 300;
-    letter-spacing: .02em;
-    text-transform: none;
-    font-size: .75rem;
-  }
+@media (min-width: 960px) { .tl-wrap { display: none; } }
 
-  /* Responsive */
-  @media (max-width: 580px) {
-    .site-header h1 { font-size: 1.375rem; }
-    .site-header h1 .th { font-size: 1.2rem; }
-    .timeline { grid-template-columns: repeat(2, 1fr); }
-    .tl-step:nth-child(2) { border-right: none; }
-    .tl-step:nth-child(1),
-    .tl-step:nth-child(2) { border-bottom: 1px dashed var(--border); }
-    .card { padding: 1.25rem; }
-    .wrap { padding: 1.25rem .875rem 3rem; }
-    .portal { padding: 1.75rem 1.25rem; }
-  }
+.tl-heading {
+  display: flex; align-items: center; gap: .75rem;
+  margin-bottom: .875rem;
+}
+.tl-heading-text {
+  font-family: 'Lora', 'Prompt', serif;
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--secondary); white-space: nowrap;
+}
+.tl-heading-text.th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 500; letter-spacing: .04em;
+  text-transform: none; font-size: .78rem;
+}
+.tl-heading::before, .tl-heading::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+.timeline {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: background .2s, border-color .2s;
+}
+.tl-step {
+  padding: 1.125rem .75rem; text-align: center;
+  border-right: 1px dashed var(--border);
+}
+.tl-step:last-child { border-right: none; }
+.tl-n {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.875rem; height: 1.875rem; border-radius: 9999px;
+  background: var(--primary); color: var(--primary-fg);
+  font-family: 'Lora', serif; font-size: .75rem; font-weight: 500;
+  margin-bottom: .4rem;
+}
+.tl-step.hl .tl-n { background: var(--secondary); color: #FFF; }
+.tl-lbl {
+  font-family: 'Lora', serif; font-size: .7rem; font-weight: 500;
+  color: var(--text-1); line-height: 1.3;
+}
+.tl-lbl.th { font-family: 'Prompt', sans-serif !important; font-weight: 400; font-size: .75rem; }
+.tl-step.hl .tl-lbl { color: var(--tl-hl-text); }
+.tl-dt {
+  font-family: 'Lora', serif; font-size: .62rem; color: var(--text-3); margin-top: .2rem;
+}
+.tl-dt.th { font-family: 'Prompt', sans-serif !important; font-weight: 300; font-size: .7rem; }
+
+/* ══════════════════════════════════════════════════════
+   CARD
+══════════════════════════════════════════════════════ */
+.card, #portal { scroll-margin-top: var(--nav-h); }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: background .2s, border-color .2s, box-shadow .2s;
+}
+
+.card-hd {
+  display: flex; align-items: center; gap: .875rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border);
+  margin-bottom: 1.5rem;
+}
+.card-num {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 2rem; height: 2rem; border-radius: 9999px;
+  background: var(--primary); color: var(--primary-fg);
+  font-family: 'Lora', serif; font-size: .78rem; font-weight: 500;
+  flex-shrink: 0;
+}
+.card-hd h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary); font-size: 1.1rem; font-weight: 700; line-height: 1.3;
+}
+.card-hd h2 .th { font-family: 'Prompt', sans-serif !important; font-weight: 600; font-size: 1rem; }
+
+/* Sub-heading */
+.sub-h {
+  font-family: 'Lora', serif; font-size: .7rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-2);
+  margin: 1.5rem 0 .875rem;
+  display: flex; align-items: center; gap: .625rem;
+}
+.sub-h .th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 500; letter-spacing: .02em;
+  text-transform: none; font-size: .8rem;
+}
+.sub-h::before {
+  content: ''; display: inline-block;
+  width: 3px; height: .875rem;
+  background: var(--secondary); border-radius: 9999px; flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   LIST COMPONENTS
+══════════════════════════════════════════════════════ */
+/* Bullet list */
+.bl { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+.bl li {
+  display: flex; gap: .625rem; align-items: flex-start;
+  font-family: 'Lora', serif; font-size: .9375rem; color: var(--text-1);
+}
+.bl li .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.bl li::before { content: '—'; color: var(--secondary); flex-shrink: 0; margin-top: .05rem; }
+
+/* Checklist */
+.cl { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.cl li {
+  display: flex; align-items: flex-start; gap: .75rem;
+  padding: .625rem 1rem;
+  background: var(--surface-tint); border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Lora', serif; font-size: .9rem; color: var(--text-1);
+  transition: background .2s, border-color .2s;
+}
+.cl li .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.ci { color: var(--secondary); font-size: .9rem; flex-shrink: 0; margin-top: .05rem; }
+.cn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.375rem; height: 1.375rem; border-radius: 9999px;
+  background: var(--primary); color: var(--primary-fg);
+  font-family: 'Lora', serif; font-size: .65rem; font-weight: 500;
+  flex-shrink: 0; margin-top: .1rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   ALERTS
+══════════════════════════════════════════════════════ */
+.al {
+  display: flex; gap: .75rem; align-items: flex-start;
+  border-radius: 8px; padding: .875rem 1rem;
+  font-family: 'Lora', serif; font-size: .9rem; margin-top: 1rem;
+}
+.al .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.al * .th { font-family: 'Prompt', sans-serif !important; }
+.al-i { flex-shrink: 0; margin-top: .05rem; }
+.al.pend { background:var(--al-pend-bg); border:1px solid var(--al-pend-b); color:var(--al-pend-c); }
+.al.info { background:var(--al-info-bg); border:1px solid var(--al-info-b); color:var(--al-info-c); }
+.al.warn { background:var(--al-warn-bg); border:1px solid var(--al-warn-b); color:var(--al-warn-c); }
+.al.ok   { background:var(--al-ok-bg);   border:1px solid var(--al-ok-b);   color:var(--al-ok-c);   }
+
+/* ══════════════════════════════════════════════════════
+   BADGES & CHIPS
+══════════════════════════════════════════════════════ */
+.dbadge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: var(--primary-muted); color: var(--primary);
+  border: 1px solid var(--primary-muted-b);
+  border-radius: 9999px; padding: .22rem 1rem;
+  font-family: 'Lora', serif; font-size: .72rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.dbadge .th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 400; letter-spacing: .02em; text-transform: none; font-size: .8rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   LOCATION BOX
+══════════════════════════════════════════════════════ */
+.loc {
+  display: flex; gap: .75rem; align-items: flex-start;
+  background: var(--surface-tint); border: 1px solid var(--border);
+  border-radius: 8px; padding: .875rem 1rem;
+  font-family: 'Lora', serif; font-size: .9rem;
+  margin-bottom: 1.25rem; color: var(--text-1);
+  transition: background .2s, border-color .2s;
+}
+.loc .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.loc-i { font-size: 1rem; flex-shrink: 0; margin-top: .05rem; }
+
+/* ══════════════════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════════════════ */
+.fbtn {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  background: var(--primary); color: var(--primary-fg);
+  padding: .75rem 1.75rem; border-radius: 8px;
+  font-family: 'Lora', serif; font-size: .82rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; margin-top: 1.25rem;
+  transition: background .15s;
+}
+.fbtn .th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 400; letter-spacing: .02em; text-transform: none; font-size: .875rem;
+}
+.fbtn:hover { background: var(--primary-hover); }
+
+.dlink {
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: var(--primary-muted); color: var(--primary);
+  padding: .2rem .7rem; border-radius: 9999px;
+  border: 1px solid var(--primary-muted-b);
+  font-family: 'Lora', serif; font-size: .65rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; margin-top: .3rem;
+  transition: opacity .15s;
+}
+.dlink .th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 400; letter-spacing: .01em; text-transform: none; font-size: .72rem;
+}
+.dlink:hover { opacity: .75; }
+
+/* ══════════════════════════════════════════════════════
+   PORTAL
+══════════════════════════════════════════════════════ */
+.portal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--secondary);
+  border-radius: 12px; padding: 2.5rem;
+  text-align: center; color: var(--text-1);
+  margin-bottom: 2rem; box-shadow: var(--shadow);
+  transition: background .2s, border-color .2s;
+}
+.portal h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; font-weight: 700;
+  color: var(--primary); margin-bottom: .5rem;
+}
+.portal h3 .th { font-family: 'Prompt', sans-serif !important; font-weight: 600; font-size: 1.15rem; }
+.portal p {
+  font-family: 'Lora', serif; font-size: .9rem;
+  color: var(--text-2); margin-bottom: 1.5rem;
+}
+.portal p .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.portal-btn {
+  display: inline-block;
+  background: var(--primary); color: var(--primary-fg);
+  padding: .75rem 2.25rem; border-radius: 8px;
+  font-family: 'Lora', serif; font-weight: 500;
+  font-size: .82rem; letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; transition: background .15s;
+}
+.portal-btn .th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 400; letter-spacing: .02em; text-transform: none; font-size: .875rem;
+}
+.portal-btn:hover { background: var(--primary-hover); }
+
+/* ══════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════ */
+footer {
+  text-align: center; padding: 2rem 1.5rem;
+  font-family: 'Lora', serif; font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-3);
+  border-top: 1px solid var(--border);
+}
+footer .th {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 300; letter-spacing: .02em;
+  text-transform: none; font-size: .75rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — Mobile tweaks
+══════════════════════════════════════════════════════ */
+@media (max-width: 580px) {
+  .site-header h1 { font-size: 1.3rem; }
+  .site-header h1 .th { font-size: 1.15rem; }
+  .timeline { grid-template-columns: repeat(2, 1fr); }
+  .tl-step:nth-child(2) { border-right: none; }
+  .tl-step:nth-child(1), .tl-step:nth-child(2) { border-bottom: 1px dashed var(--border); }
+  .card { padding: 1.25rem; }
+  .page-body { padding: 1.25rem .875rem 3rem; }
+  .portal { padding: 1.75rem 1.25rem; }
+}
 </style>
 </head>
 <body>
@@ -744,16 +734,8 @@
      NAV
 ══════════════════════════════════════ -->
 <nav class="site-nav">
-  <a href="#docs" class="th">1. เอกสารแนบท้าย</a>
-  <a href="#docs" class="en">1. Contract Appendix</a>
-  <a href="#account" class="th">2. เปิดบัญชี</a>
-  <a href="#account" class="en">2. Open Account</a>
-  <a href="#submit" class="th">3. จัดส่งเอกสาร</a>
-  <a href="#submit" class="en">3. Submit Documents</a>
-  <a href="#sign" class="th">4. ลงนามสัญญา</a>
-  <a href="#sign" class="en">4. Sign Contract</a>
-  <a href="#portal" class="th">เอกสารของฉัน</a>
-  <a href="#portal" class="en">My Documents</a>
+  <span class="nav-brand th">คู่มือทุนวิจัย มฟล.</span>
+  <span class="nav-brand en">MFU Research Grant Guide</span>
   <div class="nav-controls">
     <button class="theme-btn" id="btn-theme" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
     <div class="lang-toggle">
@@ -761,300 +743,378 @@
       <button id="btn-en" onclick="setLang('en')">EN</button>
     </div>
   </div>
+  <div class="nav-links">
+    <a href="#docs" class="th">1. เอกสารแนบท้าย</a>
+    <a href="#docs" class="en">1. Contract Appendix</a>
+    <a href="#account" class="th">2. เปิดบัญชี</a>
+    <a href="#account" class="en">2. Open Account</a>
+    <a href="#submit" class="th">3. จัดส่งเอกสาร</a>
+    <a href="#submit" class="en">3. Submit Docs</a>
+    <a href="#sign" class="th">4. ลงนามสัญญา</a>
+    <a href="#sign" class="en">4. Sign Contract</a>
+    <a href="#portal" class="th">เอกสารของฉัน</a>
+    <a href="#portal" class="en">My Documents</a>
+  </div>
 </nav>
 
 <!-- ══════════════════════════════════════
-     CONTENT
+     PAGE BODY
 ══════════════════════════════════════ -->
-<div class="wrap">
+<div class="page-body">
 
-  <!-- ── Timeline ── -->
-  <div class="tl-wrap">
-    <div class="tl-heading">
-      <span class="tl-heading-text th">สิ่งที่ต้องดำเนินการ</span>
-      <span class="tl-heading-text en">Steps to Complete</span>
-    </div>
-    <div class="timeline">
-      <div class="tl-step">
-        <div class="tl-n">1</div>
-        <div class="tl-lbl th">เตรียมเอกสาร<br>แนบท้าย</div>
-        <div class="tl-lbl en">Prepare Contract<br>Appendix</div>
-        <div class="tl-dt th">ดำเนินการก่อน</div>
-        <div class="tl-dt en">Complete first</div>
-      </div>
-      <div class="tl-step">
-        <div class="tl-n">2</div>
-        <div class="tl-lbl th">เปิดบัญชี</div>
-        <div class="tl-lbl en">Open Account</div>
-        <div class="tl-dt th">ก่อนส่งเอกสาร</div>
-        <div class="tl-dt en">Before submission</div>
-      </div>
-      <div class="tl-step hl">
-        <div class="tl-n">3</div>
-        <div class="tl-lbl th">ส่งเอกสาร PDF</div>
-        <div class="tl-lbl en">Submit PDF Files</div>
-        <div class="tl-dt th">ภายใน [วันที่]</div>
-        <div class="tl-dt en">By [Date]</div>
-      </div>
-      <div class="tl-step hl">
-        <div class="tl-n">4</div>
-        <div class="tl-lbl th">ลงนามสัญญา</div>
-        <div class="tl-lbl en">Sign Contract</div>
-        <div class="tl-dt th">[ช่วงวันที่]</div>
-        <div class="tl-dt en">[Date Range]</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       Section 1: เอกสารแนบท้ายสัญญา
-  ══════════════════════════════════════ -->
-  <section class="card" id="docs">
-    <div class="card-hd">
-      <span class="card-num">1</span>
-      <h2>
-        <span class="th">การจัดทำเอกสารแนบท้ายสัญญา (ข้อเสนอโครงการวิจัย)</span>
-        <span class="en">Preparing Contract Appendix Documents (Research Proposal)</span>
-      </h2>
-    </div>
-
-    <div class="al warn th" style="margin-top:0; margin-bottom:1.25rem">
-      <span class="al-i">⚠️</span>
-      <div>
-        <strong style="font-weight:500">ตรวจสอบและแก้ไขเอกสารให้เรียบร้อยก่อนดำเนินการในขั้นตอนถัดไป</strong><br>
-        <span style="font-size:.85rem">ตรวจสอบสถานะและความคิดเห็นได้ที่หน้า
-          <a href="#portal" style="color:inherit; font-weight:500">เอกสารของฉัน</a>
+  <!-- ── Sidebar (desktop only) ── -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <p class="sidebar-label">
+        <span class="th">สิ่งที่ต้องดำเนินการ</span>
+        <span class="en">Steps to Complete</span>
+      </p>
+      <ol class="step-nav">
+        <li>
+          <a href="#docs" class="step-nav-link">
+            <span class="step-n">1</span>
+            <span>
+              <span class="th">เอกสารแนบท้ายสัญญา</span>
+              <span class="en">Contract Appendix</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#account" class="step-nav-link">
+            <span class="step-n">2</span>
+            <span>
+              <span class="th">การเปิดบัญชี</span>
+              <span class="en">Open Account</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#submit" class="step-nav-link">
+            <span class="step-n">3</span>
+            <span>
+              <span class="th">การจัดส่งเอกสาร</span>
+              <span class="en">Submit Documents</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#sign" class="step-nav-link">
+            <span class="step-n">4</span>
+            <span>
+              <span class="th">การลงนามสัญญา</span>
+              <span class="en">Sign Contract</span>
+            </span>
+          </a>
+        </li>
+      </ol>
+      <div class="sidebar-divider"></div>
+      <a href="#portal" class="sidebar-portal-link">
+        <span>🔐</span>
+        <span>
+          <span class="th">เอกสารของฉัน →</span>
+          <span class="en">My Documents →</span>
         </span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main>
+
+    <!-- Mobile Timeline (hidden on desktop) -->
+    <div class="tl-wrap">
+      <div class="tl-heading">
+        <span class="tl-heading-text th">สิ่งที่ต้องดำเนินการ</span>
+        <span class="tl-heading-text en">Steps to Complete</span>
       </div>
-    </div>
-    <div class="al warn en" style="margin-top:0; margin-bottom:1.25rem">
-      <span class="al-i">⚠️</span>
-      <div>
-        <strong style="font-weight:500">Please review and complete all document corrections before proceeding to the next step.</strong><br>
-        <span style="font-size:.85rem">Check your status and comments on the
-          <a href="#portal" style="color:inherit; font-weight:500">My Documents</a> page.
-        </span>
-      </div>
-    </div>
-
-    <ul class="cl th">
-      <li><span class="ci">☐</span><span>พิมพ์ข้อเสนอโครงการฯ จำนวน <strong style="font-weight:500">2 ฉบับ</strong> (พิมพ์หน้าเดียว)</span></li>
-      <li><span class="ci">☐</span><span>ลงนามมุมขวาล่างของข้อเสนอโครงการฯ <strong style="font-weight:500">ทุกหน้า</strong> จำนวน 2 ฉบับ</span></li>
-      <li><span class="ci">☐</span><span>หัวหน้าโครงการลงนามในตำแหน่ง <strong style="font-weight:500">หัวหน้าโครงการวิจัย</strong> จำนวน 2 ฉบับ</span></li>
-      <li><span class="ci">☐</span><span>ที่ปรึกษาและผู้ร่วมโครงการ (ถ้ามี) ลงนามครบถ้วน จำนวน 2 ฉบับ</span></li>
-    </ul>
-    <ul class="cl en">
-      <li><span class="ci">☐</span><span>Print the research proposal: <strong style="font-weight:500">2 copies</strong> (single-sided printing)</span></li>
-      <li><span class="ci">☐</span><span>Sign at the <strong style="font-weight:500">bottom-right corner</strong> of every page of the proposal, 2 copies</span></li>
-      <li><span class="ci">☐</span><span>The project leader signs in the <strong style="font-weight:500">Research Project Leader</strong> position, 2 copies</span></li>
-      <li><span class="ci">☐</span><span>Advisors and co-investigators (if any) must all sign, 2 copies</span></li>
-    </ul>
-
-    <div class="al info th">
-      <span class="al-i">💡</span>
-      <span>แนะนำให้ใช้ <strong style="font-weight:500">ปากกาสีน้ำเงิน</strong> ในการลงนามทุกฉบับ</span>
-    </div>
-    <div class="al info en">
-      <span class="al-i">💡</span>
-      <span>Recommend using a <strong style="font-weight:500">blue pen</strong> for all signatures</span>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       Section 2: การเปิดบัญชี
-  ══════════════════════════════════════ -->
-  <section class="card" id="account">
-    <div class="card-hd">
-      <span class="card-num">2</span>
-      <h2>
-        <span class="th">การเปิดบัญชี</span>
-        <span class="en">Opening a Bank Account</span>
-      </h2>
-    </div>
-
-    <ul class="bl th">
-      <li><span class="th">เปิดบัญชีโครงการวิจัยในรูปแบบ <strong style="font-weight:500">บัญชีบุคคลธรรมดา ประเภทบัญชีออมทรัพย์</strong></span></li>
-      <li><span class="th">ชื่อบัญชี คือ <strong style="font-weight:500">ชื่อหัวหน้าโครงการวิจัย</strong></span></li>
-      <li><span class="th">ผู้มีอำนาจสั่งจ่าย คือ <strong style="font-weight:500">หัวหน้าโครงการวิจัย</strong></span></li>
-      <li><span class="th">ใช้รับ–จ่ายเงิน <strong style="font-weight:500">เฉพาะโครงการวิจัยนี้เท่านั้น</strong></span></li>
-    </ul>
-    <ul class="bl en">
-      <li>Open a research project bank account as an <strong style="font-weight:500">individual savings account</strong></li>
-      <li>The account name must be the <strong style="font-weight:500">Research Project Leader's name</strong></li>
-      <li>The authorized signatory is the <strong style="font-weight:500">Research Project Leader</strong></li>
-      <li>This account is used <strong style="font-weight:500">exclusively for this research project's income and expenses</strong></li>
-    </ul>
-
-    <div class="al info th" style="margin-top:1rem">
-      <span class="al-i">📝</span>
-      <div>
-        หากมีบัญชีเดิมที่ไม่ได้มีการใช้งาน สามารถใช้บัญชีเดิมได้
-        แต่ต้องใช้<strong style="font-weight:500">เฉพาะรับ-จ่ายเงินโครงการวิจัยนี้เท่านั้น</strong><br>
-        <span style="font-size:.85rem"><strong style="font-weight:500">ข้อปฏิบัติ:</strong> เคลียร์เงินคงเหลือเดิมให้หมด ก่อนรับเงินงวดที่ 1 ภายในเดือนตุลาคม</span>
-      </div>
-    </div>
-    <div class="al info en" style="margin-top:1rem">
-      <span class="al-i">📝</span>
-      <div>
-        If you have an existing unused account, it can be used —
-        but it must be used <strong style="font-weight:500">exclusively for this research project's income and expenses only</strong>.<br>
-        <span style="font-size:.85rem"><strong style="font-weight:500">Requirement:</strong> Clear all remaining balances before receiving the 1st installment by October.</span>
+      <div class="timeline">
+        <div class="tl-step">
+          <div class="tl-n">1</div>
+          <div class="tl-lbl th">เตรียมเอกสาร<br>แนบท้าย</div>
+          <div class="tl-lbl en">Contract<br>Appendix</div>
+          <div class="tl-dt th">ก่อน</div>
+          <div class="tl-dt en">First</div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-n">2</div>
+          <div class="tl-lbl th">เปิดบัญชี</div>
+          <div class="tl-lbl en">Open Account</div>
+          <div class="tl-dt th">ก่อนส่ง</div>
+          <div class="tl-dt en">Before submit</div>
+        </div>
+        <div class="tl-step hl">
+          <div class="tl-n">3</div>
+          <div class="tl-lbl th">ส่ง PDF</div>
+          <div class="tl-lbl en">Submit PDF</div>
+          <!-- DATE: วันที่ส่งเอกสาร PDF -->
+          <div class="tl-dt th">ภายใน [วันที่]</div>
+          <div class="tl-dt en">By [Date]</div>
+        </div>
+        <div class="tl-step hl">
+          <div class="tl-n">4</div>
+          <div class="tl-lbl th">ลงนาม</div>
+          <div class="tl-lbl en">Sign</div>
+          <!-- DATE: ช่วงวันลงนาม -->
+          <div class="tl-dt th">[ช่วงวันที่]</div>
+          <div class="tl-dt en">[Date Range]</div>
+        </div>
       </div>
     </div>
 
-    <div class="sub-h">
-      <span class="th">เอกสารประกอบการเปิดบัญชี — สำหรับบุคลากรสัญชาติไทย</span>
-      <span class="en">Required Documents — Thai Nationals</span>
+    <!-- ═══════════════════════════════════
+         Section 1: เอกสารแนบท้ายสัญญา
+    ═══════════════════════════════════ -->
+    <section class="card" id="docs">
+      <div class="card-hd">
+        <span class="card-num">1</span>
+        <h2>
+          <span class="th">การจัดทำเอกสารแนบท้ายสัญญา (ข้อเสนอโครงการวิจัย)</span>
+          <span class="en">Preparing Contract Appendix Documents (Research Proposal)</span>
+        </h2>
+      </div>
+
+      <div class="al warn th" style="margin-top:0; margin-bottom:1.25rem">
+        <span class="al-i">⚠️</span>
+        <div>
+          <strong style="font-weight:500">ตรวจสอบและแก้ไขเอกสารให้เรียบร้อยก่อนดำเนินการในขั้นตอนถัดไป</strong><br>
+          <span style="font-size:.85rem">ตรวจสอบสถานะและความคิดเห็นได้ที่หน้า
+            <a href="#portal" style="color:inherit;font-weight:500">เอกสารของฉัน</a>
+          </span>
+        </div>
+      </div>
+      <div class="al warn en" style="margin-top:0; margin-bottom:1.25rem">
+        <span class="al-i">⚠️</span>
+        <div>
+          <strong style="font-weight:500">Please review and complete all document corrections before proceeding to the next step.</strong><br>
+          <span style="font-size:.85rem">Check your status and comments on the
+            <a href="#portal" style="color:inherit;font-weight:500">My Documents</a> page.
+          </span>
+        </div>
+      </div>
+
+      <ul class="cl th">
+        <li><span class="ci">☐</span><span>พิมพ์ข้อเสนอโครงการฯ จำนวน <strong style="font-weight:500">2 ฉบับ</strong> (พิมพ์หน้าเดียว)</span></li>
+        <li><span class="ci">☐</span><span>ลงนามมุมขวาล่างของข้อเสนอโครงการฯ <strong style="font-weight:500">ทุกหน้า</strong> จำนวน 2 ฉบับ</span></li>
+        <li><span class="ci">☐</span><span>หัวหน้าโครงการลงนามในตำแหน่ง <strong style="font-weight:500">หัวหน้าโครงการวิจัย</strong> จำนวน 2 ฉบับ</span></li>
+        <li><span class="ci">☐</span><span>ที่ปรึกษาและผู้ร่วมโครงการ (ถ้ามี) ลงนามครบถ้วน จำนวน 2 ฉบับ</span></li>
+      </ul>
+      <ul class="cl en">
+        <li><span class="ci">☐</span><span>Print the research proposal: <strong style="font-weight:500">2 copies</strong> (single-sided printing)</span></li>
+        <li><span class="ci">☐</span><span>Sign at the <strong style="font-weight:500">bottom-right corner</strong> of every page, 2 copies</span></li>
+        <li><span class="ci">☐</span><span>Project leader signs in the <strong style="font-weight:500">Research Project Leader</strong> position, 2 copies</span></li>
+        <li><span class="ci">☐</span><span>Advisors and co-investigators (if any) must all sign, 2 copies</span></li>
+      </ul>
+
+      <div class="al info th">
+        <span class="al-i">💡</span>
+        <span>แนะนำให้ใช้ <strong style="font-weight:500">ปากกาสีน้ำเงิน</strong> ในการลงนามทุกฉบับ</span>
+      </div>
+      <div class="al info en">
+        <span class="al-i">💡</span>
+        <span>Recommend using a <strong style="font-weight:500">blue pen</strong> for all signatures</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         Section 2: การเปิดบัญชี
+    ═══════════════════════════════════ -->
+    <section class="card" id="account">
+      <div class="card-hd">
+        <span class="card-num">2</span>
+        <h2>
+          <span class="th">การเปิดบัญชี</span>
+          <span class="en">Opening a Bank Account</span>
+        </h2>
+      </div>
+
+      <ul class="bl th">
+        <li><span>เปิดบัญชีโครงการวิจัยในรูปแบบ <strong style="font-weight:500">บัญชีบุคคลธรรมดา ประเภทบัญชีออมทรัพย์</strong></span></li>
+        <li><span>ชื่อบัญชี คือ <strong style="font-weight:500">ชื่อหัวหน้าโครงการวิจัย</strong></span></li>
+        <li><span>ผู้มีอำนาจสั่งจ่าย คือ <strong style="font-weight:500">หัวหน้าโครงการวิจัย</strong></span></li>
+        <li><span>ใช้รับ–จ่ายเงิน <strong style="font-weight:500">เฉพาะโครงการวิจัยนี้เท่านั้น</strong></span></li>
+      </ul>
+      <ul class="bl en">
+        <li>Open a research project bank account as an <strong style="font-weight:500">individual savings account</strong></li>
+        <li>The account name must be the <strong style="font-weight:500">Research Project Leader's name</strong></li>
+        <li>The authorized signatory is the <strong style="font-weight:500">Research Project Leader</strong></li>
+        <li>This account is used <strong style="font-weight:500">exclusively for this research project</strong></li>
+      </ul>
+
+      <div class="al info th" style="margin-top:1rem">
+        <span class="al-i">📝</span>
+        <div>
+          หากมีบัญชีเดิมที่ไม่ได้มีการใช้งาน สามารถใช้บัญชีเดิมได้
+          แต่ต้องใช้<strong style="font-weight:500">เฉพาะรับ-จ่ายเงินโครงการวิจัยนี้เท่านั้น</strong><br>
+          <span style="font-size:.85rem"><strong style="font-weight:500">ข้อปฏิบัติ:</strong> เคลียร์เงินคงเหลือเดิมให้หมด ก่อนรับเงินงวดที่ 1 ภายในเดือนตุลาคม</span>
+        </div>
+      </div>
+      <div class="al info en" style="margin-top:1rem">
+        <span class="al-i">📝</span>
+        <div>
+          If you have an existing unused account, it can be used —
+          but it must be used <strong style="font-weight:500">exclusively for this research project only</strong>.<br>
+          <span style="font-size:.85rem"><strong style="font-weight:500">Requirement:</strong> Clear all remaining balances before receiving the 1st installment by October.</span>
+        </div>
+      </div>
+
+      <!-- Thai nationals -->
+      <div class="sub-h">
+        <span class="th">เอกสารประกอบการเปิดบัญชี — สำหรับบุคลากรสัญชาติไทย</span>
+        <span class="en">Required Documents — Thai Nationals</span>
+      </div>
+      <ul class="cl th">
+        <li><span class="cn">1</span><span>ประกาศรายชื่อผู้ได้รับทุน <a href="ANNOUNCEMENT_URL" class="dlink" target="_blank"><span class="th">📄 คลิกเพื่อดูประกาศ</span></a></span></li>
+        <li><span class="cn">2</span><span>บัตรประชาชน</span></li>
+        <li><span class="cn">3</span><span>บัตรพนักงาน (บัตรขาว)</span></li>
+        <li><span class="cn">4</span><span>เงินสดสำหรับเปิดบัญชี <strong style="font-weight:500">500 บาท</strong></span></li>
+      </ul>
+      <ul class="cl en">
+        <li><span class="cn">1</span><span>Grant Recipients Announcement <a href="ANNOUNCEMENT_URL" class="dlink" target="_blank">📄 View Announcement</a></span></li>
+        <li><span class="cn">2</span><span>National ID Card</span></li>
+        <li><span class="cn">3</span><span>MFU Staff Card (white card)</span></li>
+        <li><span class="cn">4</span><span>Cash for account opening: <strong style="font-weight:500">500 THB</strong></span></li>
+      </ul>
+
+      <!-- Foreign nationals -->
+      <div class="sub-h">
+        <span class="th">เอกสารประกอบการเปิดบัญชี — สำหรับบุคลากรชาวต่างชาติ</span>
+        <span class="en">Required Documents — Foreign Nationals</span>
+      </div>
+      <ul class="cl th">
+        <li><span class="cn">1</span><span>ประกาศรายชื่อผู้ได้รับทุน <a href="ANNOUNCEMENT_URL" class="dlink" target="_blank"><span class="th">📄 คลิกเพื่อดูประกาศ</span></a></span></li>
+        <li><span class="cn">2</span><span>หนังสือเดินทาง (Passport) <strong style="font-weight:500">อายุไม่น้อยกว่า 30 วัน</strong> หรือ Travel Document for Aliens (T.D.) / Certificated of Identity (CI)</span></li>
+        <li><span class="cn">3</span><span>ตราอนุญาตเข้าประเทศไทย ประเภทอยู่ชั่วคราว (Non-Immigrant Visa) รหัส <strong style="font-weight:500">B</strong>, <strong style="font-weight:500">EX</strong>, <strong style="font-weight:500">F</strong>, <strong style="font-weight:500">IB</strong>, <strong style="font-weight:500">RS</strong>, <strong style="font-weight:500">Smart Visa</strong>, <strong style="font-weight:500">LTR Visa</strong></span></li>
+        <li><span class="cn">4</span><span>เอกสารแสดงตนที่ส่วนราชการไทย หรือรัฐเจ้าของสัญชาติออกให้ (ภาษาอังกฤษ) เช่น ID Card / Driving license</span></li>
+        <li><span class="cn">5</span><span>Work Permit และ Job Offer</span></li>
+        <li><span class="cn">6</span><span>เงินสดสำหรับเปิดบัญชี <strong style="font-weight:500">500 บาท</strong></span></li>
+      </ul>
+      <ul class="cl en">
+        <li><span class="cn">1</span><span>Grant Recipients Announcement <a href="ANNOUNCEMENT_URL" class="dlink" target="_blank">📄 View Announcement</a></span></li>
+        <li><span class="cn">2</span><span>Passport with <strong style="font-weight:500">at least 30 days validity</strong>, or Travel Document for Aliens (T.D.) / Certificate of Identity (CI)</span></li>
+        <li><span class="cn">3</span><span>Thai Non-Immigrant Visa: <strong style="font-weight:500">B</strong>, <strong style="font-weight:500">EX</strong>, <strong style="font-weight:500">F</strong>, <strong style="font-weight:500">IB</strong>, <strong style="font-weight:500">RS</strong>, <strong style="font-weight:500">Smart Visa</strong>, or <strong style="font-weight:500">LTR Visa</strong></span></li>
+        <li><span class="cn">4</span><span>Identity document issued by Thai or home-country government (in English), e.g. ID Card or Driving License</span></li>
+        <li><span class="cn">5</span><span>Work Permit and Job Offer</span></li>
+        <li><span class="cn">6</span><span>Cash for account opening: <strong style="font-weight:500">500 THB</strong></span></li>
+      </ul>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         Section 3: การจัดส่งเอกสาร
+    ═══════════════════════════════════ -->
+    <section class="card" id="submit">
+      <div class="card-hd">
+        <span class="card-num">3</span>
+        <h2>
+          <span class="th">การจัดส่งเอกสาร</span>
+          <span class="en">Submitting Documents</span>
+        </h2>
+      </div>
+
+      <div class="sub-h" style="margin-top:0">
+        <span class="th">เอกสารที่ต้องจัดส่งในรูปแบบไฟล์ PDF (ก่อนเข้ามาลงนาม)</span>
+        <span class="en">Documents to Submit as PDF Files (Before Coming to Sign)</span>
+      </div>
+
+      <!-- DATE: วันที่ส่งเอกสาร PDF -->
+      <div class="dbadge th">📅 <span>ส่งภายในวันที่ <strong style="font-weight:500">[วันที่]</strong></span></div>
+      <div class="dbadge en">📅 Submit by <strong style="font-weight:500">[Date]</strong></div>
+
+      <p class="th" style="font-size:.9rem; margin-bottom:1rem; color:var(--text-2)">
+        หัวหน้าโครงการวิจัยจะต้องส่งเอกสารในรูปแบบไฟล์ PDF มายังส่วนบริหารงานวิจัย ดังนี้
+      </p>
+      <p class="en" style="font-size:.9rem; margin-bottom:1rem; color:var(--text-2)">
+        The Research Project Leader must submit the following documents as PDF files to the Research Administration Division:
+      </p>
+
+      <ul class="cl th">
+        <li><span class="ci">☐</span><span>Scan ข้อเสนอโครงการฯ ที่<strong style="font-weight:500">ลงนามเรียบร้อยแล้ว</strong> จำนวน 1 ไฟล์</span></li>
+        <li><span class="ci">☐</span><span>Scan หน้าสมุดบัญชีธนาคาร พร้อม<strong style="font-weight:500">รับรองสำเนาถูกต้อง</strong> จำนวน 1 ไฟล์</span></li>
+      </ul>
+      <ul class="cl en">
+        <li><span class="ci">☐</span><span>Scan of the Research Proposal that has been <strong style="font-weight:500">fully signed</strong> — 1 file</span></li>
+        <li><span class="ci">☐</span><span>Scan of the bank account booklet with <strong style="font-weight:500">certified true copy</strong> signature — 1 file</span></li>
+      </ul>
+
+      <a href="GOOGLE_FORM_URL" class="fbtn th"><span>📤 ส่งไฟล์และกรอกข้อมูลผ่าน Google Form</span></a>
+      <a href="GOOGLE_FORM_URL" class="fbtn en">📤 Submit Files via Google Form</a>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         Section 4: การลงนามสัญญา
+    ═══════════════════════════════════ -->
+    <section class="card" id="sign">
+      <div class="card-hd">
+        <span class="card-num">4</span>
+        <h2>
+          <span class="th">การลงนามสัญญา</span>
+          <span class="en">Contract Signing</span>
+        </h2>
+      </div>
+
+      <div class="sub-h" style="margin-top:0">
+        <span class="th">วันและเวลา</span>
+        <span class="en">Date and Time</span>
+      </div>
+
+      <!-- DATE: ช่วงวันลงนาม -->
+      <div class="al ok th" style="margin-top:0; margin-bottom:1rem">
+        <span class="al-i">📅</span>
+        <span>หัวหน้าโครงการวิจัยจะต้องเดินทางมาลงนาม<strong style="font-weight:500">ด้วยตัวเอง</strong>
+          ในระหว่างวันที่ <strong style="font-weight:500">[ช่วงวันที่] เท่านั้น</strong></span>
+      </div>
+      <div class="al ok en" style="margin-top:0; margin-bottom:1rem">
+        <span class="al-i">📅</span>
+        <span>The Research Project Leader must come to sign <strong style="font-weight:500">in person</strong>
+          during <strong style="font-weight:500">[Date Range] only</strong></span>
+      </div>
+
+      <div class="loc th">
+        <span class="loc-i">📍</span>
+        <span><strong style="font-weight:500">ส่วนบริหารงานวิจัย</strong><br>อาคารบริการวิชาการ (AS) ชั้น 2</span>
+      </div>
+      <div class="loc en">
+        <span class="loc-i">📍</span>
+        <span><strong style="font-weight:500">Research Administration Division</strong><br>Academic Services Building (AS), 2nd Floor</span>
+      </div>
+
+      <div class="sub-h">
+        <span class="th">เอกสารที่ต้องนำมาในวันลงนาม</span>
+        <span class="en">Documents to Bring on Signing Day</span>
+      </div>
+
+      <ul class="cl th">
+        <li><span class="cn">1</span><span>เอกสารข้อเสนอโครงการฯ ที่<strong style="font-weight:500">ลงนามเรียบร้อยแล้ว</strong> จำนวน <strong style="font-weight:500">2 ฉบับ</strong></span></li>
+        <li><span class="cn">2</span><span>สำเนาบัญชีธนาคาร พร้อม<strong style="font-weight:500">ลงนามสำเนาถูกต้อง</strong> จำนวน <strong style="font-weight:500">3 ฉบับ</strong></span></li>
+        <li><span class="cn">3</span><span>สำเนาบัตรประชาชน พร้อม<strong style="font-weight:500">ลงนามสำเนาถูกต้อง</strong> จำนวน <strong style="font-weight:500">1 ฉบับ</strong></span></li>
+        <li style="flex-wrap:wrap">
+          <span class="cn">4</span>
+          <span>หนังสือแจ้งยืนยันการขอรับเงินโดยวิธีโอนเงินเข้าบัญชีเงินฝากธนาคาร จำนวน <strong style="font-weight:500">1 ฉบับ</strong><br>
+            <a href="FORM_LINK_HERE" class="dlink" target="_blank"><span class="th">📄 คลิกเพื่อเข้าถึงแบบฟอร์ม</span></a></span>
+        </li>
+      </ul>
+      <ul class="cl en">
+        <li><span class="cn">1</span><span>Signed Research Proposal — <strong style="font-weight:500">2 copies</strong></span></li>
+        <li><span class="cn">2</span><span>Copy of bank account booklet with <strong style="font-weight:500">certified true copy</strong> signature — <strong style="font-weight:500">3 copies</strong></span></li>
+        <li><span class="cn">3</span><span>Copy of national ID card with <strong style="font-weight:500">certified true copy</strong> signature — <strong style="font-weight:500">1 copy</strong></span></li>
+        <li style="flex-wrap:wrap">
+          <span class="cn">4</span>
+          <span>Bank Transfer Authorization Letter — <strong style="font-weight:500">1 copy</strong><br>
+            <a href="FORM_LINK_HERE" class="dlink" target="_blank">📄 Access the form</a></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         Portal
+    ═══════════════════════════════════ -->
+    <div class="portal" id="portal">
+      <h3><span class="th">เอกสารของฉัน</span><span class="en">My Documents</span></h3>
+      <p><span class="th">ตรวจสอบสถานะเอกสาร ลิงก์ความคิดเห็น และวันนัดหมายของท่าน</span><span class="en">Check your document status, comment link, and appointment date.</span></p>
+      <a href="PORTAL_URL_HERE" class="portal-btn th"><span>เข้าสู่ระบบเพื่อดูเอกสาร →</span></a>
+      <a href="PORTAL_URL_HERE" class="portal-btn en">Log In to View My Documents →</a>
     </div>
-    <ul class="cl th">
-      <li><span class="cn">1</span><span>ประกาศรายชื่อผู้ได้รับทุน <a href="ANNOUNCEMENT_URL" class="dlink" target="_blank"><span class="th">📄 คลิกเพื่อดูประกาศ</span></a></span></li>
-      <li><span class="cn">2</span><span>บัตรประชาชน</span></li>
-      <li><span class="cn">3</span><span>บัตรพนักงาน (บัตรขาว)</span></li>
-      <li><span class="cn">4</span><span>เงินสดสำหรับเปิดบัญชี <strong style="font-weight:500">500 บาท</strong></span></li>
-    </ul>
-    <ul class="cl en">
-      <li><span class="cn">1</span><span>Grant Recipients Announcement <a href="ANNOUNCEMENT_URL" class="dlink" target="_blank">📄 View Announcement</a></span></li>
-      <li><span class="cn">2</span><span>National ID Card</span></li>
-      <li><span class="cn">3</span><span>MFU Staff Card (white card)</span></li>
-      <li><span class="cn">4</span><span>Cash for account opening: <strong style="font-weight:500">500 THB</strong></span></li>
-    </ul>
 
-    <div class="sub-h">
-      <span class="th">เอกสารประกอบการเปิดบัญชี — สำหรับบุคลากรชาวต่างชาติ</span>
-      <span class="en">Required Documents — Foreign Nationals</span>
-    </div>
-    <ul class="cl th">
-      <li><span class="cn">1</span><span>ประกาศรายชื่อผู้ได้รับทุน <a href="ANNOUNCEMENT_URL" class="dlink" target="_blank"><span class="th">📄 คลิกเพื่อดูประกาศ</span></a></span></li>
-      <li><span class="cn">2</span><span>หนังสือเดินทาง (Passport) <strong style="font-weight:500">อายุไม่น้อยกว่า 30 วัน</strong> หรือ Travel Document for Aliens (T.D.) / Certificated of Identity (CI)</span></li>
-      <li><span class="cn">3</span><span>ตราอนุญาตเข้าประเทศไทย ประเภทอยู่ชั่วคราว (Non-Immigrant Visa) รหัส <strong style="font-weight:500">B</strong> (Business), <strong style="font-weight:500">EX</strong> (Expert/Specialist), <strong style="font-weight:500">F</strong> (Official Duties), <strong style="font-weight:500">IB</strong> (Board of Investment), <strong style="font-weight:500">RS</strong> (Scientific Research), <strong style="font-weight:500">Smart Visa</strong>, <strong style="font-weight:500">LTR Visa</strong></span></li>
-      <li><span class="cn">4</span><span>เอกสารแสดงตนที่ส่วนราชการไทย หรือรัฐเจ้าของสัญชาติออกให้ (ข้อมูลเป็นภาษาอังกฤษ) เช่น ID Card / Driving license</span></li>
-      <li><span class="cn">5</span><span>Work Permit และ Job Offer</span></li>
-      <li><span class="cn">6</span><span>เงินสดสำหรับเปิดบัญชี <strong style="font-weight:500">500 บาท</strong></span></li>
-    </ul>
-    <ul class="cl en">
-      <li><span class="cn">1</span><span>Grant Recipients Announcement <a href="ANNOUNCEMENT_URL" class="dlink" target="_blank">📄 View Announcement</a></span></li>
-      <li><span class="cn">2</span><span>Passport with <strong style="font-weight:500">at least 30 days validity</strong>, or Travel Document for Aliens (T.D.) / Certificate of Identity (CI)</span></li>
-      <li><span class="cn">3</span><span>Thai entry visa (Non-Immigrant Visa): <strong style="font-weight:500">B</strong> (Business), <strong style="font-weight:500">EX</strong> (Expert/Specialist), <strong style="font-weight:500">F</strong> (Official Duties), <strong style="font-weight:500">IB</strong> (Board of Investment), <strong style="font-weight:500">RS</strong> (Scientific Research), <strong style="font-weight:500">Smart Visa</strong>, or <strong style="font-weight:500">LTR Visa</strong></span></li>
-      <li><span class="cn">4</span><span>Identity document issued by a Thai government authority or the applicant's home country government (in English), e.g. ID Card or Driving License</span></li>
-      <li><span class="cn">5</span><span>Work Permit and Job Offer</span></li>
-      <li><span class="cn">6</span><span>Cash for account opening: <strong style="font-weight:500">500 THB</strong></span></li>
-    </ul>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       Section 3: การจัดส่งเอกสาร
-  ══════════════════════════════════════ -->
-  <section class="card" id="submit">
-    <div class="card-hd">
-      <span class="card-num">3</span>
-      <h2>
-        <span class="th">การจัดส่งเอกสาร</span>
-        <span class="en">Submitting Documents</span>
-      </h2>
-    </div>
-
-    <div class="sub-h" style="margin-top:0">
-      <span class="th">เอกสารที่ต้องจัดส่งในรูปแบบไฟล์ PDF (ก่อนเข้ามาลงนาม)</span>
-      <span class="en">Documents to Submit as PDF Files (Before Coming to Sign)</span>
-    </div>
-
-    <div class="dbadge th">📅 <span class="th">ส่งภายในวันที่ <strong style="font-weight:500">[วันที่]</strong></span></div>
-    <div class="dbadge en">📅 Submit by <strong style="font-weight:500">[Date]</strong></div>
-
-    <p class="th" style="font-family:'Prompt',sans-serif; font-weight:300; font-size:.9rem; margin-bottom:1rem; color:var(--text-2)">
-      หัวหน้าโครงการวิจัยจะต้องส่งเอกสารในรูปแบบไฟล์ PDF มายังส่วนบริหารงานวิจัย ดังนี้
-    </p>
-    <p class="en" style="font-size:.9rem; margin-bottom:1rem; color:var(--text-2)">
-      The Research Project Leader must submit the following documents as PDF files to the Research Administration Division:
-    </p>
-
-    <ul class="cl th">
-      <li><span class="ci">☐</span><span>Scan ข้อเสนอโครงการฯ ที่<strong style="font-weight:500">ลงนามเรียบร้อยแล้ว</strong> จำนวน 1 ไฟล์</span></li>
-      <li><span class="ci">☐</span><span>Scan หน้าสมุดบัญชีธนาคาร พร้อม<strong style="font-weight:500">รับรองสำเนาถูกต้อง</strong> จำนวน 1 ไฟล์</span></li>
-    </ul>
-    <ul class="cl en">
-      <li><span class="ci">☐</span><span>Scan of the Research Proposal that has been <strong style="font-weight:500">fully signed</strong> — 1 file</span></li>
-      <li><span class="ci">☐</span><span>Scan of the bank account booklet page with <strong style="font-weight:500">certified true copy</strong> signature — 1 file</span></li>
-    </ul>
-
-    <a href="GOOGLE_FORM_URL" class="fbtn th"><span class="th">📤 ส่งไฟล์และกรอกข้อมูลผ่าน Google Form</span></a>
-    <a href="GOOGLE_FORM_URL" class="fbtn en">📤 Submit Files via Google Form</a>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       Section 4: การลงนามสัญญา
-  ══════════════════════════════════════ -->
-  <section class="card" id="sign">
-    <div class="card-hd">
-      <span class="card-num">4</span>
-      <h2>
-        <span class="th">การลงนามสัญญา</span>
-        <span class="en">Contract Signing</span>
-      </h2>
-    </div>
-
-    <div class="sub-h" style="margin-top:0">
-      <span class="th">วันและเวลา</span>
-      <span class="en">Date and Time</span>
-    </div>
-
-    <div class="al ok th" style="margin-top:0; margin-bottom:1rem">
-      <span class="al-i">📅</span>
-      <span>หัวหน้าโครงการวิจัยจะต้องเดินทางมาลงนาม<strong style="font-weight:500">ด้วยตัวเอง</strong>
-        ในระหว่างวันที่ <strong style="font-weight:500">[ช่วงวันที่] เท่านั้น</strong></span>
-    </div>
-    <div class="al ok en" style="margin-top:0; margin-bottom:1rem">
-      <span class="al-i">📅</span>
-      <span>The Research Project Leader must come to sign <strong style="font-weight:500">in person</strong>
-        during <strong style="font-weight:500">[Date Range] only</strong></span>
-    </div>
-
-    <div class="loc th">
-      <span class="loc-i">📍</span>
-      <span><strong style="font-weight:500">ส่วนบริหารงานวิจัย</strong><br>อาคารบริการวิชาการ (AS) ชั้น 2</span>
-    </div>
-    <div class="loc en">
-      <span class="loc-i">📍</span>
-      <span><strong style="font-weight:500">Research Administration Division</strong><br>Academic Services Building (AS), 2nd Floor</span>
-    </div>
-
-    <div class="sub-h">
-      <span class="th">เอกสารที่ต้องนำมาในวันลงนาม</span>
-      <span class="en">Documents to Bring on Signing Day</span>
-    </div>
-
-    <ul class="cl th">
-      <li><span class="cn">1</span><span>เอกสารข้อเสนอโครงการฯ (Proposal) ที่<strong style="font-weight:500">ลงนามเรียบร้อยแล้ว</strong> จำนวน <strong style="font-weight:500">2 ฉบับ</strong></span></li>
-      <li><span class="cn">2</span><span>สำเนาบัญชีธนาคาร พร้อม<strong style="font-weight:500">ลงนามสำเนาถูกต้อง</strong> จำนวน <strong style="font-weight:500">3 ฉบับ</strong></span></li>
-      <li><span class="cn">3</span><span>สำเนาบัตรประชาชน พร้อม<strong style="font-weight:500">ลงนามสำเนาถูกต้อง</strong> จำนวน <strong style="font-weight:500">1 ฉบับ</strong></span></li>
-      <li style="flex-wrap:wrap">
-        <span class="cn">4</span>
-        <span>หนังสือแจ้งยืนยันการขอรับเงินโดยวิธีโอนเงินเข้าบัญชีเงินฝากธนาคาร จำนวน <strong style="font-weight:500">1 ฉบับ</strong><br>
-          <a href="FORM_LINK_HERE" class="dlink" target="_blank"><span class="th">📄 คลิกเพื่อเข้าถึงแบบฟอร์ม</span></a></span>
-      </li>
-    </ul>
-    <ul class="cl en">
-      <li><span class="cn">1</span><span>Signed Research Proposal — <strong style="font-weight:500">2 copies</strong></span></li>
-      <li><span class="cn">2</span><span>Copy of bank account booklet with <strong style="font-weight:500">certified true copy</strong> signature — <strong style="font-weight:500">3 copies</strong></span></li>
-      <li><span class="cn">3</span><span>Copy of national ID card with <strong style="font-weight:500">certified true copy</strong> signature — <strong style="font-weight:500">1 copy</strong></span></li>
-      <li style="flex-wrap:wrap">
-        <span class="cn">4</span>
-        <span>Bank Transfer Authorization Letter — <strong style="font-weight:500">1 copy</strong><br>
-          <a href="FORM_LINK_HERE" class="dlink" target="_blank">📄 Access the form</a></span>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       Personal Portal
-  ══════════════════════════════════════ -->
-  <div class="portal" id="portal">
-    <h3><span class="th">เอกสารของฉัน</span><span class="en">My Documents</span></h3>
-    <p><span class="th">ตรวจสอบสถานะเอกสาร ลิงก์ความคิดเห็น และวันนัดหมายของท่าน</span><span class="en">Check your document status, comment link, and appointment date.</span></p>
-    <a href="PORTAL_URL_HERE" class="portal-btn th"><span class="th">เข้าสู่ระบบเพื่อดูเอกสาร →</span></a>
-    <a href="PORTAL_URL_HERE" class="portal-btn en">Log In to View My Documents →</a>
-  </div>
-
+  </main>
 </div>
 
 <footer>
@@ -1063,7 +1123,7 @@
 </footer>
 
 <script>
-  // ── Dark mode — apply saved preference before first paint ──
+  // ── Dark mode: apply before first paint ──
   (function () {
     const saved = localStorage.getItem('theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
@@ -1075,20 +1135,16 @@
     if (t === 'light') return false;
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
-
   function updateThemeBtn() {
     const btn = document.getElementById('btn-theme');
     if (btn) btn.textContent = isDark() ? '☀️' : '🌙';
   }
-
   function toggleTheme() {
     const next = isDark() ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     updateThemeBtn();
   }
-
-  // Init button icon
   updateThemeBtn();
 
   // ── Language ──
@@ -1099,16 +1155,17 @@
     document.documentElement.lang = lang === 'th' ? 'th' : 'en';
   }
 
-  // ── Nav active on scroll ──
+  // ── Nav + sidebar active on scroll ──
   const secs = document.querySelectorAll('section[id], div[id="portal"]');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        document.querySelectorAll('.site-nav a').forEach(a => a.classList.remove('on'));
-        document.querySelectorAll(`.site-nav a[href="#${e.target.id}"]`).forEach(a => a.classList.add('on'));
+        document.querySelectorAll('.nav-links a, .step-nav-link').forEach(a => a.classList.remove('on'));
+        document.querySelectorAll(`.nav-links a[href="#${e.target.id}"], .step-nav-link[href="#${e.target.id}"]`)
+          .forEach(a => a.classList.add('on'));
       }
     });
-  }, { rootMargin: '-30% 0px -55% 0px' });
+  }, { rootMargin: '-20% 0px -55% 0px' });
   secs.forEach(s => obs.observe(s));
 </script>
 
