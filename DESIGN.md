@@ -31,26 +31,32 @@ Update this file whenever design tokens change.
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--bg` | `#0C0907` | Near-black espresso background |
-| `--surface` | `#1C1210` | Card backgrounds (dark warm wood) |
-| `--surface-tint` | `#221510` | Subtle tinted rows |
-| `--border` | `#332018` | Card borders |
-| `--primary` | `#881337` | Burgundy (same — works on dark) |
-| `--primary-hover` | `#A31A44` | Button hover (slightly lighter) |
-| `--secondary` | `#D97706` | Amber (brighter than light mode) |
-| `--text-1` | `#EDE0CC` | Warm cream |
-| `--text-2` | `#B09078` | Warm medium |
-| `--text-3` | `#6A5040` | Dark muted |
-| `--nav-bg` | `#150E0B` | Nav background |
+| `--bg` | `#24242a` | Page background (dark gray) |
+| `--surface` | `#313238` | Card, sidebar backgrounds |
+| `--surface-tint` | `#35353d` | Checklist items, hover rows |
+| `--border` | `#44444f` | Card borders, dividers |
+| `--primary` | `#863e3b` | Dark red — buttons, active states |
+| `--primary-hover` | `#9e4a47` | Button hover |
+| `--primary-text` | `#dba758` | Amber — badge text, highlights, timeline |
+| `--secondary` | `#dba758` | Amber — sub-headings, bullets, icons |
+| `--tl-hl-text` | `#dba758` | Highlighted timeline step date text |
+| `--text-1` | `#EEEEF2` | Near-white primary text |
+| `--text-2` | `#9090A8` | Muted secondary text |
+| `--text-3` | `#55556A` | Tertiary/placeholder text |
+| `--nav-bg` | `#1e1e24` | Nav background (slightly darker than bg) |
+| `--nav-text` | `#9090A8` | Nav link default color |
+| `--sidebar-bg` | `#313238` | Sidebar background (same as surface) |
+
+**Palette rationale:** Gray base keeps the UI neutral and readable. Amber (`#dba758`) serves as the primary accent (badges, highlights). Dark red (`#863e3b`) is reserved for interactive elements. Purple (`#624e73`) appears only in info alert tint.
 
 ### Alert Colors
 
 | Variant | Light bg | Light text | Dark bg | Dark text |
 |---------|----------|------------|---------|-----------|
-| `warn` | `rgba(239,68,68,.06)` | `#B91C1C` | `rgba(180,40,40,.12)` | `#E89090` |
-| `info` | `rgba(124,58,237,.06)` | `#6D28D9` | `rgba(130,100,220,.1)` | `#B8A8E8` |
+| `warn` | `rgba(239,68,68,.06)` | `#B91C1C` | `rgba(134,62,59,.15)` | `#e08888` |
+| `info` | `rgba(124,58,237,.06)` | `#6D28D9` | `rgba(98,78,115,.15)` | `#b898d8` |
 | `ok` | `rgba(5,150,105,.06)` | `#047857` | `rgba(40,160,100,.09)` | `#80D4A8` |
-| `pend` | `rgba(180,83,9,.07)` | `#92400E` | `rgba(185,130,30,.1)` | `#DEBA78` |
+| `pend` | `rgba(180,83,9,.07)` | `#92400E` | `rgba(219,167,88,.1)` | `#dba758` |
 
 ---
 
@@ -174,10 +180,11 @@ Toggle button: `#btn-theme` shows `🌙` in light, `☀️` in dark. Preference 
 ## Do's and Don'ts
 
 1. **Do** use Prompt for ALL Thai text — never mix with Lora or Playfair Display
-2. **Do** use `--secondary` (amber) for decorative accents: bullets, sub-heading bars, timeline highlights
-3. **Do** use `--primary` (burgundy) for interactive elements: buttons, active states, card titles
+2. **Do** use `--secondary` / `#dba758` amber for decorative accents: bullets, sub-heading bars, timeline highlights, badge text
+3. **Do** use `--primary` (`#863e3b` dark red in dark mode, `#881337` burgundy in light) for interactive elements: buttons, active states
 4. **Don't** use bright/neon colors in dark mode — keep alerts muted (low opacity, soft text)
 5. **Do** use `12px` radius on cards and `8px` on inline elements (chips stay pill `9999px`)
-6. **Don't** add heavy drop shadows — keep them warm and subtle (2–3% black)
+6. **Don't** add heavy drop shadows — keep them subtle
 7. **Do** keep mobile nav controls (theme toggle + lang toggle) in the TOP row so they're immediately visible without horizontal scrolling
 8. **Don't** expand max-width beyond `1280px` — content becomes too wide to read comfortably
+9. **Do** use `var(--text-1)` (not `--text-2`) for sidebar nav link labels — ensures adequate contrast on gray surface
