@@ -6,7 +6,7 @@
 <title>เอกสารของฉัน · My Documents</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ── Tokens: Light ── */
 :root {
@@ -81,16 +81,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Lora', serif;
-  font-size: 15px;
-  line-height: 1.65;
+  font-family: 'Prompt', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
   background: var(--bg);
   color: var(--text-1);
   transition: background .2s, color .2s;
   min-height: 100vh;
 }
-.th { font-family: 'Prompt', sans-serif !important; }
-.th * { font-family: 'Prompt', sans-serif; }
 
 /* ── Loading / Error ── */
 #loading, #error-screen {
@@ -121,7 +119,7 @@ body {
   background: linear-gradient(90deg, transparent, #B45309, transparent);
 }
 .site-header .org {
-  font-family: 'Lora', serif;
+  font-family: 'Prompt', sans-serif;
   font-size: .7rem; font-weight: 400;
   color: rgba(255,255,255,.6);
   letter-spacing: .14em; text-transform: uppercase;
@@ -129,7 +127,7 @@ body {
 }
 .site-header .org .th { font-size: .78rem; letter-spacing: .03em; text-transform: none; }
 .site-header h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Prompt', sans-serif;
   font-size: 1.55rem; font-weight: 700;
   line-height: 1.3; color: #FFFFFF;
   margin-bottom: .75rem; text-wrap: balance;
@@ -137,7 +135,7 @@ body {
 .site-header h1 .th { font-size: 1.3rem; font-weight: 600; }
 .email-pill {
   display: inline-block;
-  font-family: 'Lora', serif; font-size: .7rem;
+  font-family: 'Prompt', sans-serif; font-size: .7rem;
   color: rgba(255,255,255,.65);
   border: 1px solid rgba(255,255,255,.2);
   border-radius: 9999px; padding: .2rem 1rem;
@@ -167,10 +165,10 @@ body {
   margin-bottom: 1.5rem;
 }
 .card-hd h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Prompt', sans-serif;
   color: var(--primary-text); font-size: 1rem; font-weight: 700; line-height: 1.3;
 }
-.card-hd h2 .th { font-family: 'Prompt', sans-serif !important; font-weight: 600; font-size: .95rem; }
+.card-hd h2 .th { font-family: 'Prompt', sans-serif; font-weight: 600; font-size: .95rem; }
 .card-icon {
   display: flex; align-items: center; justify-content: center;
   min-width: 2rem; height: 2rem; border-radius: 9999px;
@@ -180,12 +178,12 @@ body {
 
 /* Sub-heading */
 .sub-h {
-  font-family: 'Lora', serif; font-size: .68rem; font-weight: 500;
+  font-family: 'Prompt', sans-serif; font-size: .68rem; font-weight: 500;
   letter-spacing: .1em; text-transform: uppercase; color: var(--text-2);
   margin: 1.5rem 0 .875rem;
   display: flex; align-items: center; gap: .625rem;
 }
-.sub-h .th { font-family: 'Prompt', sans-serif !important; font-weight: 500;
+.sub-h .th { font-family: 'Prompt', sans-serif; font-weight: 500;
   letter-spacing: .02em; text-transform: none; font-size: .78rem; }
 .sub-h::before {
   content: ''; display: inline-block; width: 3px; height: .875rem;
@@ -198,19 +196,28 @@ body {
 @media (max-width: 500px) { .field-row.cols-2 { grid-template-columns: 1fr; } }
 .field-row:last-child { margin-bottom: 0; }
 
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .site-header { padding: 1.75rem 1.125rem 1.5rem; }
+  .site-header h1 { font-size: 1.35rem; }
+  .page-body { padding: 1.25rem 1rem 3rem; }
+  .card { padding: 1.375rem 1.125rem; }
+  .fbtn { display: flex; width: 100%; margin-right: 0 !important; box-sizing: border-box; }
+}
+
 .field-label {
-  font-family: 'Lora', serif; font-size: .65rem; font-weight: 500;
+  font-family: 'Prompt', sans-serif; font-size: .65rem; font-weight: 500;
   letter-spacing: .1em; text-transform: uppercase; color: var(--text-3);
   margin-bottom: .2rem;
 }
-.field-label .th { font-family: 'Prompt', sans-serif !important; font-weight: 400;
+.field-label .th { font-family: 'Prompt', sans-serif; font-weight: 400;
   letter-spacing: .02em; text-transform: none; font-size: .72rem; }
 .field-value {
-  font-family: 'Lora', serif; font-size: .9375rem; color: var(--text-1);
+  font-family: 'Prompt', sans-serif; font-size: .9375rem; color: var(--text-1);
 }
-.field-value .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.field-value .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
 .field-value.highlight {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Prompt', sans-serif;
   font-size: 1.1rem; font-weight: 700;
   color: var(--primary-text);
 }
@@ -219,9 +226,9 @@ body {
 .al {
   display: flex; gap: .75rem; align-items: flex-start;
   border-radius: 8px; padding: .875rem 1rem;
-  font-family: 'Lora', serif; font-size: .9rem;
+  font-family: 'Prompt', sans-serif; font-size: .9rem;
 }
-.al .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.al .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
 .al-i { flex-shrink: 0; margin-top: .05rem; }
 .al.warn { background:var(--al-warn-bg); border:1px solid var(--al-warn-b); color:var(--al-warn-c); }
 .al.ok   { background:var(--al-ok-bg);   border:1px solid var(--al-ok-b);   color:var(--al-ok-c);   }
@@ -242,12 +249,12 @@ body {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
   background: var(--primary); color: var(--primary-fg);
   padding: .65rem 1.5rem; border-radius: 8px;
-  font-family: 'Lora', serif; font-size: .8rem; font-weight: 500;
+  font-family: 'Prompt', sans-serif; font-size: .8rem; font-weight: 500;
   letter-spacing: .06em; text-transform: uppercase;
   text-decoration: none; margin-top: 1rem;
   transition: background .15s;
 }
-.fbtn .th { font-family: 'Prompt', sans-serif !important; font-weight: 400;
+.fbtn .th { font-family: 'Prompt', sans-serif; font-weight: 400;
   letter-spacing: .02em; text-transform: none; font-size: .875rem; }
 .fbtn:hover { background: var(--primary-hover); }
 
@@ -256,14 +263,24 @@ body {
   background: var(--primary-muted); color: var(--primary-text);
   padding: .2rem .75rem; border-radius: 9999px;
   border: 1px solid var(--primary-muted-b);
-  font-family: 'Lora', serif; font-size: .65rem; font-weight: 500;
+  font-family: 'Prompt', sans-serif; font-size: .65rem; font-weight: 500;
   letter-spacing: .06em; text-transform: uppercase;
   text-decoration: none; margin-top: .4rem; margin-right: .5rem;
   transition: opacity .15s;
 }
-.dlink .th { font-family: 'Prompt', sans-serif !important; font-weight: 400;
+.dlink .th { font-family: 'Prompt', sans-serif; font-weight: 400;
   letter-spacing: .01em; text-transform: none; font-size: .72rem; }
 .dlink:hover { opacity: .75; }
+
+/* ── Warning notice (below comment) ── */
+.warn-notice {
+  font-family: 'Prompt', sans-serif;
+  font-size: .8rem; font-weight: 400;
+  line-height: 1.7; color: var(--al-warn-c);
+  background: var(--al-warn-bg); border: 1px solid var(--al-warn-b);
+  border-radius: 6px; padding: .625rem .875rem;
+  margin-top: .875rem;
+}
 
 /* ── Location / Appointment box ── */
 .loc {
@@ -273,26 +290,26 @@ body {
   color: var(--text-1); margin-top: 1rem;
   transition: background .2s, border-color .2s;
 }
-.loc .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; }
+.loc .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
 .loc-i { flex-shrink: 0; margin-top: .05rem; font-size: 1rem; }
 .loc-date {
-  font-family: 'Playfair Display', serif; font-size: .95rem;
+  font-family: 'Prompt', sans-serif; font-size: .95rem;
   font-weight: 700; color: var(--primary-text); margin-bottom: .2rem;
 }
-.loc-date .th { font-family: 'Prompt', sans-serif !important; font-weight: 600; font-size: .9rem; }
+.loc-date .th { font-family: 'Prompt', sans-serif; font-weight: 600; font-size: .9rem; }
 .loc-place {
-  font-family: 'Lora', serif; font-size: .82rem; color: var(--text-2); line-height: 1.5;
+  font-family: 'Prompt', sans-serif; font-size: .82rem; color: var(--text-2); line-height: 1.5;
 }
-.loc-place .th { font-family: 'Prompt', sans-serif !important; font-weight: 300; font-size: .85rem; }
+.loc-place .th { font-family: 'Prompt', sans-serif; font-weight: 300; font-size: .85rem; }
 
 /* ── Footer ── */
 footer {
   text-align: center; padding: 2rem 1.5rem;
-  font-family: 'Lora', serif; font-size: .68rem;
+  font-family: 'Prompt', sans-serif; font-size: .68rem;
   letter-spacing: .1em; text-transform: uppercase;
   color: var(--text-3); border-top: 1px solid var(--border);
 }
-footer .th { font-family: 'Prompt', sans-serif !important; font-weight: 300;
+footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
   letter-spacing: .02em; text-transform: none; font-size: .75rem; }
 
 /* ── Lang toggle / Dark toggle ── */
@@ -301,7 +318,7 @@ footer .th { font-family: 'Prompt', sans-serif !important; font-weight: 300;
   padding: .15rem .7rem; border-radius: 9999px;
   border: 1px solid rgba(255,255,255,.3);
   background: rgba(255,255,255,.1); color: rgba(255,255,255,.8);
-  font-family: 'Lora', serif; font-size: .63rem; font-weight: 500;
+  font-family: 'Prompt', sans-serif; font-size: .63rem; font-weight: 500;
   letter-spacing: .1em; cursor: pointer; transition: background .15s;
   vertical-align: middle; margin-left: .5rem;
 }
@@ -329,7 +346,7 @@ footer .th { font-family: 'Prompt', sans-serif !important; font-weight: 300;
 <!-- Error -->
 <div id="error-screen" style="display:none;">
   <div style="font-size:2rem; margin-bottom:.5rem;">⚠️</div>
-  <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--primary-text); margin-bottom:.5rem;" id="error-title"></p>
+  <p style="font-family:'Prompt',sans-serif; font-size:1.1rem; color:var(--primary-text); margin-bottom:.5rem;" id="error-title"></p>
   <p style="font-family:'Prompt',sans-serif; font-weight:300; font-size:.875rem; color:var(--text-2); max-width:380px; white-space:pre-line; text-align:center;" id="error-desc"></p>
 </div>
 
@@ -395,24 +412,17 @@ footer .th { font-family: 'Prompt', sans-serif !important; font-weight: 300;
         <h2><span class="th">สถานะเอกสาร</span><span class="en"> · Document Status</span></h2>
       </div>
 
-      <!-- reviewer -->
-      <div id="reviewer-wrap" style="display:none; margin-bottom:1.25rem;">
-        <p class="field-label"><span class="th">ผู้ตรวจเอกสาร</span><span class="en"> · Document Reviewer</span></p>
-        <p class="field-value th" id="f-reviewer"></p>
-      </div>
-
       <!-- correction -->
       <div id="s-correction" style="display:none;">
         <div class="al warn">
           <span class="al-i">⚠️</span>
           <div>
-            <p style="font-weight:500; margin-bottom:.3rem;"><span class="th">ต้องแก้ไขเอกสาร</span><span class="en"> — Correction Required</span></p>
-            <p class="th">กรุณาแก้ไขตามข้อเสนอแนะที่ได้รับ<strong>เท่านั้น</strong> — ห้ามมีการเปลี่ยนแปลงงบประมาณอื่นใดเพิ่มเติม</p>
-            <p class="en" style="margin-top:.35rem; font-size:.85rem; font-style:italic;">Please make corrections <em>only as advised</em> — do not make any other budget modifications.</p>
+            <p style="font-weight:600;"><span class="th">มีแก้ไข</span><span class="en"> — Correction Required</span></p>
           </div>
         </div>
         <div id="comment-box" class="comment-box" style="display:none;"></div>
         <div id="comment-link-wrap" style="display:none;"></div>
+        <p class="warn-notice">กรุณาแก้ไขตามข้อเสนอแนะที่ได้รับ<strong>เท่านั้น</strong> — ห้ามมีการเปลี่ยนแปลงงบประมาณอื่นใดเพิ่มเติม</p>
       </div>
 
       <!-- ok -->
@@ -420,7 +430,7 @@ footer .th { font-family: 'Prompt', sans-serif !important; font-weight: 300;
         <div class="al ok">
           <span class="al-i">✅</span>
           <div>
-            <p style="font-weight:500; margin-bottom:.3rem;"><span class="th">ไม่มีการแก้ไข</span><span class="en"> — No Correction Required</span></p>
+            <p style="font-weight:600; margin-bottom:.3rem;"><span class="th">ไม่มีแก้ไข</span><span class="en"> — No Correction Required</span></p>
             <p class="th">เอกสารของท่านได้รับการตรวจสอบเรียบร้อยแล้ว</p>
             <p class="en" style="margin-top:.35rem; font-size:.85rem;">Your documents have been reviewed. No corrections needed.</p>
           </div>
@@ -432,11 +442,17 @@ footer .th { font-family: 'Prompt', sans-serif !important; font-weight: 300;
         <div class="al pend">
           <span class="al-i">🕐</span>
           <div>
-            <p style="font-weight:500; margin-bottom:.3rem;"><span class="th">รอการตรวจสอบ</span><span class="en"> — Pending Review</span></p>
+            <p style="font-weight:600; margin-bottom:.3rem;"><span class="th">รอตรวจ</span><span class="en"> — Pending Review</span></p>
             <p class="th">เอกสารของท่านอยู่ระหว่างการตรวจสอบ กรุณารอการแจ้งผล</p>
             <p class="en" style="margin-top:.35rem; font-size:.85rem;">Your documents are under review. Please wait for updates.</p>
           </div>
         </div>
+      </div>
+
+      <!-- reviewer (always at bottom) -->
+      <div id="reviewer-wrap" style="display:none; margin-top:1.25rem; padding-top:1rem; border-top:1px dashed var(--border);">
+        <p class="field-label"><span class="th">ผู้ตรวจเอกสาร</span><span class="en"> · Reviewed by</span></p>
+        <p class="field-value th" id="f-reviewer"></p>
       </div>
     </div>
 
