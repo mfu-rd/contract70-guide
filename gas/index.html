@@ -80,9 +80,18 @@
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* rem units reference html — ต้องตั้งที่นี่ ไม่ใช่ body */
+html { font-size: 16px; }
+@media (max-width: 768px) {
+  html { font-size: 22px; }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  html { font-size: 17px; }
+}
+
 body {
   font-family: 'Prompt', sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.7;
   background: var(--bg);
   color: var(--text-1);
@@ -166,25 +175,22 @@ body {
 }
 .card-hd h2 {
   font-family: 'Prompt', sans-serif;
-  color: var(--primary-text); font-size: 1rem; font-weight: 700; line-height: 1.3;
+  color: var(--primary-text); font-size: 1.1rem; font-weight: 600; line-height: 1.3;
 }
-.card-hd h2 .th { font-family: 'Prompt', sans-serif; font-weight: 600; font-size: .95rem; }
 .card-icon {
   display: flex; align-items: center; justify-content: center;
-  min-width: 2rem; height: 2rem; border-radius: 9999px;
+  min-width: 2.25rem; height: 2.25rem; border-radius: 9999px;
   background: var(--primary); color: var(--primary-fg);
-  font-size: .9rem; flex-shrink: 0;
+  font-size: 1rem; flex-shrink: 0;
 }
 
 /* Sub-heading */
 .sub-h {
-  font-family: 'Prompt', sans-serif; font-size: .68rem; font-weight: 500;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--text-2);
+  font-family: 'Prompt', sans-serif; font-size: .8rem; font-weight: 500;
+  color: var(--text-2);
   margin: 1.5rem 0 .875rem;
   display: flex; align-items: center; gap: .625rem;
 }
-.sub-h .th { font-family: 'Prompt', sans-serif; font-weight: 500;
-  letter-spacing: .02em; text-transform: none; font-size: .78rem; }
 .sub-h::before {
   content: ''; display: inline-block; width: 3px; height: .875rem;
   background: var(--secondary); border-radius: 9999px; flex-shrink: 0;
@@ -196,29 +202,24 @@ body {
 @media (max-width: 500px) { .field-row.cols-2 { grid-template-columns: 1fr; } }
 .field-row:last-child { margin-bottom: 0; }
 
-/* ── Mobile ── */
-@media (max-width: 480px) {
+/* ── Mobile layout ── */
+@media (max-width: 768px) {
   .site-header { padding: 1.75rem 1.125rem 1.5rem; }
-  .site-header h1 { font-size: 1.35rem; }
   .page-body { padding: 1.25rem 1rem 3rem; }
   .card { padding: 1.375rem 1.125rem; }
   .fbtn { display: flex; width: 100%; margin-right: 0 !important; box-sizing: border-box; }
 }
 
 .field-label {
-  font-family: 'Prompt', sans-serif; font-size: .65rem; font-weight: 500;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--text-3);
-  margin-bottom: .2rem;
+  font-family: 'Prompt', sans-serif; font-size: .8rem; font-weight: 400;
+  color: var(--text-3); margin-bottom: .25rem;
 }
-.field-label .th { font-family: 'Prompt', sans-serif; font-weight: 400;
-  letter-spacing: .02em; text-transform: none; font-size: .72rem; }
 .field-value {
-  font-family: 'Prompt', sans-serif; font-size: .9375rem; color: var(--text-1);
+  font-family: 'Prompt', sans-serif; font-size: 1rem; font-weight: 400; color: var(--text-1);
 }
-.field-value .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
 .field-value.highlight {
   font-family: 'Prompt', sans-serif;
-  font-size: 1.1rem; font-weight: 700;
+  font-size: 1.2rem; font-weight: 700;
   color: var(--primary-text);
 }
 
@@ -226,9 +227,8 @@ body {
 .al {
   display: flex; gap: .75rem; align-items: flex-start;
   border-radius: 8px; padding: .875rem 1rem;
-  font-family: 'Prompt', sans-serif; font-size: .9rem;
+  font-family: 'Prompt', sans-serif; font-size: 1rem;
 }
-.al .th { font-family: 'Prompt', sans-serif; font-weight: 300; }
 .al-i { flex-shrink: 0; margin-top: .05rem; }
 .al.warn { background:var(--al-warn-bg); border:1px solid var(--al-warn-b); color:var(--al-warn-c); }
 .al.ok   { background:var(--al-ok-bg);   border:1px solid var(--al-ok-b);   color:var(--al-ok-c);   }
@@ -238,8 +238,8 @@ body {
 .comment-box {
   background: var(--surface-tint); border: 1px solid var(--border);
   border-radius: 8px; padding: 1rem 1.125rem;
-  font-family: 'Prompt', sans-serif; font-size: .88rem; font-weight: 300;
-  line-height: 1.9; white-space: pre-wrap; word-break: break-word;
+  font-family: 'Prompt', sans-serif; font-size: .95rem; font-weight: 400;
+  line-height: 1.8; white-space: pre-wrap; word-break: break-word;
   color: var(--text-1); margin-top: 1rem;
   transition: background .2s, border-color .2s;
 }
@@ -302,6 +302,70 @@ body {
 }
 .loc-place .th { font-family: 'Prompt', sans-serif; font-weight: 300; font-size: .85rem; }
 
+/* ── Announcement Banner ── */
+.announce-bar {
+  background: linear-gradient(135deg, #7C2D12 0%, #881337 60%, #6B1030 100%);
+  color: #FFFFFF;
+  padding: 1.125rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.announce-bar::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    rgba(255,255,255,.025) 20px,
+    rgba(255,255,255,.025) 40px
+  );
+  pointer-events: none;
+}
+.announce-bar-inner {
+  max-width: 720px; margin: 0 auto;
+  display: flex; align-items: flex-start; gap: .875rem;
+  position: relative;
+}
+.announce-bar-icon {
+  font-size: 1.5rem; flex-shrink: 0; margin-top: .1rem;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+}
+.announce-bar-body { flex: 1; }
+.announce-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.28);
+  border-radius: 9999px;
+  font-family: 'Prompt', sans-serif; font-size: .6rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .1rem .7rem; margin-bottom: .5rem; color: rgba(255,255,255,.95);
+}
+.announce-title {
+  font-family: 'Prompt', sans-serif; font-size: .98rem; font-weight: 700;
+  line-height: 1.4; color: #FFFFFF; margin-bottom: .4rem;
+}
+.announce-detail {
+  font-family: 'Prompt', sans-serif; font-size: .82rem; font-weight: 300;
+  color: rgba(255,255,255,.82); line-height: 1.6;
+  display: flex; flex-wrap: wrap; gap: .25rem .875rem; margin-bottom: .75rem;
+}
+.announce-detail span { display: flex; align-items: center; gap: .3rem; }
+.announce-reg {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: #B45309; color: #FFFFFF;
+  padding: .5rem 1.25rem; border-radius: 8px;
+  font-family: 'Prompt', sans-serif; font-size: .75rem; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase;
+  text-decoration: none; transition: background .15s;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+.announce-reg .th { font-size: .83rem; font-weight: 500; letter-spacing: .01em; text-transform: none; }
+.announce-reg:hover { background: #92400E; }
+@media (max-width: 768px) {
+  .announce-bar { padding: 1rem 1.125rem; }
+  .announce-title { font-size: .9rem; }
+}
+
 /* ── Footer ── */
 footer {
   text-align: center; padding: 2rem 1.5rem;
@@ -353,6 +417,28 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
 <!-- Main content -->
 <div id="content" style="display:none;">
 
+  <!-- Announcement Banner: Session 1 Zoom Briefing -->
+  <div class="announce-bar">
+    <div class="announce-bar-inner">
+      <div class="announce-bar-icon">📣</div>
+      <div class="announce-bar-body">
+        <span class="announce-tag">ประกาศสำคัญ · Announcement</span>
+        <p class="announce-title">
+          <span class="th">ขอเชิญเข้าร่วมการชี้แจงทุนวิจัย ประจำปีงบประมาณ 2570</span>
+          <span class="en">Session 1 — Research Grant Briefing, Fiscal Year B.E. 2570</span>
+        </p>
+        <div class="announce-detail">
+          <span>📅 <span class="th">วันจันทร์ที่ 6 ตุลาคม 2569</span><span class="en">Monday, 6 October 2026</span></span>
+          <span>🕑 <span class="th">เวลา 13.30 น. เป็นต้นไป</span><span class="en">13:30 onwards</span></span>
+          <span>💻 <span>Zoom Meeting</span></span>
+        </div>
+        <a class="announce-reg" href="https://forms.gle/xCaJBGSdjPAJG56A8" target="_blank" rel="noopener">
+          📝 <span class="th">ลงทะเบียนเข้าร่วม</span><span class="en">Register Now</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header class="site-header">
     <p class="org">
@@ -372,34 +458,34 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
     <div class="card accent-top">
       <div class="card-hd">
         <div class="card-icon">📋</div>
-        <h2><span class="th">ข้อมูลโครงการ</span><span class="en"> · Project Info</span></h2>
+        <h2><span class="th">ข้อมูลโครงการ</span><span class="en">Project Info</span></h2>
       </div>
 
       <div class="field-row">
         <div>
-          <p class="field-label"><span class="th">หัวหน้าโครงการ</span><span class="en"> · Project Leader</span></p>
+          <p class="field-label"><span class="th">หัวหน้าโครงการ</span><span class="en">Project Leader</span></p>
           <p class="field-value th" id="f-name"></p>
         </div>
       </div>
       <div class="field-row">
         <div>
-          <p class="field-label"><span class="th">ชื่อโครงการ</span><span class="en"> · Project Title</span></p>
+          <p class="field-label"><span class="th">ชื่อโครงการ</span><span class="en">Project Title</span></p>
           <p class="field-value th" id="f-title"></p>
         </div>
       </div>
       <div class="field-row cols-2">
         <div>
-          <p class="field-label"><span class="th">ประเภททุน</span><span class="en"> · Grant Type</span></p>
+          <p class="field-label"><span class="th">ประเภททุน</span><span class="en">Grant Type</span></p>
           <p class="field-value th" id="f-grant"></p>
         </div>
         <div>
-          <p class="field-label"><span class="th">สำนักวิชา</span><span class="en"> · School</span></p>
+          <p class="field-label"><span class="th">สำนักวิชา</span><span class="en">School</span></p>
           <p class="field-value th" id="f-school"></p>
         </div>
       </div>
       <div class="field-row">
         <div>
-          <p class="field-label"><span class="th">งบประมาณโครงการ</span><span class="en"> · Total Budget</span></p>
+          <p class="field-label"><span class="th">งบประมาณโครงการ</span><span class="en">Total Budget</span></p>
           <p class="field-value highlight th" id="f-budget"></p>
         </div>
       </div>
@@ -409,7 +495,7 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
     <div class="card">
       <div class="card-hd">
         <div class="card-icon">📄</div>
-        <h2><span class="th">สถานะเอกสาร</span><span class="en"> · Document Status</span></h2>
+        <h2><span class="th">สถานะเอกสาร</span><span class="en">Document Status</span></h2>
       </div>
 
       <!-- correction -->
@@ -451,7 +537,7 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
 
       <!-- reviewer (always at bottom) -->
       <div id="reviewer-wrap" style="display:none; margin-top:1.25rem; padding-top:1rem; border-top:1px dashed var(--border);">
-        <p class="field-label"><span class="th">ผู้ตรวจเอกสาร</span><span class="en"> · Reviewed by</span></p>
+        <p class="field-label"><span class="th">ผู้ตรวจเอกสาร</span><span class="en">Reviewed by</span></p>
         <p class="field-value th" id="f-reviewer"></p>
       </div>
     </div>
@@ -460,7 +546,7 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
     <div class="card" id="appt-card" style="display:none;">
       <div class="card-hd">
         <div class="card-icon">📅</div>
-        <h2><span class="th">วันนัดหมายลงนาม</span><span class="en"> · Signing Appointment</span></h2>
+        <h2><span class="th">วันนัดหมายลงนาม</span><span class="en">Signing Appointment</span></h2>
       </div>
       <div class="loc">
         <span class="loc-i">📅</span>
@@ -478,24 +564,24 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
     <div class="card" id="docs-card" style="display:none;">
       <div class="card-hd">
         <div class="card-icon">🗂</div>
-        <h2><span class="th">เอกสารที่ส่งแล้ว</span><span class="en"> · Submitted Documents</span></h2>
+        <h2><span class="th">เอกสารที่ส่งแล้ว</span><span class="en">Submitted Documents</span></h2>
       </div>
       <div id="proposal-wrap" style="display:none;">
-        <p class="field-label"><span class="th">ข้อเสนอโครงการ</span><span class="en"> · Proposal</span></p>
+        <p class="field-label"><span class="th">ข้อเสนอโครงการ</span><span class="en">Proposal</span></p>
         <a class="dlink" id="proposal-link" href="#" target="_blank">
-          <span class="th">🔗 เปิดไฟล์</span><span class="en"> · Open File</span>
+          <span class="th">🔗 เปิดไฟล์</span><span class="en">Open File</span>
         </a>
       </div>
       <div id="bookbank-wrap" style="display:none; margin-top:.75rem;">
         <p class="field-label"><span class="th">สำเนาหน้า Bookbank</span></p>
         <a class="dlink" id="bookbank-link" href="#" target="_blank">
-          <span class="th">🔗 เปิดไฟล์</span><span class="en"> · Open File</span>
+          <span class="th">🔗 เปิดไฟล์</span><span class="en">Open File</span>
         </a>
       </div>
       <div id="otherdocs-wrap" style="display:none; margin-top:.75rem;">
-        <p class="field-label"><span class="th">เอกสารแนบอื่นๆ</span><span class="en"> · Other Documents</span></p>
+        <p class="field-label"><span class="th">เอกสารแนบอื่นๆ</span><span class="en">Other Documents</span></p>
         <a class="dlink" id="otherdocs-link" href="#" target="_blank">
-          <span class="th">🔗 เปิดไฟล์</span><span class="en"> · Open File</span>
+          <span class="th">🔗 เปิดไฟล์</span><span class="en">Open File</span>
         </a>
       </div>
     </div>
@@ -504,23 +590,23 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
     <div class="card" id="bank-card" style="display:none;">
       <div class="card-hd">
         <div class="card-icon">🏦</div>
-        <h2><span class="th">ข้อมูลบัญชีธนาคาร</span><span class="en"> · Bank Account Info</span></h2>
+        <h2><span class="th">ข้อมูลบัญชีธนาคาร</span><span class="en">Bank Account Info</span></h2>
       </div>
       <div class="field-row cols-2">
         <div>
-          <p class="field-label"><span class="th">ชื่อบัญชี</span><span class="en"> · Account Name</span></p>
+          <p class="field-label"><span class="th">ชื่อบัญชี</span><span class="en">Account Name</span></p>
           <p class="field-value th" id="b-name"></p>
         </div>
         <div>
-          <p class="field-label"><span class="th">เลขที่บัญชี</span><span class="en"> · Account No.</span></p>
+          <p class="field-label"><span class="th">เลขที่บัญชี</span><span class="en">Account No.</span></p>
           <p class="field-value" id="b-account" style="font-family:monospace; letter-spacing:.04em;"></p>
         </div>
         <div>
-          <p class="field-label"><span class="th">ธนาคาร</span><span class="en"> · Bank</span></p>
+          <p class="field-label"><span class="th">ธนาคาร</span><span class="en">Bank</span></p>
           <p class="field-value th" id="b-bank"></p>
         </div>
         <div>
-          <p class="field-label"><span class="th">สาขา</span><span class="en"> · Branch</span></p>
+          <p class="field-label"><span class="th">สาขา</span><span class="en">Branch</span></p>
           <p class="field-value th" id="b-branch"></p>
         </div>
       </div>
@@ -620,7 +706,7 @@ google.script.run
           a.target = '_blank';
           a.style.marginRight = '.5rem';
           var label = links.length > 1 ? ' ('+(i+1)+')' : '';
-          a.innerHTML = '<span class="th">📄 ดูเอกสารที่ต้องแก้ไข'+label+'</span><span class="en"> · View Document'+label+'</span>';
+          a.innerHTML = '<span class="th">📄 ดูเอกสารที่ต้องแก้ไข'+label+'</span><span class="en">View Document'+label+'</span>';
           wrap.appendChild(a);
         });
         show('comment-link-wrap');
