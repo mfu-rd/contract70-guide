@@ -20,7 +20,7 @@
 ## โครงสร้างไฟล์
 
 ```
-index.html   — ไฟล์หลัก (bilingual TH/EN, GitHub Pages)
+index.html   — ไฟล์หลัก (bilingual TH/EN, deploy ผ่าน Netlify)
 content.md   — source of truth สำหรับเนื้อหา
 DESIGN.md    — design system (CSS tokens, layout rules)
 ```
@@ -29,10 +29,10 @@ DESIGN.md    — design system (CSS tokens, layout rules)
 
 | Section content.md | Element ใน index.html |
 |---|---|
-| SECTION 1 (บัญชี) | card `id="s1"` |
-| SECTION 2 (เอกสารแนบ) | card `id="s2"` |
-| SECTION 3 (จัดส่ง) | card `id="s3"` |
-| SECTION 4 (ลงนาม) | card `id="s4"` |
-| PORTAL | section `id="portal"` |
+| SECTION 1 (เอกสารแนบ) | card `id="docs"` |
+| SECTION 2 (บัญชีธนาคาร) | card `id="account"` |
+| SECTION 3 (จัดส่งเอกสาร) | card `id="submit"` |
+| SECTION 4 (ลงนามสัญญา) | card `id="sign"` |
+| PORTAL | div `id="portal"` |
 | DATES | ทุก element ที่มี `[วันที่]` / `[ช่วงวันที่]` |
 | LINKS | `href` ของปุ่ม/ลิงก์ทุกอัน |

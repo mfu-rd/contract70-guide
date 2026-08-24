@@ -4,6 +4,7 @@ const SHEET_NAME = 'Sheet1';
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('index')
     .setTitle('เอกสารของฉัน · My Documents')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes')
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
@@ -50,4 +51,48 @@ function getUserData() {
 function val(v) {
   if (v === null || v === undefined) return '';
   return String(v).trim();
+}
+
+// เปิดสิทธิ์ดูเอกสารในคอลัมน์ J ให้อีเมลในคอลัมน์ B ของแต่ละแถว
+function shareColumnJDocs() {
+  const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
+  const rows = sheet.getDataRange().getValues();
+  const log = [];
+
+  for (let i = 1; i < rows.length; i++) {
+    const email = String(rows[i][1]).trim();
+    const link  = String(rows[i][9]).trim();
+
+    if (!email || !link) continue;
+
+    const fileIds = extractAllFileIds(link);
+    if (fileIds.length === 0) {
+      log.push(`Row ${i + 1}: ดึง file ID ไม่ได้ — "${link}"`);
+      continue;
+    }
+
+    for (const fileId of fileIds) {
+      try {
+        const file = DriveApp.getFileById(fileId);
+        file.addViewer(email);
+        log.push(`Row ${i + 1}: ✓ share "${file.getName()}" → ${email}`);
+      } catch (e) {
+        log.push(`Row ${i + 1}: ✗ ${e.message} (fileId: ${fileId}, email: ${email})`);
+      }
+    }
+  }
+
+  Logger.log(log.join('\n'));
+  return log;
+}
+
+// ดึง file ID ทั้งหมดที่อยู่ใน string (รองรับหลายลิงก์ต่อช่อง)
+function extractAllFileIds(text) {
+  const ids = [];
+  const re = /(?:\/d\/|id=|\/file\/d\/)([A-Za-z0-9_-]{25,})/g;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    ids.push(m[1]);
+  }
+  return ids;
 }
