@@ -683,6 +683,72 @@ body {
 .portal-btn:hover { background: var(--primary-hover); }
 
 /* ══════════════════════════════════════════════════════
+   ANNOUNCEMENT BANNER
+══════════════════════════════════════════════════════ */
+.announce-bar {
+  background: linear-gradient(135deg, #7C2D12 0%, #881337 60%, #6B1030 100%);
+  color: #FFFFFF;
+  padding: 1.125rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.announce-bar::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    rgba(255,255,255,.025) 20px,
+    rgba(255,255,255,.025) 40px
+  );
+  pointer-events: none;
+}
+.announce-bar-inner {
+  max-width: 860px; margin: 0 auto;
+  display: flex; align-items: flex-start; gap: .875rem;
+  position: relative;
+}
+.announce-bar-icon {
+  font-size: 1.5rem; flex-shrink: 0; margin-top: .1rem;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+}
+.announce-bar-body { flex: 1; }
+.announce-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.28);
+  border-radius: 9999px;
+  font-family: 'Prompt', sans-serif; font-size: .6rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .1rem .7rem; margin-bottom: .5rem; color: rgba(255,255,255,.95);
+}
+.announce-title {
+  font-family: 'Prompt', sans-serif; font-size: .98rem; font-weight: 700;
+  line-height: 1.4; color: #FFFFFF; margin-bottom: .4rem;
+}
+.announce-detail {
+  font-family: 'Prompt', sans-serif; font-size: .82rem; font-weight: 300;
+  color: rgba(255,255,255,.82); line-height: 1.6;
+  display: flex; flex-wrap: wrap; gap: .25rem .875rem; margin-bottom: .75rem;
+}
+.announce-detail span { display: flex; align-items: center; gap: .3rem; }
+.announce-reg {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: #B45309; color: #FFFFFF;
+  padding: .5rem 1.25rem; border-radius: 8px;
+  font-family: 'Prompt', sans-serif; font-size: .75rem; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase;
+  text-decoration: none; transition: background .15s;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+.announce-reg .th { font-size: .83rem; font-weight: 500; letter-spacing: .01em; text-transform: none; }
+.announce-reg:hover { background: #92400E; }
+@media (max-width: 768px) {
+  .announce-bar { padding: 1rem 1.125rem; }
+  .announce-title { font-size: .9rem; }
+}
+
+/* ══════════════════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════════════════ */
 footer {
@@ -714,6 +780,30 @@ footer .th {
 </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════
+     ANNOUNCEMENT BANNER
+══════════════════════════════════════ -->
+<div class="announce-bar">
+  <div class="announce-bar-inner">
+    <div class="announce-bar-icon">📣</div>
+    <div class="announce-bar-body">
+      <span class="announce-tag">ประกาศสำคัญ · Announcement</span>
+      <p class="announce-title">
+        <span class="th">ขอเชิญเข้าร่วมการชี้แจงทุนวิจัย ประจำปีงบประมาณ 2570</span>
+        <span class="en">Session 1 — Research Grant Briefing, Fiscal Year B.E. 2570</span>
+      </p>
+      <div class="announce-detail">
+        <span>📅 <span class="th">วันจันทร์ที่ 6 ตุลาคม 2569</span><span class="en">Monday, 6 October 2026</span></span>
+        <span>🕑 <span class="th">เวลา 13.30 น. เป็นต้นไป</span><span class="en">13:30 onwards</span></span>
+        <span>💻 <span>Zoom Meeting</span></span>
+      </div>
+      <a class="announce-reg" href="https://forms.gle/xCaJBGSdjPAJG56A8" target="_blank" rel="noopener">
+        📝 <span class="th">ลงทะเบียนเข้าร่วม</span><span class="en">Register Now</span>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════════
      HEADER
