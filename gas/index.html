@@ -554,8 +554,6 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
             <p class="en" style="margin-top:.35rem; font-size:.85rem;">Your documents have been reviewed but still require corrections. Please contact the document reviewer listed below.</p>
           </div>
         </div>
-        <div id="comment-box-rc" class="comment-box" style="display:none;"></div>
-        <div id="comment-link-wrap-rc" style="display:none;"></div>
       </div>
 
       <!-- reviewed-ok (ตรวจแล้วถูกต้อง) -->
@@ -747,8 +745,6 @@ google.script.run
       show('s-ok');
     } else if (d.doc_status === 'ตรวจแล้วมีแก้ไข') {
       show('s-reviewed-correction');
-      if (d.comment) { setText('comment-box-rc', d.comment); show('comment-box-rc'); }
-      renderCommentLinks('comment-link-wrap-rc', d.comment_link);
     } else if (d.doc_status === 'ตรวจแล้วถูกต้อง') {
       show('s-reviewed-ok');
     } else {
