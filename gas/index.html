@@ -544,6 +544,32 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
         </div>
       </div>
 
+      <!-- reviewed-correction (ตรวจแล้วยังมีแก้ไข ติดต่อผู้ตรวจเอกสาร) -->
+      <div id="s-reviewed-correction" style="display:none;">
+        <div class="al warn">
+          <span class="al-i">🔴</span>
+          <div>
+            <p style="font-weight:600;"><span class="th">ตรวจแล้วยังมีแก้ไข — กรุณาติดต่อผู้ตรวจเอกสาร</span><span class="en"> — Reviewed: Corrections Still Required</span></p>
+            <p class="th" style="margin-top:.35rem; font-size:.85rem;">เอกสารของท่านได้รับการตรวจสอบแล้ว แต่ยังมีส่วนที่ต้องแก้ไข กรุณาติดต่อผู้ตรวจเอกสารตามชื่อที่แจ้งด้านล่าง</p>
+            <p class="en" style="margin-top:.35rem; font-size:.85rem;">Your documents have been reviewed but still require corrections. Please contact the document reviewer listed below.</p>
+          </div>
+        </div>
+        <div id="comment-box-rc" class="comment-box" style="display:none;"></div>
+        <div id="comment-link-wrap-rc" style="display:none;"></div>
+      </div>
+
+      <!-- reviewed-ok (ตรวจแล้วถูกต้อง) -->
+      <div id="s-reviewed-ok" style="display:none;">
+        <div class="al ok">
+          <span class="al-i">✅</span>
+          <div>
+            <p style="font-weight:600; margin-bottom:.3rem;"><span class="th">ตรวจแล้วถูกต้อง</span><span class="en"> — Reviewed: Documents Approved</span></p>
+            <p class="th">เอกสารของท่านได้รับการตรวจสอบและถูกต้องครบถ้วนแล้ว</p>
+            <p class="en" style="margin-top:.35rem; font-size:.85rem;">Your documents have been reviewed and approved. No corrections needed.</p>
+          </div>
+        </div>
+      </div>
+
       <!-- reviewer (always at bottom) -->
       <div id="reviewer-wrap" style="display:none; margin-top:1.25rem; padding-top:1rem; border-top:1px dashed var(--border);">
         <p class="field-label"><span class="th">ผู้ตรวจเอกสาร</span><span class="en">Reviewed by</span></p>
@@ -695,27 +721,36 @@ google.script.run
     if (d.reviewer) { setText('f-reviewer', d.reviewer); show('reviewer-wrap'); }
 
     // Status
+    function renderCommentLinks(wrapId, commentLink) {
+      if (!commentLink) return;
+      var links = commentLink.split(/[\n,]+/).map(function(s){return s.trim();}).filter(Boolean);
+      var wrap = document.getElementById(wrapId);
+      wrap.innerHTML = '';
+      links.forEach(function(url, i) {
+        var a = document.createElement('a');
+        a.className = 'fbtn';
+        a.href = url;
+        a.target = '_blank';
+        a.style.marginRight = '.5rem';
+        var label = links.length > 1 ? ' ('+(i+1)+')' : '';
+        a.innerHTML = '<span class="th">📄 ดูเอกสารที่ต้องแก้ไข'+label+'</span><span class="en">View Document'+label+'</span>';
+        wrap.appendChild(a);
+      });
+      show(wrapId);
+    }
+
     if (d.doc_status === 'มีแก้ไข') {
       show('s-correction');
       if (d.comment) { setText('comment-box', d.comment); show('comment-box'); }
-      if (d.comment_link) {
-        var links = d.comment_link.split(/[\n,]+/).map(function(s){return s.trim();}).filter(Boolean);
-        var wrap = document.getElementById('comment-link-wrap');
-        wrap.innerHTML = '';
-        links.forEach(function(url, i) {
-          var a = document.createElement('a');
-          a.className = 'fbtn';
-          a.href = url;
-          a.target = '_blank';
-          a.style.marginRight = '.5rem';
-          var label = links.length > 1 ? ' ('+(i+1)+')' : '';
-          a.innerHTML = '<span class="th">📄 ดูเอกสารที่ต้องแก้ไข'+label+'</span><span class="en">View Document'+label+'</span>';
-          wrap.appendChild(a);
-        });
-        show('comment-link-wrap');
-      }
+      renderCommentLinks('comment-link-wrap', d.comment_link);
     } else if (d.doc_status === 'ไม่มีแก้ไข') {
       show('s-ok');
+    } else if (d.doc_status === 'ตรวจแล้วยังมีแก้ไข ติดต่อผู้ตรวจเอกสาร') {
+      show('s-reviewed-correction');
+      if (d.comment) { setText('comment-box-rc', d.comment); show('comment-box-rc'); }
+      renderCommentLinks('comment-link-wrap-rc', d.comment_link);
+    } else if (d.doc_status === 'ตรวจแล้วถูกต้อง') {
+      show('s-reviewed-ok');
     } else {
       show('s-pending');
     }
