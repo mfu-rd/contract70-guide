@@ -745,7 +745,7 @@ google.script.run
       renderCommentLinks('comment-link-wrap', d.comment_link);
     } else if (d.doc_status === 'ไม่มีแก้ไข') {
       show('s-ok');
-    } else if (d.doc_status === 'ตรวจแล้วยังมีแก้ไข') {
+    } else if (d.doc_status === 'ตรวจแล้วมีแก้ไข') {
       show('s-reviewed-correction');
       if (d.comment) { setText('comment-box-rc', d.comment); show('comment-box-rc'); }
       renderCommentLinks('comment-link-wrap-rc', d.comment_link);
