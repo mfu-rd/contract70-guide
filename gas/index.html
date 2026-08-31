@@ -577,21 +577,15 @@ footer .th { font-family: 'Prompt', sans-serif; font-weight: 300;
       </div>
       <div id="proposal-wrap" style="display:none;">
         <p class="field-label"><span class="th">ข้อเสนอโครงการ</span><span class="en">Proposal</span></p>
-        <a class="dlink" id="proposal-link" href="#" target="_blank">
-          <span class="th">🔗 เปิดไฟล์</span><span class="en">Open File</span>
-        </a>
+        <div id="proposal-links"></div>
       </div>
       <div id="bookbank-wrap" style="display:none; margin-top:.75rem;">
-        <p class="field-label"><span class="th">สำเนาหน้า Bookbank</span></p>
-        <a class="dlink" id="bookbank-link" href="#" target="_blank">
-          <span class="th">🔗 เปิดไฟล์</span><span class="en">Open File</span>
-        </a>
+        <p class="field-label"><span class="th">สำเนาหน้า Bookbank</span><span class="en">Bookbank</span></p>
+        <div id="bookbank-links"></div>
       </div>
       <div id="otherdocs-wrap" style="display:none; margin-top:.75rem;">
         <p class="field-label"><span class="th">เอกสารแนบอื่นๆ</span><span class="en">Other Documents</span></p>
-        <a class="dlink" id="otherdocs-link" href="#" target="_blank">
-          <span class="th">🔗 เปิดไฟล์</span><span class="en">Open File</span>
-        </a>
+        <div id="otherdocs-links"></div>
       </div>
     </div>
 
@@ -732,11 +726,28 @@ google.script.run
       show('appt-card');
     }
 
-    // Documents
+    // Documents — รองรับหลาย URL ใน 1 ช่อง (คั่นด้วย newline หรือ comma)
+    function renderDocLinks(containerId, raw, labelTh, labelEn) {
+      var urls = raw.split(/[\n,]+/).map(function(s){ return s.trim(); }).filter(Boolean);
+      var wrap = document.getElementById(containerId);
+      wrap.innerHTML = '';
+      urls.forEach(function(url, i) {
+        var a = document.createElement('a');
+        a.className = 'dlink';
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        var num = urls.length > 1 ? ' ('+(i+1)+')' : '';
+        a.innerHTML = '<span class="th">🔗 '+labelTh+num+'</span><span class="en">'+labelEn+num+'</span>';
+        if (i > 0) a.style.marginTop = '.4rem';
+        wrap.appendChild(a);
+      });
+      return urls.length > 0;
+    }
     var hasDocs = false;
-    if (d.proposal_link)  { setLink('proposal-link', d.proposal_link);   show('proposal-wrap');  hasDocs=true; }
-    if (d.bookbank_link)  { setLink('bookbank-link', d.bookbank_link);   show('bookbank-wrap');  hasDocs=true; }
-    if (d.other_docs)     { setLink('otherdocs-link', d.other_docs);     show('otherdocs-wrap'); hasDocs=true; }
+    if (d.proposal_link && renderDocLinks('proposal-links', d.proposal_link, 'เปิดไฟล์', 'Open File')) { show('proposal-wrap'); hasDocs=true; }
+    if (d.bookbank_link && renderDocLinks('bookbank-links', d.bookbank_link, 'เปิดไฟล์', 'Open File')) { show('bookbank-wrap'); hasDocs=true; }
+    if (d.other_docs    && renderDocLinks('otherdocs-links', d.other_docs,   'เปิดไฟล์', 'Open File')) { show('otherdocs-wrap'); hasDocs=true; }
     if (hasDocs) show('docs-card');
 
     // Bank
