@@ -7,8 +7,8 @@
 ## สถาปัตยกรรม
 
 ```
-GitHub repo (private)
-  ├── index.html          → Netlify → https://[name].netlify.app
+GitHub repo (public)
+  ├── index.html          → GitHub Pages → https://[org].github.io/[repo]
   └── gas/
         ├── Code.gs       → clasp push → GAS deployment URL
         ├── index.html    ↗
@@ -23,7 +23,7 @@ GitHub repo (private)
 - [ ] นับ column index ทุก field ที่จะใช้ (เริ่ม 0) — **อย่าเดา**
 
 ### 2. GitHub repo
-- [ ] `git init` + สร้าง repo บน GitHub (private)
+- [ ] `git init` + สร้าง repo บน GitHub (public สำหรับใช้ GitHub Pages)
 - [ ] สร้าง `.claude/commands/` สำหรับ slash commands
 
 ### 3. GAS Portal
@@ -40,10 +40,10 @@ GitHub repo (private)
 - [ ] สร้าง `index.html` ที่ root
 - [ ] สร้าง `.claude/commands/edit-handbook.md` บันทึกโครงสร้าง + placeholder
 
-### 5. Netlify
-- [ ] app.netlify.com → Add site → GitHub → เว้นว่างทุก build field → Deploy
-- [ ] Site settings → Change project name
-- [ ] ตั้ง GitHub repo เป็น private
+### 5. GitHub Pages
+- [ ] GitHub repo → Settings → Pages → Source: Deploy from a branch
+- [ ] Branch: `master` / folder: `/ (root)` → Save
+- [ ] Live URL จะเป็น `https://[org].github.io/[repo]/`
 
 ---
 
@@ -51,8 +51,10 @@ GitHub repo (private)
 
 ### Code.gs
 ```javascript
-const SHEET_ID = 'YOUR_SPREADSHEET_ID';
-const SHEET_NAME = 'Sheet1';
+// SHEET_ID และ SHEET_NAME เซ็ตใน GAS Project Settings → Script Properties
+// ห้าม hardcode ค่าใน code (จะติด git history และไม่ปลอดภัยสำหรับ public repo)
+const SHEET_ID   = PropertiesService.getScriptProperties().getProperty('SHEET_ID');
+const SHEET_NAME = PropertiesService.getScriptProperties().getProperty('SHEET_NAME') || 'Sheet1';
 
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('index')
@@ -126,7 +128,7 @@ links.forEach((url, i) => {
 1. **Column mapping** — นับ index จาก Sheets จริงเสมอ อย่าเดาจาก header
 2. **GAS Deployment ID** — จดทันทีหลัง deploy ครั้งแรก ห้าม create new จาก UI
 3. **Mobile viewport** — ต้องทำทั้ง addMetaTag() และ JS fallback
-4. **Netlify vs GitHub Pages** — GitHub Pages ต้องการ repo public; Netlify ไม่ต้อง
+4. **GitHub Pages** — ต้องการ repo public; ตั้ง Source = Deploy from a branch (master / root)
 5. **comment_link** — split ด้วย `/[\n,]+/` รับทั้ง newline และ comma
 6. **clasp login** — รัน `clasp login` ใหม่ถ้า token หมดอายุ
 7. **dark mode** — สีต้องกำหนดทั้งใน media query และ [data-theme] selector แยกกัน
@@ -135,5 +137,7 @@ links.forEach((url, i) => {
 
 ## อ้างอิง project มฟล. 70
 
-ดู `gas-deploy.md` สำหรับ Script ID, Deployment ID, และ Live URL
-ดู `deploy.md` สำหรับ Netlify URL และ repo info
+- `gas-deploy.md` — Script ID, Deployment ID, Live GAS URL
+- `deploy.md` — GitHub repo, GitHub Pages URL
+- Repo: `https://github.com/mfu-rd/contract70-guide`
+- Live: `https://mfu-rd.github.io/contract70-guide/`

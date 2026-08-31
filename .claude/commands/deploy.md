@@ -1,6 +1,6 @@
 # deploy
 
-Commit และ push การเปลี่ยนแปลงไปยัง Netlify (ผ่าน `master` branch → GitHub)
+Commit และ push การเปลี่ยนแปลงไปยัง GitHub Pages (ผ่าน `master` branch → GitHub)
 
 ## ขั้นตอน
 
@@ -18,8 +18,8 @@ Commit และ push การเปลี่ยนแปลงไปยัง 
    - `git add` เฉพาะไฟล์ที่เกี่ยวข้อง (ไม่ใช้ `git add -A` สุ่มสี่สุ่มห้า)
    - `git commit -m "..."`
    - `git push origin master`
-7. แจ้ง URL ที่ deploy: `https://mfucontract70-guid.netlify.app/`
-   (Netlify auto-deploy จาก GitHub — รอประมาณ 30 วินาทีหลัง push)
+7. แจ้ง URL ที่ deploy: `https://mfu-rd.github.io/contract70-guide/`
+   (GitHub Pages auto-deploy จาก master branch — รอประมาณ 1-2 นาทีหลัง push)
 
 ## กฎ
 
@@ -30,6 +30,6 @@ Commit และ push การเปลี่ยนแปลงไปยัง 
 ## Remote
 
 - Branch: `master`
-- Remote: `origin` → `https://github.com/ptrsswnr/contract70-guide`
-- Netlify URL: `https://mfucontract70-guid.netlify.app/`
-- Hosting: Netlify (auto-deploy จาก GitHub master branch)
+- Remote: `origin` → `https://github.com/mfu-rd/contract70-guide`
+- Live URL: `https://mfu-rd.github.io/contract70-guide/`
+- Hosting: GitHub Pages (auto-deploy จาก master branch, repo public)
